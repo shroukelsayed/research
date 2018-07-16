@@ -1,0 +1,376 @@
+{
+    _token : 31fsd5g431g3d11v3s2d1v3ds21v,
+    case_status : null,
+    case_researcher_name : null,
+    case_governorate : null,
+    case_city : null,
+    case_district : null,
+    case_following : null,
+    case_real_date : null,
+    case_name : null,
+    case_gender : null,
+    case_age : null,
+    case_national_id : null,
+    case_relationship_status : null,
+    case_education_status : null,
+    case_work_status : null,
+    case_profession : null,
+    case_national_id_front : null,
+    case_national_id_back : null,
+    case_phone : null,
+    case_is_ill : null,
+    case_illness_type : null,
+    case_illness_description : null,
+    case_illness_prevent_movement : null,
+    case_need_monthly_treatment : null,
+    case_has_national_support : null,
+    case_treatment_monthly_amount : null,
+    case_treatment_affordable : null,
+    case_need_operation : null,
+    partner_name : [
+        null,
+        null
+    ],
+    partner_gender : [
+        null,
+        null
+    ],
+    partner_age : [
+        null,
+        null
+    ],
+    partner_national_id : [
+        null,
+        null
+    ],
+    partner_relationship_status : [
+        null,
+        null
+    ],
+    partner_education_status : [
+        null,
+        null
+    ],
+    partner_work_status : [
+        null,
+        null
+    ],
+    partner_profession : [
+        null,
+        null
+    ],
+    partner_national_id_front : [
+        null,
+        null
+    ],
+    partner_national_id_back : [
+        null,
+        null
+    ],
+    partner_phone : [
+        null,
+        null
+    ],
+    partner_is_ill : [
+        null,
+        null
+    ],
+    partner_illness_type : [
+        null,
+        null
+    ],
+    partner_illness_description : [
+        null,
+        null
+    ],
+    partner_illness_prevent_movement : [
+        null,
+        null
+    ],
+    partner_need_monthly_treatment : [
+        null,
+        null
+    ],
+    partner_has_national_support : [
+        null,
+        null
+    ],
+    partner_treatment_monthly_amount : [
+        null,
+        null
+    ],
+    partner_treatment_affordable : [
+        null,
+        null
+    ],
+    partner_need_operation : [
+        null,
+        null
+    ],
+    child_name : null,
+    child_gender : [
+        null,
+        null
+    ],
+    child_age : [
+        null,
+        null
+    ],
+    child_national_id : [
+        null,
+        null
+    ],
+    child_relationship_status : [
+        null,
+        null
+    ],
+    child_education_status : [
+        null,
+        null
+    ],
+    child_work_status : [
+        null,
+        null
+    ],
+    child_profession : [
+        null,
+        null
+    ],
+    child_is_ill : [
+        null,
+        null
+    ],
+    child_illness_type : [
+        null,
+        null
+    ],
+    child_illness_description : [
+        null,
+        null
+    ],
+    child_illness_prevent_movement : [
+        null,
+        null
+    ],
+    child_need_monthly_treatment : [
+        null,
+        null
+    ],
+    child_has_national_support : [
+        null,
+        null
+    ],
+    child_treatment_monthly_amount : [
+        null,
+        null
+    ],
+    child_treatment_affordable : [
+        null,
+        null
+    ],
+    child_need_operation : [
+        null,
+        null
+    ],
+    roommate_name : [
+        null,
+        null
+    ],
+    roommate_gender : [
+        null,
+        null
+    ],
+    roommate_age : [
+        null,
+        null
+    ],
+    roommate_national_id : [
+        null,
+        null
+    ],
+    roommate_relationship_status : [
+        null,
+        null
+    ],
+    roommate_education_status : [
+        null,
+        null
+    ],
+    roommate_work_status : [
+        null,
+        null
+    ],
+    roommate_profession : [
+        null,
+        null
+    ],
+    roommate_relativity : [
+        null,
+        null
+    ],
+    roommate_is_ill : [
+        null,
+        null
+    ],
+    roommate_illness_type : [
+        null,
+        null
+    ],
+    roommate_illness_description : [
+        null,
+        null
+    ],
+    roommate_illness_prevent_movement : [
+        null,
+        null
+    ],
+    roommate_need_monthly_treatment : [
+        null,
+        null
+    ],
+    roommate_has_national_support : [
+        null,
+        null
+    ],
+    roommate_treatment_monthly_amount : [
+        null,
+        null
+    ],
+    roommate_treatment_affordable : [
+        null,
+        null
+    ],
+    roommate_need_operation : [
+        null,
+        null
+    ],
+    case_income_amount : null,
+    case_income_amount_category : null,
+    case_source_count : null,
+    income_source_type : [
+        null,
+        null
+    ],
+    income_notes : [
+        null,
+        null
+    ],
+    income_monthly_amount : [
+        null,
+        null
+    ],
+    income_source_flow : [
+        null,
+        null
+    ],
+    case_support_count : null,
+    support_source_category : [
+        null,
+        null
+    ],
+    support_source_name : [
+        null,
+        null
+    ],
+    support_type : [
+        null,
+        null
+    ],
+    support_period : [
+        null,
+        null
+    ],
+    case_debts_total : null,
+    case_debts_total_range : null,
+    debt_amount : [
+        null,
+        null
+    ],
+    debt_stay : [
+        null,
+        null
+    ],
+    debt_reason : [
+        null,
+        null
+    ],
+    debt_refund_method : [
+        null,
+        null
+    ],
+    debt_monthly_amount : [
+        null,
+        null
+    ],
+    case_expenses_house_rent : null,
+    case_expenses_farm_rent : null,
+    case_expenses_treatment : null,
+    case_expenses_detergent : null,
+    case_expenses_school_subscription : null,
+    case_expenses_child_course : null,
+    case_expenses_water_receipt : null,
+    case_expenses_electricity_receipt : null,
+    case_expenses_clothes : null,
+    case_expenses_phone_credit : null,
+    case_expenses_debts : null,
+    case_expenses_transportation : null,
+    case_expenses_pets_food : null,
+    case_expenses_smoking : null,
+    case_expenses_food : null,
+    case_expenses_other : null,
+    case_expenses_total_category : null,
+    case_expenses_total : null,
+    case_assets_house_type : null,
+    case_assets_house_status : null,
+    case_assets_house_price : null,
+    case_assets_house_paying_source : null,
+    case_assets_electric_meter : null,
+    case_assets_water_meter : null,
+    case_assets_water_alternative : null,
+    case_assets_farm : null,
+    case_assets_pets : null,
+    case_assets_vehicle : null,
+    case_assets_house_alternative_status : null,
+    case_assets_house_alternative_resident : null,
+    case_assets_house_alternative_leave : null,
+    case_assets_house_construction : null,
+    case_assets_house_floors_count : null,
+    case_assets_house_rooms_count : null,
+    case_room_type : null,
+    case_room_roof_type : null,
+    case_room_roof_status : null,
+    case_room_paint : null,
+    case_room_notes : null,
+    case_has_bathroom : null,
+    case_bathroom_has_door : null,
+    case_bathroom_has_basin : null,
+    case_bathroom_has_toilet : null,
+    case_bathroom_roof : null,
+    case_bathroom_wall : null,
+    case_bathroom_floor : null,
+    case_amenities_mattress : null,
+    case_amenities_bed : null,
+    case_amenities_fans : null,
+    case_amenities_blankets : null,
+    case_amenities_stove : null,
+    case_amenities_oven : null,
+    case_amenities_flame : null,
+    case_amenities_heater : null,
+    case_amenities_fridge : null,
+    case_amenities_washer : null,
+    case_amenities_cupbord : null,
+    case_amenities_nish : null,
+    case_amenities_arika : null,
+    case_amenities_table : null,
+    case_amenities_television : null,
+    case_amenities_receiver : null,
+    case_amenities_computer : null,
+    case_need_water : null,
+    case_need_bathroom : null,
+    case_need_roof : null,
+    case_need_blankets : null,
+    case_need_construction : null,
+    case_need_education : null,
+    case_need_food : null,
+    case_additional_notes : null,
+}

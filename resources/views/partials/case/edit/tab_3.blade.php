@@ -1,0 +1,408 @@
+<div id="tab_3" class="tab-pane">
+    <h4>بيانات خاصة بالزوج/الزوجة</h4>
+    @if(sizeof($case->partners) >0)
+
+    @foreach($case->partners as $key => $case->partner)
+    
+    <?php $v = 'partner_illness_type['.$key.'][]'; ?>
+    <div id="partners">
+        <div class="partner">
+           
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        {!! Form::label('partner_name[]', 'الاسم') !!}
+                        {!! Form::text('partner_name[]', $case->partner->name, array('class' => 'form-control')) !!}
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        {!! Form::label('partner_gender[]', 'النوع (ذكر-أنثى)') !!}<br>
+                        {!! Form::select('partner_gender[]', ['ذكر' => 'ذكر', 'أنثى' => 'أنثى'], $case->partner->gender, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    {{-- partner_age                []text --}}
+                    <div class="form-group">
+                        {!! Form::label('partner_age[]', 'السن') !!}
+                        {!! Form::text('partner_age[]', $case->partner->age, array('class' => 'form-control')) !!}
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    {{-- partner_national_id        []text --}}
+                    <div class="form-group">
+                        {!! Form::label('partner_national_id[]', 'رقم البطاقة') !!}
+                        {!! Form::text('partner_national_id[]', $case->partner->national_id, array('class' => 'form-control')) !!}
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    {{-- partner_ralationship       []select[single,..] --}}
+                    <div class="form-group">
+                        {!! Form::label('partner_relationship_status[]', 'الحاله الاجتماعية') !!}
+                        {!! Form::select('partner_relationship_status[]', ['أعزب' => 'أعزب', 'متزوج' => 'متزوج', 'مطلق' => 'مطلق', 'أرمل' => 'أرمل', 'منفصل' => 'منفصل'], $case->partner->relationship_status, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    {{-- partner_edu_status       []select[single,..] --}}
+                    <div class="form-group">
+                        {!! Form::label('partner_education_status[]', 'الحاله التعليمية') !!}
+                        {!! Form::select('partner_education_status[]', ['أدون سن التعليم' => 'دون سن التعليم', 'في الابتدائية (1-2-3)' => ' في الابتدائية (1-2-3)', 'في الابتدائية (4-5-6)' => 'في الابتدائية (4-5-6)', 'في الإعدادية' => 'في الإعدادية', 'في الثانوية/ دبلوم' => 'في الثانوية/ دبلوم', 'في الجامعة' => 'في الجامعة' ,'متسرب'=>'متسرب' , 'امي'=>'امي' ,'انهي التعليم الأساسي (اعدادي)'=>'انهي التعليم الأساسي (اعدادي)','انهي التعليم الثانوي/ دبلوم/ الجامعي'=>'انهي التعليم الثانوي/ دبلوم/ الجامعي'], $case->partner->education_status, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    {{-- partner_work_status       []select[single,..] --}}
+                    <div class="form-group">
+                        {!! Form::label('partner_work_status[]', 'المهنة') !!}
+                        {!! Form::select('partner_work_status[]', ['لا يعمل' => 'لا يعمل', 'يعمل بشكل متقطع (المواسم/ الاجازات)' => 'يعمل بشكل متقطع (المواسم/ الاجازات)', 'يعمل بشكل دائم (سواء ارزقي او دائم)' => 'يعمل بشكل دائم (سواء ارزقي او دائم)', 'أخرى' => 'أخرى'], $case->partner->work_status, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    {{-- partner_profession         []text --}}
+                    <div class="form-group">
+                        {!! Form::label('partner_profession[]', 'وصف المهنة') !!}
+                        {!! Form::text('partner_profession[]', $case->partner->profession, array('class' => 'form-control')) !!}
+                    </div>
+                </div>
+            </div>
+            @if( $case->partner->national_id_front != null || $case->partner->national_id_back != null)
+                <div class="row">
+                    <div class="col-md-6">
+                        <img src="{{asset('uploads/'.$case->partner->national_id_front)}}" style="width: 100%">
+                    </div>
+                    <div class="col-md-6">
+                        <img src="{{asset('uploads/'.$case->partner->national_id_back)}}" style="width: 100%">
+                    </div>
+                </div>
+            @endif
+            <div class="row">
+                <div class="col-md-6">
+                    <!-- fancy primary -->
+                    {!! Form::label('partner_national_id_front[]', 'صورة وجه البطاقة') !!}
+                    <div class="fancy-file-upload fancy-file-primary">
+                        <i class="fa fa-upload"></i>
+                        <input type="file" class="form-control" name="partner_national_id_front[]" onchange="jQuery(this).next('input').val(this.value);" />
+                        <input type="text" class="form-control" name="partner_national_id_front_old[]" placeholder="no file selected" readonly="" value="{{$case->partner->national_id_front}}" />
+                        <span class="button">Choose File</span>
+                        يجب أن يكون حجم الملفات أقل من 40 ميغابايت.
+                        أنواع الملفات المسموح بها: png gif jpg jpeg.
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <!-- fancy primary -->
+                    {!! Form::label('partner_national_id_back[]', 'صورة ظهر البطاقة') !!}
+                    <div class="fancy-file-upload fancy-file-primary">
+                        <i class="fa fa-upload"></i>
+                        <input type="file" class="form-control" name="partner_national_id_back[]" onchange="jQuery(this).next('input').val(this.value);" />
+                        <input type="text" class="form-control" name="partner_national_id_back_old[]" placeholder="no file selected" readonly="" value="{{$case->partner->national_id_back}}"/>
+                        <span class="button">Choose File</span>
+                        يجب أن يكون حجم الملفات أقل من 40 ميغابايت.
+                        أنواع الملفات المسموح بها: png gif jpg jpeg.
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        {!! Form::label('partner_phone[]', 'رقم الموبايل') !!}
+                        {!! Form::text('partner_phone[]', $case->partner->phone, array('class' => 'form-control')) !!}
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        {!! Form::label('partner_is_ill[]', 'يعاني من مرض؟') !!}<br>
+                        {!! Form::select('partner_is_ill[]', ['نعم' => 'نعم', 'لا' => 'لا'], $case->partner->is_ill, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
+                    </div>
+                </div>
+            </div>
+                <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        {!! Form::label('partner_illness_type[]', 'نوع المرض') !!}
+                        {!! Form::select($v, [
+                        "أمراض كبر السن والشيخوخة" => "أمراض كبر السن والشيخوخة",
+                        "إعاقة حركية" => "إعاقة حركية ",
+                        "إعاقة سمعية" => "إعاقة سمعية",
+                        "إعاقة بصرية" => "إعاقة بصرية",
+                        "امراض نفسية وعصبية" => "امراض نفسية وعصبية",
+                        "امراض عقلية" => "امراض عقلية",
+                        "امراض عظام وعمود فقري" => "امراض عظام وعمود فقري",
+                        "أنميا وسوء تغذية" => "أنميا وسوء تغذية",
+                        "أمراض السكر والضغط" => "أمراض السكر والضغط",
+                        "أمراض القلب" => "أمراض القلب",
+                        "أمراض الرقة والجهاز التنفسي" => "أمراض الرقة والجهاز التنفسي",
+                        "امراض المعدة والجهاز الهضمي" => "امراض المعدة والجهاز الهضمي",
+                        "اورام سرطانية" => "اورام سرطانية",
+                        "امراض الكلى والفشل الكلوي" => "امراض الكلى والفشل الكلوي",
+                        "امراض الكبد وفيروس C" => "امراض الكبد وفيروس C",
+                        "امراض جلدية" => "امراض جلدية",
+                        "امراض اخرى" => "امراض اخرى"
+                        ],json_decode($case->partner->illness_type) , array('multiple'=>'multiple', 'class' => 'form-control  select2 draw', 'style' => 'width:100%')) !!}
+                      </div>
+                   </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            {!! Form::label('partner_illness_description[]', 'وصف الحالة المرضية') !!}
+                            {!! Form::text('partner_illness_description[]', $case->partner->illness_description, array('class' => 'form-control')) !!}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            {!! Form::label('partner_illness_prevent_movement[]', '‏هل هذا المرض يعيق الحركة') !!}
+                            {!! Form::select('partner_illness_prevent_movement[]', ['نعم بشكل كلي' => 'نعم بشكل كلي', 'نعم بشكل جزئي' => 'نعم بشكل جزئي', 'لا' => 'لا'], $case->partner->illness_prevent_movement, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            {!! Form::label('partner_illness_need_monthly_treatment[]', '‏هل تحتاج إلي علاج شهري') !!}<br>
+                            {!! Form::select('partner_illness_need_monthly_treatment[]', ['نعم' => 'نعم', 'لا' => 'لا'], $case->partner->need_monthly_treatment, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            {!! Form::label('partner_illness_is_national_support[]', '‏‏هل تأخذ علاج على نفقة الدولة') !!}
+                            {!! Form::select('partner_illness_is_national_support[]', ['نعم كل العلاج' => 'نعم كل العلاج', 'نعم  جزء من العلاج' => 'نعم  جزء من العلاج', 'لا' => 'لا'], $case->partner->has_national_support, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            {!! Form::label('partner_illness_treatment_monthly_amount[]', '‏تكلفة العلاج الشهري') !!}
+                            {!! Form::select('partner_illness_treatment_monthly_amount[]', ['أقل من 100 جنية' => 'أقل من 100 جنية', 'من 100 إلى أقل من 300' => 'من 100 إلى أقل من 300', 'من 300 إلى أقل من 600' => 'من 300 إلى أقل من 600', 'أكثر من 600' => 'أكثر من 600'], $case->partner->treatment_monthly_amount, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            {!! Form::label('partner_illness_affordable[]', '‏هل تقوم بشراء العلاج ‏') !!}
+                            {!! Form::select('partner_illness_affordable[]', ['نعم كل العلاج' => 'نعم كل العلاج', 'نعم  جزء من العلاج' => 'نعم  جزء من العلاج', 'لا' => 'لا'], $case->partner->treatment_affordable, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            {!! Form::label('partner_illness_need_operationpartner_illness_need_operation[]', '‏هل تحتاج إلي عملية') !!}<br>
+                            {!! Form::select('partner_illness_need_operation[]', ['نعم' => 'نعم', 'لا' => 'لا'], $case->partner->need_operation, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
+                        </div>
+                    </div>
+                </div>
+           
+            <hr>
+        </div>
+    </div>
+    @endforeach
+    @else
+    <div id="partners">
+        <div class="partner">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        {!! Form::label('partner_name[]', 'الاسم') !!}
+                        {!! Form::text('partner_name[]', null, array('class' => 'form-control')) !!}
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        {!! Form::label('partner_gender[]', 'النوع (ذكر-أنثى)') !!}<br>
+                        {!! Form::select('partner_gender[]', ['ذكر' => 'ذكر', 'أنثى' => 'أنثى'], old('partner_gender[]') or null, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    {{-- partner_age                []text --}}
+                    <div class="form-group">
+                        {!! Form::label('partner_age[]', 'السن') !!}
+                        {!! Form::text('partner_age[]', null, array('class' => 'form-control')) !!}
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    {{-- partner_national_id        []text --}}
+                    <div class="form-group">
+                        {!! Form::label('partner_national_id[]', 'رقم البطاقة') !!}
+                        {!! Form::text('partner_national_id[]', null, array('class' => 'form-control')) !!}
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    {{-- partner_ralationship       []select[single,..] --}}
+                    <div class="form-group">
+                        {!! Form::label('partner_relationship_status[]', 'الحاله الاجتماعية') !!}
+                        {!! Form::select('partner_relationship_status[]', ['أعزب' => 'أعزب', 'متزوج' => 'متزوج', 'مطلق' => 'مطلق', 'أرمل' => 'أرمل', 'منفصل' => 'منفصل'], null, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    {{-- partner_edu_status       []select[single,..] --}}
+                    <div class="form-group">
+                        {!! Form::label('partner_education_status[]', 'الحاله التعليمية') !!}
+                        {!! Form::select('partner_education_status[]', ['أمي (غير متعلم)' => 'أمي (غير متعلم)', 'يقرأ ويكتب' => 'يقرأ ويكتب', 'تعليم أساسي' => 'تعليم أساسي', 'متوسط' => 'متوسط', 'فوق متوسط' => 'فوق متوسط', 'جامعي' => 'جامعي'], null, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    {{-- partner_work_status       []select[single,..] --}}
+                    <div class="form-group">
+                        {!! Form::label('partner_work_status[]', 'المهنة') !!}
+                        {!! Form::select('partner_work_status[]', ['لا يعمل' => 'لا يعمل', 'يعمل بشكل متقطع (المواسم/ الاجازات)' => 'يعمل بشكل متقطع (المواسم/ الاجازات)', 'يعمل بشكل دائم (سواء ارزقي او دائم)' => 'يعمل بشكل دائم (سواء ارزقي او دائم)', 'أخرى' => 'أخرى'], null, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    {{-- partner_profession         []text --}}
+                    <div class="form-group">
+                        {!! Form::label('partner_profession[]', 'وصف المهنة') !!}
+                        {!! Form::text('partner_profession[]', null, array('class' => 'form-control')) !!}
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <!-- fancy primary -->
+                    {!! Form::label('partner_national_id_front[]', 'صورة وجه البطاقة') !!}
+                    <div class="fancy-file-upload fancy-file-primary">
+                        <i class="fa fa-upload"></i>
+                        <input type="file" class="form-control" name="partner_national_id_front[]" onchange="jQuery(this).next('input').val(this.value);" />
+                        <input type="text" class="form-control" placeholder="no file selected" readonly="" />
+                        <span class="button">Choose File</span>
+                        يجب أن يكون حجم الملفات أقل من 40 ميغابايت.
+                        أنواع الملفات المسموح بها: png gif jpg jpeg.
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <!-- fancy primary -->
+                    {!! Form::label('partner_national_id_back[]', 'صورة ظهر البطاقة') !!}
+                    <div class="fancy-file-upload fancy-file-primary">
+                        <i class="fa fa-upload"></i>
+                        <input type="file" class="form-control" name="partner_national_id_back[]" onchange="jQuery(this).next('input').val(this.value);" />
+                        <input type="text" class="form-control" placeholder="no file selected" readonly="" />
+                        <span class="button">Choose File</span>
+                        يجب أن يكون حجم الملفات أقل من 40 ميغابايت.
+                        أنواع الملفات المسموح بها: png gif jpg jpeg.
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        {!! Form::label('partner_phone[]', 'رقم الموبايل') !!}
+                        {!! Form::text('partner_phone[]', null, array('class' => 'form-control')) !!}
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        {!! Form::label('partner_is_ill[]', 'يعاني من مرض؟') !!}<br>
+                        {!! Form::select('partner_is_ill[]', ['نعم' => 'نعم', 'لا' => 'لا'], old('partner_is_ill[]') or null, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        {!! Form::label('partner_illness_type[]', 'نوع المرض') !!}
+                        {!! Form::select('partner_illness_type[0][]', [
+                        "أمراض كبر السن والشيخوخة" => "أمراض كبر السن والشيخوخة",
+                        "إعاقة (حركية، سمعية، بصرية)" => "إعاقة (حركية، سمعية، بصرية)",
+                        "أنميا وسوء تغذية" => "أنميا وسوء تغذية",
+                        "أمراض السكر والضغط" => "أمراض السكر والضغط",
+                        "أمراض القلب" => "أمراض القلب",
+                        "أمراض الرقة والجهاز التنفسي" => "أمراض الرقة والجهاز التنفسي",
+                        "امراض المعدة والجهاز الهضمي" => "امراض المعدة والجهاز الهضمي",
+                        "اورام سرطانية" => "اورام سرطانية",
+                        "امراض الكلى والفشل الكلوي" => "امراض الكلى والفشل الكلوي",
+                        "امراض الكبد وفيروس C" => "امراض الكبد وفيروس C",
+                        "امراض جلدية" => "امراض جلدية",
+                        "امراض اخرى" => "امراض اخرى"
+                        ], null, array('placeholder' => 'لا شيء' , 'class' => 'form-control select2 draw', 'style' => 'width:100%')) !!}
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        {!! Form::label('partner_illness_description[]', 'وصف الحالة المرضية') !!}
+                        {!! Form::text('partner_illness_description[]', null, array('class' => 'form-control')) !!}
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        {!! Form::label('partner_illness_prevent_movement[]', '‏هل هذا المرض يعيق الحركة') !!}
+                        {!! Form::select('partner_illness_prevent_movement[]', ['نعم بشكل كلي' => 'نعم بشكل كلي', 'نعم بشكل جزئي' => 'نعم بشكل جزئي', 'لا' => 'لا'], null, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        {!! Form::label('partner_illness_need_monthly_treatment[]', '‏هل تحتاج إلي علاج شهري') !!}<br>
+                        {!! Form::select('partner_illness_need_monthly_treatment[]', ['نعم' => 'نعم', 'لا' => 'لا'],  null, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        {!! Form::label('partner_illness_is_national_support[]', '‏‏هل تأخذ علاج على نفقة الدولة') !!}
+                        {!! Form::select('partner_illness_is_national_support[]', ['نعم كل العلاج' => 'نعم كل العلاج', 'نعم  جزء من العلاج' => 'نعم  جزء من العلاج', 'لا' => 'لا'], null, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        {!! Form::label('partner_illness_treatment_monthly_amount[]', '‏تكلفة العلاج الشهري') !!}
+                        {!! Form::select('partner_illness_treatment_monthly_amount[]', ['أقل من 100 جنية' => 'أقل من 100 جنية', 'من 100 إلى أقل من 300' => 'من 100 إلى أقل من 300', 'من 300 إلى أقل من 600' => 'من 300 إلى أقل من 600', 'أكثر من 600' => 'أكثر من 600'],  null, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        {!! Form::label('partner_illness_affordable[]', '‏هل تقوم بشراء العلاج ‏') !!}
+                        {!! Form::select('partner_illness_affordable[]', ['نعم كل العلاج' => 'نعم كل العلاج', 'نعم  جزء من العلاج' => 'نعم  جزء من العلاج', 'لا' => 'لا'], null, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        {!! Form::label('partner_illness_need_operation[]', '‏هل تحتاج إلي عملية') !!}<br>
+                        {!! Form::select('partner_illness_need_operation[]', ['نعم' => 'نعم', 'لا' => 'لا'],  null, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+    </div>
+    @endif
+    <div class="row">
+        <div class="col-md-6">
+            <div id="inc3">
+                <div class="form-group">
+                    {!! Form::label('inc3', 'أضف زوج/زوجه') !!}<br>
+                    <a href="#" class="btn btn-primary" onclick="drawDiv()">+</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    
+    function drawDiv(){
+
+        var cloneIndex = $(".draw").length;
+        console.log(cloneIndex);
+
+        var newdiv = $('.partner').first().clone().insertAfter('.partner:last').find('input:text').val("").end();
+
+        // $(newdiv).appendTo('#partners');
+
+        $('.draw').select2().last().attr('name','partner_illness_type['+cloneIndex+'][]');
+
+        $('.draw').last().next().next().remove();
+    }
+
+</script>
