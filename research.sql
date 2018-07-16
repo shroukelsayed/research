@@ -28,109 +28,109 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `cases` (
   `id` int(10) UNSIGNED NOT NULL,
-  `status` text COLLATE utf8mb4_unicode_ci,
-  `researcher_name` text COLLATE utf8mb4_unicode_ci,
-  `governorate` text COLLATE utf8mb4_unicode_ci,
-  `city` text COLLATE utf8mb4_unicode_ci,
-  `district` text COLLATE utf8mb4_unicode_ci,
-  `following` text COLLATE utf8mb4_unicode_ci,
+  `status` text COLLATE utf8_unicode_ci,
+  `researcher_name` text COLLATE utf8_unicode_ci,
+  `governorate` text COLLATE utf8_unicode_ci,
+  `city` text COLLATE utf8_unicode_ci,
+  `district` text COLLATE utf8_unicode_ci,
+  `following` text COLLATE utf8_unicode_ci,
   `real_date` date DEFAULT NULL,
-  `name` text COLLATE utf8mb4_unicode_ci,
-  `gender` text COLLATE utf8mb4_unicode_ci,
-  `age` text COLLATE utf8mb4_unicode_ci,
-  `national_id` text COLLATE utf8mb4_unicode_ci,
-  `relationship_status` text COLLATE utf8mb4_unicode_ci,
-  `education_status` text COLLATE utf8mb4_unicode_ci,
-  `work_status` text COLLATE utf8mb4_unicode_ci,
-  `profession` text COLLATE utf8mb4_unicode_ci,
-  `national_id_front` text COLLATE utf8mb4_unicode_ci,
-  `national_id_back` text COLLATE utf8mb4_unicode_ci,
-  `phone` text COLLATE utf8mb4_unicode_ci,
-  `is_ill` text COLLATE utf8mb4_unicode_ci,
-  `illness_type` text COLLATE utf8mb4_unicode_ci,
-  `illness_description` text COLLATE utf8mb4_unicode_ci,
-  `illness_prevent_movement` text COLLATE utf8mb4_unicode_ci,
-  `need_monthly_treatment` text COLLATE utf8mb4_unicode_ci,
-  `has_national_support` text COLLATE utf8mb4_unicode_ci,
-  `treatment_monthly_amount` text COLLATE utf8mb4_unicode_ci,
-  `treatment_affordable` text COLLATE utf8mb4_unicode_ci,
-  `need_operation` text COLLATE utf8mb4_unicode_ci,
-  `income_amount` text COLLATE utf8mb4_unicode_ci,
-  `income_amount_category` text COLLATE utf8mb4_unicode_ci,
-  `income_source_count` text COLLATE utf8mb4_unicode_ci,
-  `support_count` text COLLATE utf8mb4_unicode_ci,
-  `debts_total` text COLLATE utf8mb4_unicode_ci,
-  `debts_total_range` text COLLATE utf8mb4_unicode_ci,
-  `expenses_house_rent` text COLLATE utf8mb4_unicode_ci,
-  `expenses_farm_rent` text COLLATE utf8mb4_unicode_ci,
-  `expenses_treatment` text COLLATE utf8mb4_unicode_ci,
-  `expenses_detergent` text COLLATE utf8mb4_unicode_ci,
-  `expenses_school_subscription` text COLLATE utf8mb4_unicode_ci,
-  `expenses_child_course` text COLLATE utf8mb4_unicode_ci,
-  `expenses_water_receipt` text COLLATE utf8mb4_unicode_ci,
-  `expenses_electricity_receipt` text COLLATE utf8mb4_unicode_ci,
-  `expenses_clothes` text COLLATE utf8mb4_unicode_ci,
-  `expenses_phone_credit` text COLLATE utf8mb4_unicode_ci,
-  `expenses_debts` text COLLATE utf8mb4_unicode_ci,
-  `expenses_transportation` text COLLATE utf8mb4_unicode_ci,
-  `expenses_pets_food` text COLLATE utf8mb4_unicode_ci,
-  `expenses_smoking` text COLLATE utf8mb4_unicode_ci,
-  `expenses_food` text COLLATE utf8mb4_unicode_ci,
-  `expenses_other` text COLLATE utf8mb4_unicode_ci,
-  `expenses_total_category` text COLLATE utf8mb4_unicode_ci,
-  `expenses_total` text COLLATE utf8mb4_unicode_ci,
-  `assets_house_type` text COLLATE utf8mb4_unicode_ci,
-  `assets_house_status` text COLLATE utf8mb4_unicode_ci,
-  `assets_house_price` text COLLATE utf8mb4_unicode_ci,
-  `assets_house_paying_source` text COLLATE utf8mb4_unicode_ci,
-  `assets_electric_meter` text COLLATE utf8mb4_unicode_ci,
-  `assets_water_meter` text COLLATE utf8mb4_unicode_ci,
-  `assets_water_alternative` text COLLATE utf8mb4_unicode_ci,
-  `assets_farm` text COLLATE utf8mb4_unicode_ci,
-  `assets_pets` text COLLATE utf8mb4_unicode_ci,
-  `assets_vehicle` text COLLATE utf8mb4_unicode_ci,
-  `assets_house_alternative_status` text COLLATE utf8mb4_unicode_ci,
-  `assets_house_alternative_resident` text COLLATE utf8mb4_unicode_ci,
-  `assets_house_alternative_leave` text COLLATE utf8mb4_unicode_ci,
-  `assets_house_construction` text COLLATE utf8mb4_unicode_ci,
-  `assets_house_floors_count` text COLLATE utf8mb4_unicode_ci,
-  `assets_house_rooms_count` text COLLATE utf8mb4_unicode_ci,
-  `has_bathroom` text COLLATE utf8mb4_unicode_ci,
-  `bathroom_has_door` text COLLATE utf8mb4_unicode_ci,
-  `bathroom_has_basin` text COLLATE utf8mb4_unicode_ci,
-  `bathroom_has_toilet` text COLLATE utf8mb4_unicode_ci,
-  `bathroom_roof` text COLLATE utf8mb4_unicode_ci,
-  `bathroom_wall` text COLLATE utf8mb4_unicode_ci,
-  `bathroom_floor` text COLLATE utf8mb4_unicode_ci,
-  `amenities_mattress` text COLLATE utf8mb4_unicode_ci,
-  `amenities_bed` text COLLATE utf8mb4_unicode_ci,
-  `amenities_fans` text COLLATE utf8mb4_unicode_ci,
-  `amenities_blankets` text COLLATE utf8mb4_unicode_ci,
-  `amenities_stove` text COLLATE utf8mb4_unicode_ci,
-  `amenities_oven` text COLLATE utf8mb4_unicode_ci,
-  `amenities_flame` text COLLATE utf8mb4_unicode_ci,
-  `amenities_heater` text COLLATE utf8mb4_unicode_ci,
-  `amenities_fridge` text COLLATE utf8mb4_unicode_ci,
-  `amenities_washer` text COLLATE utf8mb4_unicode_ci,
-  `amenities_cupbord` text COLLATE utf8mb4_unicode_ci,
-  `amenities_nish` text COLLATE utf8mb4_unicode_ci,
-  `amenities_arika` text COLLATE utf8mb4_unicode_ci,
-  `amenities_table` text COLLATE utf8mb4_unicode_ci,
-  `amenities_television` text COLLATE utf8mb4_unicode_ci,
-  `amenities_receiver` text COLLATE utf8mb4_unicode_ci,
-  `amenities_computer` text COLLATE utf8mb4_unicode_ci,
-  `need_water` text COLLATE utf8mb4_unicode_ci,
-  `need_bathroom` text COLLATE utf8mb4_unicode_ci,
-  `need_roof` text COLLATE utf8mb4_unicode_ci,
-  `need_blankets` text COLLATE utf8mb4_unicode_ci,
-  `need_construction` text COLLATE utf8mb4_unicode_ci,
-  `need_education` text COLLATE utf8mb4_unicode_ci,
-  `need_food` text COLLATE utf8mb4_unicode_ci,
-  `additional_notes` text COLLATE utf8mb4_unicode_ci,
+  `name` text COLLATE utf8_unicode_ci,
+  `gender` text COLLATE utf8_unicode_ci,
+  `age` text COLLATE utf8_unicode_ci,
+  `national_id` text COLLATE utf8_unicode_ci,
+  `relationship_status` text COLLATE utf8_unicode_ci,
+  `education_status` text COLLATE utf8_unicode_ci,
+  `work_status` text COLLATE utf8_unicode_ci,
+  `profession` text COLLATE utf8_unicode_ci,
+  `national_id_front` text COLLATE utf8_unicode_ci,
+  `national_id_back` text COLLATE utf8_unicode_ci,
+  `phone` text COLLATE utf8_unicode_ci,
+  `is_ill` text COLLATE utf8_unicode_ci,
+  `illness_type` text COLLATE utf8_unicode_ci,
+  `illness_description` text COLLATE utf8_unicode_ci,
+  `illness_prevent_movement` text COLLATE utf8_unicode_ci,
+  `need_monthly_treatment` text COLLATE utf8_unicode_ci,
+  `has_national_support` text COLLATE utf8_unicode_ci,
+  `treatment_monthly_amount` text COLLATE utf8_unicode_ci,
+  `treatment_affordable` text COLLATE utf8_unicode_ci,
+  `need_operation` text COLLATE utf8_unicode_ci,
+  `income_amount` text COLLATE utf8_unicode_ci,
+  `income_amount_category` text COLLATE utf8_unicode_ci,
+  `income_source_count` text COLLATE utf8_unicode_ci,
+  `support_count` text COLLATE utf8_unicode_ci,
+  `debts_total` text COLLATE utf8_unicode_ci,
+  `debts_total_range` text COLLATE utf8_unicode_ci,
+  `expenses_house_rent` text COLLATE utf8_unicode_ci,
+  `expenses_farm_rent` text COLLATE utf8_unicode_ci,
+  `expenses_treatment` text COLLATE utf8_unicode_ci,
+  `expenses_detergent` text COLLATE utf8_unicode_ci,
+  `expenses_school_subscription` text COLLATE utf8_unicode_ci,
+  `expenses_child_course` text COLLATE utf8_unicode_ci,
+  `expenses_water_receipt` text COLLATE utf8_unicode_ci,
+  `expenses_electricity_receipt` text COLLATE utf8_unicode_ci,
+  `expenses_clothes` text COLLATE utf8_unicode_ci,
+  `expenses_phone_credit` text COLLATE utf8_unicode_ci,
+  `expenses_debts` text COLLATE utf8_unicode_ci,
+  `expenses_transportation` text COLLATE utf8_unicode_ci,
+  `expenses_pets_food` text COLLATE utf8_unicode_ci,
+  `expenses_smoking` text COLLATE utf8_unicode_ci,
+  `expenses_food` text COLLATE utf8_unicode_ci,
+  `expenses_other` text COLLATE utf8_unicode_ci,
+  `expenses_total_category` text COLLATE utf8_unicode_ci,
+  `expenses_total` text COLLATE utf8_unicode_ci,
+  `assets_house_type` text COLLATE utf8_unicode_ci,
+  `assets_house_status` text COLLATE utf8_unicode_ci,
+  `assets_house_price` text COLLATE utf8_unicode_ci,
+  `assets_house_paying_source` text COLLATE utf8_unicode_ci,
+  `assets_electric_meter` text COLLATE utf8_unicode_ci,
+  `assets_water_meter` text COLLATE utf8_unicode_ci,
+  `assets_water_alternative` text COLLATE utf8_unicode_ci,
+  `assets_farm` text COLLATE utf8_unicode_ci,
+  `assets_pets` text COLLATE utf8_unicode_ci,
+  `assets_vehicle` text COLLATE utf8_unicode_ci,
+  `assets_house_alternative_status` text COLLATE utf8_unicode_ci,
+  `assets_house_alternative_resident` text COLLATE utf8_unicode_ci,
+  `assets_house_alternative_leave` text COLLATE utf8_unicode_ci,
+  `assets_house_construction` text COLLATE utf8_unicode_ci,
+  `assets_house_floors_count` text COLLATE utf8_unicode_ci,
+  `assets_house_rooms_count` text COLLATE utf8_unicode_ci,
+  `has_bathroom` text COLLATE utf8_unicode_ci,
+  `bathroom_has_door` text COLLATE utf8_unicode_ci,
+  `bathroom_has_basin` text COLLATE utf8_unicode_ci,
+  `bathroom_has_toilet` text COLLATE utf8_unicode_ci,
+  `bathroom_roof` text COLLATE utf8_unicode_ci,
+  `bathroom_wall` text COLLATE utf8_unicode_ci,
+  `bathroom_floor` text COLLATE utf8_unicode_ci,
+  `amenities_mattress` text COLLATE utf8_unicode_ci,
+  `amenities_bed` text COLLATE utf8_unicode_ci,
+  `amenities_fans` text COLLATE utf8_unicode_ci,
+  `amenities_blankets` text COLLATE utf8_unicode_ci,
+  `amenities_stove` text COLLATE utf8_unicode_ci,
+  `amenities_oven` text COLLATE utf8_unicode_ci,
+  `amenities_flame` text COLLATE utf8_unicode_ci,
+  `amenities_heater` text COLLATE utf8_unicode_ci,
+  `amenities_fridge` text COLLATE utf8_unicode_ci,
+  `amenities_washer` text COLLATE utf8_unicode_ci,
+  `amenities_cupbord` text COLLATE utf8_unicode_ci,
+  `amenities_nish` text COLLATE utf8_unicode_ci,
+  `amenities_arika` text COLLATE utf8_unicode_ci,
+  `amenities_table` text COLLATE utf8_unicode_ci,
+  `amenities_television` text COLLATE utf8_unicode_ci,
+  `amenities_receiver` text COLLATE utf8_unicode_ci,
+  `amenities_computer` text COLLATE utf8_unicode_ci,
+  `need_water` text COLLATE utf8_unicode_ci,
+  `need_bathroom` text COLLATE utf8_unicode_ci,
+  `need_roof` text COLLATE utf8_unicode_ci,
+  `need_blankets` text COLLATE utf8_unicode_ci,
+  `need_construction` text COLLATE utf8_unicode_ci,
+  `need_education` text COLLATE utf8_unicode_ci,
+  `need_food` text COLLATE utf8_unicode_ci,
+  `additional_notes` text COLLATE utf8_unicode_ci,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `typer_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -141,25 +141,25 @@ CREATE TABLE `cases` (
 CREATE TABLE `case_children` (
   `id` int(10) UNSIGNED NOT NULL,
   `case_id` int(10) UNSIGNED NOT NULL,
-  `name` text COLLATE utf8mb4_unicode_ci,
-  `gender` text COLLATE utf8mb4_unicode_ci,
-  `age` text COLLATE utf8mb4_unicode_ci,
-  `relationship_status` text COLLATE utf8mb4_unicode_ci,
-  `education_status` text COLLATE utf8mb4_unicode_ci,
-  `work_status` text COLLATE utf8mb4_unicode_ci,
-  `profession` text COLLATE utf8mb4_unicode_ci,
-  `is_ill` text COLLATE utf8mb4_unicode_ci,
-  `illness_type` text COLLATE utf8mb4_unicode_ci,
-  `illness_description` text COLLATE utf8mb4_unicode_ci,
-  `illness_prevent_movement` text COLLATE utf8mb4_unicode_ci,
-  `need_monthly_treatment` text COLLATE utf8mb4_unicode_ci,
-  `has_national_support` text COLLATE utf8mb4_unicode_ci,
-  `treatment_monthly_amount` text COLLATE utf8mb4_unicode_ci,
-  `treatment_affordable` text COLLATE utf8mb4_unicode_ci,
-  `need_operation` text COLLATE utf8mb4_unicode_ci,
+  `name` text COLLATE utf8_unicode_ci,
+  `gender` text COLLATE utf8_unicode_ci,
+  `age` text COLLATE utf8_unicode_ci,
+  `relationship_status` text COLLATE utf8_unicode_ci,
+  `education_status` text COLLATE utf8_unicode_ci,
+  `work_status` text COLLATE utf8_unicode_ci,
+  `profession` text COLLATE utf8_unicode_ci,
+  `is_ill` text COLLATE utf8_unicode_ci,
+  `illness_type` text COLLATE utf8_unicode_ci,
+  `illness_description` text COLLATE utf8_unicode_ci,
+  `illness_prevent_movement` text COLLATE utf8_unicode_ci,
+  `need_monthly_treatment` text COLLATE utf8_unicode_ci,
+  `has_national_support` text COLLATE utf8_unicode_ci,
+  `treatment_monthly_amount` text COLLATE utf8_unicode_ci,
+  `treatment_affordable` text COLLATE utf8_unicode_ci,
+  `need_operation` text COLLATE utf8_unicode_ci,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -170,14 +170,14 @@ CREATE TABLE `case_children` (
 CREATE TABLE `case_debts` (
   `id` int(10) UNSIGNED NOT NULL,
   `case_id` int(10) UNSIGNED NOT NULL,
-  `amount` text COLLATE utf8mb4_unicode_ci,
-  `stay` text COLLATE utf8mb4_unicode_ci,
-  `reason` text COLLATE utf8mb4_unicode_ci,
-  `refund_method` text COLLATE utf8mb4_unicode_ci,
-  `monthly_amount` text COLLATE utf8mb4_unicode_ci,
+  `amount` text COLLATE utf8_unicode_ci,
+  `stay` text COLLATE utf8_unicode_ci,
+  `reason` text COLLATE utf8_unicode_ci,
+  `refund_method` text COLLATE utf8_unicode_ci,
+  `monthly_amount` text COLLATE utf8_unicode_ci,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -188,13 +188,13 @@ CREATE TABLE `case_debts` (
 CREATE TABLE `case_income` (
   `id` int(10) UNSIGNED NOT NULL,
   `case_id` int(10) UNSIGNED NOT NULL,
-  `source_type` text COLLATE utf8mb4_unicode_ci,
-  `notes` text COLLATE utf8mb4_unicode_ci,
-  `monthly_amount` text COLLATE utf8mb4_unicode_ci,
-  `source_flow` text COLLATE utf8mb4_unicode_ci,
+  `source_type` text COLLATE utf8_unicode_ci,
+  `notes` text COLLATE utf8_unicode_ci,
+  `monthly_amount` text COLLATE utf8_unicode_ci,
+  `source_flow` text COLLATE utf8_unicode_ci,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -205,29 +205,29 @@ CREATE TABLE `case_income` (
 CREATE TABLE `case_partners` (
   `id` int(10) UNSIGNED NOT NULL,
   `case_id` int(10) UNSIGNED NOT NULL,
-  `name` text COLLATE utf8mb4_unicode_ci,
-  `gender` text COLLATE utf8mb4_unicode_ci,
-  `age` text COLLATE utf8mb4_unicode_ci,
-  `national_id` text COLLATE utf8mb4_unicode_ci,
-  `relationship_status` text COLLATE utf8mb4_unicode_ci,
-  `education_status` text COLLATE utf8mb4_unicode_ci,
-  `work_status` text COLLATE utf8mb4_unicode_ci,
-  `profession` text COLLATE utf8mb4_unicode_ci,
-  `national_id_front` text COLLATE utf8mb4_unicode_ci,
-  `national_id_back` text COLLATE utf8mb4_unicode_ci,
-  `phone` text COLLATE utf8mb4_unicode_ci,
-  `is_ill` text COLLATE utf8mb4_unicode_ci,
-  `illness_type` text COLLATE utf8mb4_unicode_ci,
-  `illness_description` text COLLATE utf8mb4_unicode_ci,
-  `illness_prevent_movement` text COLLATE utf8mb4_unicode_ci,
-  `need_monthly_treatment` text COLLATE utf8mb4_unicode_ci,
-  `has_national_support` text COLLATE utf8mb4_unicode_ci,
-  `treatment_monthly_amount` text COLLATE utf8mb4_unicode_ci,
-  `treatment_affordable` text COLLATE utf8mb4_unicode_ci,
-  `need_operation` text COLLATE utf8mb4_unicode_ci,
+  `name` text COLLATE utf8_unicode_ci,
+  `gender` text COLLATE utf8_unicode_ci,
+  `age` text COLLATE utf8_unicode_ci,
+  `national_id` text COLLATE utf8_unicode_ci,
+  `relationship_status` text COLLATE utf8_unicode_ci,
+  `education_status` text COLLATE utf8_unicode_ci,
+  `work_status` text COLLATE utf8_unicode_ci,
+  `profession` text COLLATE utf8_unicode_ci,
+  `national_id_front` text COLLATE utf8_unicode_ci,
+  `national_id_back` text COLLATE utf8_unicode_ci,
+  `phone` text COLLATE utf8_unicode_ci,
+  `is_ill` text COLLATE utf8_unicode_ci,
+  `illness_type` text COLLATE utf8_unicode_ci,
+  `illness_description` text COLLATE utf8_unicode_ci,
+  `illness_prevent_movement` text COLLATE utf8_unicode_ci,
+  `need_monthly_treatment` text COLLATE utf8_unicode_ci,
+  `has_national_support` text COLLATE utf8_unicode_ci,
+  `treatment_monthly_amount` text COLLATE utf8_unicode_ci,
+  `treatment_affordable` text COLLATE utf8_unicode_ci,
+  `need_operation` text COLLATE utf8_unicode_ci,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -238,26 +238,26 @@ CREATE TABLE `case_partners` (
 CREATE TABLE `case_roommates` (
   `id` int(10) UNSIGNED NOT NULL,
   `case_id` int(10) UNSIGNED NOT NULL,
-  `name` text COLLATE utf8mb4_unicode_ci,
-  `gender` text COLLATE utf8mb4_unicode_ci,
-  `age` text COLLATE utf8mb4_unicode_ci,
-  `relationship_status` text COLLATE utf8mb4_unicode_ci,
-  `education_status` text COLLATE utf8mb4_unicode_ci,
-  `work_status` text COLLATE utf8mb4_unicode_ci,
-  `profession` text COLLATE utf8mb4_unicode_ci,
-  `relativity` text COLLATE utf8mb4_unicode_ci,
-  `is_ill` text COLLATE utf8mb4_unicode_ci,
-  `illness_type` text COLLATE utf8mb4_unicode_ci,
-  `illness_description` text COLLATE utf8mb4_unicode_ci,
-  `illness_prevent_movement` text COLLATE utf8mb4_unicode_ci,
-  `need_monthly_treatment` text COLLATE utf8mb4_unicode_ci,
-  `has_national_support` text COLLATE utf8mb4_unicode_ci,
-  `treatment_monthly_amount` text COLLATE utf8mb4_unicode_ci,
-  `treatment_affordable` text COLLATE utf8mb4_unicode_ci,
-  `need_operation` text COLLATE utf8mb4_unicode_ci,
+  `name` text COLLATE utf8_unicode_ci,
+  `gender` text COLLATE utf8_unicode_ci,
+  `age` text COLLATE utf8_unicode_ci,
+  `relationship_status` text COLLATE utf8_unicode_ci,
+  `education_status` text COLLATE utf8_unicode_ci,
+  `work_status` text COLLATE utf8_unicode_ci,
+  `profession` text COLLATE utf8_unicode_ci,
+  `relativity` text COLLATE utf8_unicode_ci,
+  `is_ill` text COLLATE utf8_unicode_ci,
+  `illness_type` text COLLATE utf8_unicode_ci,
+  `illness_description` text COLLATE utf8_unicode_ci,
+  `illness_prevent_movement` text COLLATE utf8_unicode_ci,
+  `need_monthly_treatment` text COLLATE utf8_unicode_ci,
+  `has_national_support` text COLLATE utf8_unicode_ci,
+  `treatment_monthly_amount` text COLLATE utf8_unicode_ci,
+  `treatment_affordable` text COLLATE utf8_unicode_ci,
+  `need_operation` text COLLATE utf8_unicode_ci,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -268,14 +268,14 @@ CREATE TABLE `case_roommates` (
 CREATE TABLE `case_rooms` (
   `id` int(10) UNSIGNED NOT NULL,
   `case_id` int(10) UNSIGNED NOT NULL,
-  `type` text COLLATE utf8mb4_unicode_ci,
-  `roof_type` text COLLATE utf8mb4_unicode_ci,
-  `roof_status` text COLLATE utf8mb4_unicode_ci,
-  `paint` text COLLATE utf8mb4_unicode_ci,
-  `notes` text COLLATE utf8mb4_unicode_ci,
+  `type` text COLLATE utf8_unicode_ci,
+  `roof_type` text COLLATE utf8_unicode_ci,
+  `roof_status` text COLLATE utf8_unicode_ci,
+  `paint` text COLLATE utf8_unicode_ci,
+  `notes` text COLLATE utf8_unicode_ci,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -286,13 +286,13 @@ CREATE TABLE `case_rooms` (
 CREATE TABLE `case_support` (
   `id` int(10) UNSIGNED NOT NULL,
   `case_id` int(10) UNSIGNED NOT NULL,
-  `source_category` text COLLATE utf8mb4_unicode_ci,
-  `source_name` text COLLATE utf8mb4_unicode_ci,
-  `type` text COLLATE utf8mb4_unicode_ci,
-  `period` text COLLATE utf8mb4_unicode_ci,
+  `source_category` text COLLATE utf8_unicode_ci,
+  `source_name` text COLLATE utf8_unicode_ci,
+  `type` text COLLATE utf8_unicode_ci,
+  `period` text COLLATE utf8_unicode_ci,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -302,9 +302,9 @@ CREATE TABLE `case_support` (
 
 CREATE TABLE `migrations` (
   `id` int(10) UNSIGNED NOT NULL,
-  `migration` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `migration` varchar(191) COLLATE utf8_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `migrations`
@@ -332,10 +332,10 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 --
 
 CREATE TABLE `password_resets` (
-  `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `token` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(191) COLLATE utf8_unicode_ci NOT NULL,
+  `token` varchar(191) COLLATE utf8_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -345,10 +345,10 @@ CREATE TABLE `password_resets` (
 
 CREATE TABLE `roles` (
   `id` int(10) UNSIGNED NOT NULL,
-  `role` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `role` varchar(191) COLLATE utf8_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `roles`
@@ -365,14 +365,14 @@ INSERT INTO `roles` (`id`, `role`, `created_at`, `updated_at`) VALUES
 
 CREATE TABLE `users` (
   `id` int(10) UNSIGNED NOT NULL,
-  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `password` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(191) COLLATE utf8_unicode_ci NOT NULL,
+  `email` varchar(191) COLLATE utf8_unicode_ci NOT NULL,
+  `password` varchar(191) COLLATE utf8_unicode_ci NOT NULL,
   `status` tinyint(1) NOT NULL DEFAULT '0',
-  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `remember_token` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `users`
@@ -394,7 +394,7 @@ CREATE TABLE `users_roles` (
   `role_id` int(10) UNSIGNED NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `users_roles`
