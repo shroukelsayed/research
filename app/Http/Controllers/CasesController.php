@@ -55,12 +55,16 @@ class CasesController extends Controller
         $case = Cases::find($id);
         $case_status = array();
 
+        $case_status_date = array();
+
         foreach ($case->caseStatus as $key => $value) {
             array_push($case_status, $value->status);
+            $case_status_date[$value->status][] = $value->date;
+
         }
 
-        // var_dump($case_status);die;
-        return view('partials.case.edit', compact('case','case_status'));
+        // var_dump($case_status_date);die;
+        return view('partials.case.edit', compact('case','case_status','case_status_date'));
     }
 
 
@@ -163,10 +167,6 @@ class CasesController extends Controller
      */
     private function storeCase (Request $request)
     {
-        
-        // dd($request->all());
-        // $json = $request->case_illness_type;
-        // $data = json_encode($json );
          
         if (!is_null($request->case_name) && !empty($request->case_name)){
             $support_count = 0 ;
@@ -318,7 +318,6 @@ class CasesController extends Controller
      */
     private function storeStatusesData (Request $request , $caseId)
     {
-        // var_dump($request->status_date   );
 
         $statusDates = array();
         foreach ($request->case_status as $status_key => $status_value) {
@@ -347,8 +346,6 @@ class CasesController extends Controller
     {
 
         for ($i = 0; $i < count($request->partner_name); $i++) {
-            // dd($request->partner_illness_type);
-
             if ($request->partner_name[$i]!==null && !empty($request->partner_name)){
                 if (strpos($request->partner_national_id_front[$i], 'base64')) {
                     $data = $request->partner_national_id_front[$i];
@@ -513,7 +510,7 @@ class CasesController extends Controller
      * store debts
      */
      private function storeDebtsData (Request $request , $caseId)
-     {
+    {
         for ($i = 0; $i < count($request->debts_amount); $i++) {
             if ($request->debts_amount[$i]!==null && !empty($request->debts_amount[$i])) {
                 $debts = Debts::create([
@@ -557,12 +554,11 @@ class CasesController extends Controller
         // die();
         
         $validator = Validator::make($request->all(), [
-//            'case_typer_id' => 'required|exists:users,id',
+           // 'case_typer_id' => 'required|exists:users,id',
             'case_name' => 'required',
             'case_status' => 'required',
             'case_national_id' => 'numeric|digits:14',
             'case_phone'=>'digits:11',
-//            'partner_national_id' => 'nullable|size:14'
         ]);
 
         if ($validator->fails()) {
@@ -611,9 +607,9 @@ class CasesController extends Controller
         return $this->index();
     }
 
-    public function updateCase(Request $request, $id){
+    public function updateCase(Request $request, $id)
+    {
         
-
         if (!is_null($request->case_name) && !empty($request->case_name)){
             $support_count = 0 ;
             foreach ($request->support_source_category as $key => $value) {
@@ -738,27 +734,17 @@ class CasesController extends Controller
      */
     private function updateStatusesData (Request $request , $caseId)
     {
-        echo "<pre>";
+        // echo "<pre>";
         if(isset($request->status_date) && is_array($request->status_date)){
 
-
             $cases = CaseStatuses::where('case_id',$caseId)->get();
-            // var_dump($cases);
-            // var_dump($request->case_status);
-             
-            // foreach ($cases as $k => $case ) {
+
+            foreach ($cases as $k => $case ) {
             //     if(!in_array($case['status'],$request->case_status) ){
-            //         $case->delete();
+                    $case->delete();
             //         var_dump("0");
             //     }
-            // }
-
-            // // $case = Cases::find($id);
-            // // $case->delete();
-
-
-            // var_dump($cases);
-            // die;
+            }
 
             $statusDates = array();
             foreach ($request->case_status as $status_key => $status_value) {
@@ -773,17 +759,17 @@ class CasesController extends Controller
                 }
             }
 
-            var_dump(array_diff($request->case_status, $request->old_case_status));
-            var_dump($request->case_status);
-            var_dump($request->old_case_status);
+            // var_dump(array_diff($request->case_status, $request->old_case_status));
+            // var_dump($request->case_status);
+            // var_dump($request->old_case_status);
 
-            // var_dump(array_merge($request->old_case_status,$request->case_status));
-            var_dump(array_merge($request->old_status_date,$request->status_date));
-            var_dump($request->status_date);
-            var_dump($request->old_status_date);
+            // // var_dump(array_merge($request->old_case_status,$request->case_status));
+            // var_dump(array_merge($request->old_status_date,$request->status_date));
+            // var_dump($request->status_date);
+            // var_dump($request->old_status_date);
 
-            var_dump($statusDates);
-            die;
+            // var_dump($statusDates);
+            // die;
 
 
             foreach ($statusDates as $key => $value) {
@@ -804,113 +790,101 @@ class CasesController extends Controller
     {
         $partners = Partners::where('case_id', $caseId)->get();
 
+        if(sizeof($partners)>0){
+            for ($i = 0; $i < count($request->partner_name); $i++) {
+                if (!isset($partners[$i])){    
+                    if (strpos($request->partner_national_id_front[$i], 'base46')) {
+                        $request->partner_national_id_front[$i] = base64_decode($request->partner_national_id_front[$i]);
+                    }
+                    if (strpos($request->partner_national_id_back[$i], 'base46')) {
+                        $request->partner_national_id_back[$i] = base64_decode($request->partner_national_id_back[$i]);
+                    }
+                    $partner = Partners::create([
+                        'case_id' => $caseId,
+                        'name' => $request->partner_name[$i],
+                        'gender' => $request->partner_gender[$i],
+                        'age' => $request->partner_age[$i],
+                        'national_id' => $request->partner_national_id[$i],
+                        'relationship_status' => $request->partner_relationship_status[$i],
+                        'education_status' => $request->partner_education_status[$i],
+                        'work_status' => $request->partner_work_status[$i],
+                        'profession' => $request->partner_profession[$i],
+                        'national_id_front' => $request->partner_national_id_front[$i] ? $request->partner_national_id_front[$i]->store('/partners/national_id_front') : null,
+                        'national_id_back' => $request->partner_national_id_back[$i] ? $request->partner_national_id_back[$i]->store('/partners/national_id_back') : null,
+                        'phone' => $request->partner_phone[$i],
+                        'is_ill' => $request->partner_is_ill[$i],
+                        'illness_type' =>json_encode($request->partner_illness_type[$i]),
+                        'illness_description' => $request->partner_illness_description[$i],
+                        'illness_prevent_movement' => $request->partner_illness_prevent_movement[$i],
+                        'need_monthly_treatment' => $request->partner_illness_need_monthly_treatment[$i],
+                        'has_national_support' => $request->partner_illness_is_national_support[$i],
+                        'treatment_monthly_amount' => $request->partner_illness_treatment_monthly_amount[$i],
+                        'treatment_affordable' => $request->partner_illness_affordable[$i],
+                        'need_operation' => $request->partner_illness_need_operation[$i],
+                        ]);
 
-        // dd(sizeof($partners));
-    if(sizeof($partners)>0){
-     for ($i = 0; $i < count($request->partner_name); $i++) {
-            // dd(!isset($partners[$i]));
-     // dd( $partners[$i]->national_id_back) ;
-        if (!isset($partners[$i]))
-         {    
-
-                         # code...
-                if (strpos($request->partner_national_id_front[$i], 'base46')) {
-                    $request->partner_national_id_front[$i] = base64_decode($request->partner_national_id_front[$i]);
+                }elseif (isset($partners[$i])&&!is_null($partners[$i]) && !empty($partners[$i])){
+                    $partners[$i]->update([
+                        'case_id' => $caseId,
+                        'name' => $request->partner_name[$i],
+                        'gender' => $request->partner_gender[$i],
+                        'age' => $request->partner_age[$i],
+                        'national_id' => $request->partner_national_id[$i],
+                        'relationship_status' => $request->partner_relationship_status[$i],
+                        'education_status' => $request->partner_education_status[$i],
+                        'work_status' => $request->partner_work_status[$i],
+                        'profession' => $request->partner_profession[$i],
+                        'national_id_front' => $request->partner_national_id_front[$i] ? $request->partner_national_id_front[$i]->store('/partners/national_id_front') : $partners[$i]->national_id_front,
+                        'national_id_back' => $request->partner_national_id_back[$i] ? $request->partner_national_id_back[$i]->store('/partners/national_id_back') : $partners[$i]->national_id_back,
+                        'phone' => $request->partner_phone[$i],
+                        'is_ill' => $request->partner_is_ill[$i],
+                        'illness_type' => json_encode($request->partner_illness_type[$i]),
+                        'illness_description' => $request->partner_illness_description[$i],
+                        'illness_prevent_movement' => $request->partner_illness_prevent_movement[$i],
+                        'need_monthly_treatment' => $request->partner_illness_need_monthly_treatment[$i],
+                        'has_national_support' => $request->partner_illness_is_national_support[$i],
+                        'treatment_monthly_amount' => $request->partner_illness_treatment_monthly_amount[$i],
+                        'treatment_affordable' => $request->partner_illness_affordable[$i],
+                        'need_operation' => $request->partner_illness_need_operation[$i],
+                    ]);
                 }
-                if (strpos($request->partner_national_id_back[$i], 'base46')) {
-                    $request->partner_national_id_back[$i] = base64_decode($request->partner_national_id_back[$i]);
-                }
-            $partner = Partners::create([
-                    'case_id' => $caseId,
-                    'name' => $request->partner_name[$i],
-                    'gender' => $request->partner_gender[$i],
-                    'age' => $request->partner_age[$i],
-                    'national_id' => $request->partner_national_id[$i],
-                    'relationship_status' => $request->partner_relationship_status[$i],
-                    'education_status' => $request->partner_education_status[$i],
-                    'work_status' => $request->partner_work_status[$i],
-                    'profession' => $request->partner_profession[$i],
-                    'national_id_front' => $request->partner_national_id_front[$i] ? $request->partner_national_id_front[$i]->store('/partners/national_id_front') : null,
-                    'national_id_back' => $request->partner_national_id_back[$i] ? $request->partner_national_id_back[$i]->store('/partners/national_id_back') : null,
-                    'phone' => $request->partner_phone[$i],
-                    'is_ill' => $request->partner_is_ill[$i],
-                    'illness_type' =>json_encode($request->partner_illness_type[$i]),
-                    'illness_description' => $request->partner_illness_description[$i],
-                    'illness_prevent_movement' => $request->partner_illness_prevent_movement[$i],
-                    'need_monthly_treatment' => $request->partner_illness_need_monthly_treatment[$i],
-                    'has_national_support' => $request->partner_illness_is_national_support[$i],
-                    'treatment_monthly_amount' => $request->partner_illness_treatment_monthly_amount[$i],
-                    'treatment_affordable' => $request->partner_illness_affordable[$i],
-                    'need_operation' => $request->partner_illness_need_operation[$i],
-           ]);
-
-        }
-    
-       elseif (isset($partners[$i])&&!is_null($partners[$i]) && !empty($partners[$i])){
-                $partners[$i]->update([
-                    'case_id' => $caseId,
-                    'name' => $request->partner_name[$i],
-                    'gender' => $request->partner_gender[$i],
-                    'age' => $request->partner_age[$i],
-                    'national_id' => $request->partner_national_id[$i],
-                    'relationship_status' => $request->partner_relationship_status[$i],
-                    'education_status' => $request->partner_education_status[$i],
-                    'work_status' => $request->partner_work_status[$i],
-                    'profession' => $request->partner_profession[$i],
-                    'national_id_front' => $request->partner_national_id_front[$i] ? $request->partner_national_id_front[$i]->store('/partners/national_id_front') : $partners[$i]->national_id_front,
-                    'national_id_back' => $request->partner_national_id_back[$i] ? $request->partner_national_id_back[$i]->store('/partners/national_id_back') : $partners[$i]->national_id_back,
-                    'phone' => $request->partner_phone[$i],
-                    'is_ill' => $request->partner_is_ill[$i],
-                    'illness_type' => json_encode($request->partner_illness_type[$i]),
-                    'illness_description' => $request->partner_illness_description[$i],
-                    'illness_prevent_movement' => $request->partner_illness_prevent_movement[$i],
-                    'need_monthly_treatment' => $request->partner_illness_need_monthly_treatment[$i],
-                    'has_national_support' => $request->partner_illness_is_national_support[$i],
-                    'treatment_monthly_amount' => $request->partner_illness_treatment_monthly_amount[$i],
-                    'treatment_affordable' => $request->partner_illness_affordable[$i],
-                    'need_operation' => $request->partner_illness_need_operation[$i],
-                ]);
-            }
         
-        }
-     }
-    elseif (sizeof($partners)==0 &&!is_null($request->partner_name) && !empty($request->partner_name)){
-        for ($i = 0; $i < count($request->partner_name); $i++) {
-             if (!is_null($request->partner_name) && !empty($request->partner_name)){
-                if (strpos($request->partner_national_id_front[$i], 'base46')) {
-                    $request->partner_national_id_front[$i] = base64_decode($request->partner_national_id_front[$i]);
+            }
+        }elseif (sizeof($partners)==0 &&!is_null($request->partner_name) && !empty($request->partner_name)){
+            for ($i = 0; $i < count($request->partner_name); $i++) {
+                if (!is_null($request->partner_name) && !empty($request->partner_name)){
+                    if (strpos($request->partner_national_id_front[$i], 'base46')) {
+                        $request->partner_national_id_front[$i] = base64_decode($request->partner_national_id_front[$i]);
+                    }
+                    if (strpos($request->partner_national_id_back[$i], 'base46')) {
+                        $request->partner_national_id_back[$i] = base64_decode($request->partner_national_id_back[$i]);
+                    }
+                    $partner = Partners::create([
+                        'case_id' => $caseId,
+                        'name' => $request->partner_name[$i],
+                        'gender' => $request->partner_gender[$i],
+                        'age' => $request->partner_age[$i],
+                        'national_id' => $request->partner_national_id[$i],
+                        'relationship_status' => $request->partner_relationship_status[$i],
+                        'education_status' => $request->partner_education_status[$i],
+                        'work_status' => $request->partner_work_status[$i],
+                        'profession' => $request->partner_profession[$i],
+                        'national_id_front' => $request->partner_national_id_front[$i] ? $request->partner_national_id_front[$i]->store('/partners/national_id_front') : null,
+                        'national_id_back' => $request->partner_national_id_back[$i] ? $request->partner_national_id_back[$i]->store('/partners/national_id_back') : null,
+                        'phone' => $request->partner_phone[$i],
+                        'is_ill' => $request->partner_is_ill[$i],
+                        'illness_type' => json_encode($request->partner_illness_type[$i]),
+                        'illness_description' => $request->partner_illness_description[$i],
+                        'illness_prevent_movement' => $request->partner_illness_prevent_movement[$i],
+                        'need_monthly_treatment' => $request->partner_illness_need_monthly_treatment[$i],
+                        'has_national_support' => $request->partner_illness_is_national_support[$i],
+                        'treatment_monthly_amount' => $request->partner_illness_treatment_monthly_amount[$i],
+                        'treatment_affordable' => $request->partner_illness_affordable[$i],
+                        'need_operation' => $request->partner_illness_need_operation[$i],
+                    ]);
                 }
-                if (strpos($request->partner_national_id_back[$i], 'base46')) {
-                    $request->partner_national_id_back[$i] = base64_decode($request->partner_national_id_back[$i]);
-                }
- 
-                $partner = Partners::create([
-            'case_id' => $caseId,
-            'name' => $request->partner_name[$i],
-            'gender' => $request->partner_gender[$i],
-            'age' => $request->partner_age[$i],
-            'national_id' => $request->partner_national_id[$i],
-            'relationship_status' => $request->partner_relationship_status[$i],
-            'education_status' => $request->partner_education_status[$i],
-            'work_status' => $request->partner_work_status[$i],
-            'profession' => $request->partner_profession[$i],
-            'national_id_front' => $request->partner_national_id_front[$i] ? $request->partner_national_id_front[$i]->store('/partners/national_id_front') : null,
-            'national_id_back' => $request->partner_national_id_back[$i] ? $request->partner_national_id_back[$i]->store('/partners/national_id_back') : null,
-            'phone' => $request->partner_phone[$i],
-            'is_ill' => $request->partner_is_ill[$i],
-            'illness_type' => json_encode($request->partner_illness_type[$i]),
-            'illness_description' => $request->partner_illness_description[$i],
-            'illness_prevent_movement' => $request->partner_illness_prevent_movement[$i],
-            'need_monthly_treatment' => $request->partner_illness_need_monthly_treatment[$i],
-            'has_national_support' => $request->partner_illness_is_national_support[$i],
-            'treatment_monthly_amount' => $request->partner_illness_treatment_monthly_amount[$i],
-            'treatment_affordable' => $request->partner_illness_affordable[$i],
-            'need_operation' => $request->partner_illness_need_operation[$i],
-        ]);
+            }
         }
-        }
-      }
-           
      
         return 'done partners';
     }
@@ -921,44 +895,56 @@ class CasesController extends Controller
     private function updateChildrenData (Request $request , $caseId)
     {
         $children = Children::where('case_id', $caseId)->get();
-                // dd(sizeof($children));
-    if(sizeof($children)>0){
-     for ($i = 0; $i < count($request->child_name); $i++) {
-            // dd(!isset($partners[$i]));
-        // dd($request->all());
-
-        if (!isset($children[$i]))
-         {    
-
-                         # code...
-            if ($request->child_name[$i]!==null && !empty($request->child_name)){
-                $child = Children::create([
-                'case_id' => $caseId,
-                'name' => $request->child_name[$i],
-                'gender' => $request->child_gender[$i],
-                'age' => $request->child_age[$i],
-                'relationship_status' => $request->child_relationship_status[$i],
-                'education_status' => $request->child_education_status[$i],
-                'work_status' => $request->child_work_status[$i],
-                'profession' => $request->child_profession[$i],
-                'is_ill' => $request->child_is_ill[$i],
-                'illness_type' => json_encode($request->child_illness_type[$i]),
-                'illness_description' => $request->child_illness_description[$i],
-                'illness_prevent_movement' => $request->child_illness_prevent_movement[$i],
-                'need_monthly_treatment' => $request->child_illness_need_monthly_support[$i],
-                'has_national_support' => $request->child_illness_is_national_support[$i],
-                'treatment_monthly_amount' => $request->child_illness_treatment_monthly_amount[$i],
-                'treatment_affordable' => $request->child_illness_affordable[$i],
-                'need_operation' => $request->child_illness_need_operation[$i],
-               ]);
-            }
- 
-
-        }
-    
-       elseif (isset($children[$i])&&!is_null($children[$i]) && !empty($children[$i])){
+        if(sizeof($children)>0){
+            for ($i = 0; $i < count($request->child_name); $i++) {
+                if (!isset($children[$i])){    
+                    if ($request->child_name[$i]!==null && !empty($request->child_name)){
+                        $child = Children::create([
+                        'case_id' => $caseId,
+                        'name' => $request->child_name[$i],
+                        'gender' => $request->child_gender[$i],
+                        'age' => $request->child_age[$i],
+                        'relationship_status' => $request->child_relationship_status[$i],
+                        'education_status' => $request->child_education_status[$i],
+                        'work_status' => $request->child_work_status[$i],
+                        'profession' => $request->child_profession[$i],
+                        'is_ill' => $request->child_is_ill[$i],
+                        'illness_type' => json_encode($request->child_illness_type[$i]),
+                        'illness_description' => $request->child_illness_description[$i],
+                        'illness_prevent_movement' => $request->child_illness_prevent_movement[$i],
+                        'need_monthly_treatment' => $request->child_illness_need_monthly_support[$i],
+                        'has_national_support' => $request->child_illness_is_national_support[$i],
+                        'treatment_monthly_amount' => $request->child_illness_treatment_monthly_amount[$i],
+                        'treatment_affordable' => $request->child_illness_affordable[$i],
+                        'need_operation' => $request->child_illness_need_operation[$i],
+                       ]);
+                    }
+                }elseif (isset($children[$i])&&!is_null($children[$i]) && !empty($children[$i])){
                
-                $children[$i]->update([
+                    $children[$i]->update([
+                        'case_id' => $caseId,
+                        'name' => $request->child_name[$i],
+                        'gender' => $request->child_gender[$i],
+                        'age' => $request->child_age[$i],
+                        'relationship_status' => $request->child_relationship_status[$i],
+                        'education_status' => $request->child_education_status[$i],
+                        'work_status' => $request->child_work_status[$i],
+                        'profession' => $request->child_profession[$i],
+                        'is_ill' => $request->child_is_ill[$i],
+                        'illness_type' => json_encode($request->child_illness_type[$i]),
+                        'illness_description' => $request->child_illness_description[$i],
+                        'illness_prevent_movement' => $request->child_illness_prevent_movement[$i],
+                        'need_monthly_treatment' => $request->child_illness_need_monthly_support[$i],
+                        'has_national_support' => $request->child_illness_is_national_support[$i],
+                        'treatment_monthly_amount' => $request->child_illness_treatment_monthly_amount[$i],
+                        'treatment_affordable' => $request->child_illness_affordable[$i],
+                        'need_operation' => $request->child_illness_need_operation[$i],
+                    ]);
+                }
+            }
+        }elseif (sizeof($children)==0 &&!is_null($request->child_name) && !empty($request->child_name)){
+            for ($i = 0; $i < count($request->child_name); $i++) {
+                $child = Children::create([
                     'case_id' => $caseId,
                     'name' => $request->child_name[$i],
                     'gender' => $request->child_gender[$i],
@@ -976,34 +962,8 @@ class CasesController extends Controller
                     'treatment_monthly_amount' => $request->child_illness_treatment_monthly_amount[$i],
                     'treatment_affordable' => $request->child_illness_affordable[$i],
                     'need_operation' => $request->child_illness_need_operation[$i],
-                ]);
-     
-        
-        }
-    }
-   }
-    elseif (sizeof($children)==0 &&!is_null($request->child_name) && !empty($request->child_name)){
-        for ($i = 0; $i < count($request->child_name); $i++) {
-             $child = Children::create([
-                'case_id' => $caseId,
-                'name' => $request->child_name[$i],
-                'gender' => $request->child_gender[$i],
-                'age' => $request->child_age[$i],
-                'relationship_status' => $request->child_relationship_status[$i],
-                'education_status' => $request->child_education_status[$i],
-                'work_status' => $request->child_work_status[$i],
-                'profession' => $request->child_profession[$i],
-                'is_ill' => $request->child_is_ill[$i],
-                'illness_type' => json_encode($request->child_illness_type[$i]),
-                'illness_description' => $request->child_illness_description[$i],
-                'illness_prevent_movement' => $request->child_illness_prevent_movement[$i],
-                'need_monthly_treatment' => $request->child_illness_need_monthly_support[$i],
-                'has_national_support' => $request->child_illness_is_national_support[$i],
-                'treatment_monthly_amount' => $request->child_illness_treatment_monthly_amount[$i],
-                'treatment_affordable' => $request->child_illness_affordable[$i],
-                'need_operation' => $request->child_illness_need_operation[$i],
-               ]);
-        }
+                   ]);
+            }
         }
         
         return 'done children';
@@ -1015,70 +975,59 @@ class CasesController extends Controller
     private function updateRoommatesData (Request $request , $caseId)
     {
         $roommates = Roommates::where('case_id', $caseId)->get();
-    if(sizeof($roommates)>0){
-     for ($i = 0; $i < count($request->roommate_name); $i++) {
-            // dd(!isset($partners[$i]));
-        // dd($request->all());
-
-        if (!isset($roommates[$i]))
-         {    
+        if(sizeof($roommates)>0){
+            for ($i = 0; $i < count($request->roommate_name); $i++) {
+                if (!isset($roommates[$i])){    
 
                          # code...
-            if ($request->roommate_name[$i]!==null && !empty($request->roommate_name)){
-                 $roommate = Roommates::create([
-                   'case_id' => $caseId,
-                    'name' => $request->roommate_name[$i],
-                    'gender' => $request->roommate_gender[$i],
-                    'age' => $request->roommate_age[$i],
-                    'relationship_status' => $request->roommate_relationship_status[$i],
-                    'education_status' => $request->roommate_education_status[$i],
-                    'work_status' => $request->roommate_work_status[$i],
-                    'profession' => $request->roommate_profession[$i],
-                    'relativity' => $request->roommate_relativity[$i],
-                    'is_ill' => $request->roommate_is_ill[$i],
-                    'illness_type' => json_encode($request->roommate_illness_type[$i]),
-                    'illness_description' => $request->roommate_illness_description[$i],
-                    'illness_prevent_movement' => $request->roommate_illness_prevent_movement[$i],
-                    'need_monthly_treatment' => $request->roommate_illness_need_monthly_support[$i],
-                    'has_national_support' => $request->has_national_support[$i],
-                    'treatment_monthly_amount' => $request->treatment_monthly_amount[$i],
-                    'treatment_affordable' => $request->treatment_affordable[$i],
-                    'need_operation' => $request->roommate_illness_need_operation[$i],
-            ]);
-            }
- 
-
-        }
-    
-       elseif (isset($roommates[$i])&&!is_null($roommates[$i]) && !empty($roommates[$i])){
+                    if ($request->roommate_name[$i]!==null && !empty($request->roommate_name)){
+                        $roommate = Roommates::create([
+                           'case_id' => $caseId,
+                            'name' => $request->roommate_name[$i],
+                            'gender' => $request->roommate_gender[$i],
+                            'age' => $request->roommate_age[$i],
+                            'relationship_status' => $request->roommate_relationship_status[$i],
+                            'education_status' => $request->roommate_education_status[$i],
+                            'work_status' => $request->roommate_work_status[$i],
+                            'profession' => $request->roommate_profession[$i],
+                            'relativity' => $request->roommate_relativity[$i],
+                            'is_ill' => $request->roommate_is_ill[$i],
+                            'illness_type' => json_encode($request->roommate_illness_type[$i]),
+                            'illness_description' => $request->roommate_illness_description[$i],
+                            'illness_prevent_movement' => $request->roommate_illness_prevent_movement[$i],
+                            'need_monthly_treatment' => $request->roommate_illness_need_monthly_support[$i],
+                            'has_national_support' => $request->has_national_support[$i],
+                            'treatment_monthly_amount' => $request->treatment_monthly_amount[$i],
+                            'treatment_affordable' => $request->treatment_affordable[$i],
+                            'need_operation' => $request->roommate_illness_need_operation[$i],
+                        ]);
+                    }
+                }elseif (isset($roommates[$i])&&!is_null($roommates[$i]) && !empty($roommates[$i])){
                
-                $roommates[$i]->update([
-                    'case_id' => $caseId,
-                    'name' => $request->roommate_name[$i],
-                    'gender' => $request->roommate_gender[$i],
-                    'age' => $request->roommate_age[$i],
-                    'relationship_status' => $request->roommate_relationship_status[$i],
-                    'education_status' => $request->roommate_education_status[$i],
-                    'work_status' => $request->roommate_work_status[$i],
-                    'profession' => $request->roommate_profession[$i],
-                    'relativity' => $request->roommate_relativity[$i],
-                    'is_ill' => $request->roommate_is_ill[$i],
-                    'illness_type' => json_encode($request->roommate_illness_type[$i]),
-                    'illness_description' => $request->roommate_illness_description[$i],
-                    'illness_prevent_movement' => $request->roommate_illness_prevent_movement[$i],
-                    'need_monthly_treatment' => $request->roommate_illness_need_monthly_support[$i],
-                    'has_national_support' => $request->has_national_support[$i],
-                    'treatment_monthly_amount' => $request->treatment_monthly_amount[$i],
-                    'treatment_affordable' => $request->treatment_affordable[$i],
-                    'need_operation' => $request->roommate_illness_need_operation[$i],
-                ]);
-     
-        
-        }
-    }
-   }
-    elseif (sizeof($roommates)==0 &&!is_null($request->roommate_name) && !empty($request->roommate_name)){
-        for ($i = 0; $i < count($request->roommate_name); $i++) {
+                    $roommates[$i]->update([
+                        'case_id' => $caseId,
+                        'name' => $request->roommate_name[$i],
+                        'gender' => $request->roommate_gender[$i],
+                        'age' => $request->roommate_age[$i],
+                        'relationship_status' => $request->roommate_relationship_status[$i],
+                        'education_status' => $request->roommate_education_status[$i],
+                        'work_status' => $request->roommate_work_status[$i],
+                        'profession' => $request->roommate_profession[$i],
+                        'relativity' => $request->roommate_relativity[$i],
+                        'is_ill' => $request->roommate_is_ill[$i],
+                        'illness_type' => json_encode($request->roommate_illness_type[$i]),
+                        'illness_description' => $request->roommate_illness_description[$i],
+                        'illness_prevent_movement' => $request->roommate_illness_prevent_movement[$i],
+                        'need_monthly_treatment' => $request->roommate_illness_need_monthly_support[$i],
+                        'has_national_support' => $request->has_national_support[$i],
+                        'treatment_monthly_amount' => $request->treatment_monthly_amount[$i],
+                        'treatment_affordable' => $request->treatment_affordable[$i],
+                        'need_operation' => $request->roommate_illness_need_operation[$i],
+                    ]);
+                }
+            }
+        }elseif (sizeof($roommates)==0 &&!is_null($request->roommate_name) && !empty($request->roommate_name)){
+            for ($i = 0; $i < count($request->roommate_name); $i++) {
 
                 $roommate = Roommates::create([
                     'case_id' => $caseId,
@@ -1099,9 +1048,8 @@ class CasesController extends Controller
                     'treatment_monthly_amount' => $request->treatment_monthly_amount[$i],
                     'treatment_affordable' => $request->treatment_affordable[$i],
                     'need_operation' => $request->roommate_illness_need_operation[$i],
-            ]);
-            
-        }
+                ]);
+            }
         }
         
         return 'done roommates';
@@ -1114,51 +1062,39 @@ class CasesController extends Controller
     private function updateIncomeData (Request $request , $caseId)
     {
         $income = Income::where('case_id', $caseId)->get();
-    if(sizeof($income)>0){
-     for ($i = 0; $i < count($request->income_source_type); $i++) {
-            // dd(!isset($partners[$i]));
-        // dd($request->all());
-
-        if (!isset($income[$i]))
-         {  
-            if (!is_null($request->income_source_type[$i])&& !empty($request->income_source_type)){
-                $income = Income::create([
-                'case_id' => $caseId,
-                'source_type' => $request->income_source_type[$i],
-                'notes' => $request->income_notes[$i],
-                'monthly_amount' => $request->income_monthly_amount[$i],
-                'source_flow' => $request->income_source_flow[$i],
-            ]);
+        if(sizeof($income)>0){
+            for ($i = 0; $i < count($request->income_source_type); $i++) {
+                if (!isset($income[$i])){  
+                    if (!is_null($request->income_source_type[$i])&& !empty($request->income_source_type)){
+                        $income = Income::create([
+                            'case_id' => $caseId,
+                            'source_type' => $request->income_source_type[$i],
+                            'notes' => $request->income_notes[$i],
+                            'monthly_amount' => $request->income_monthly_amount[$i],
+                            'source_flow' => $request->income_source_flow[$i],
+                        ]);
+                    }
+                }elseif (isset($income[$i])&&!is_null($income[$i]) && !empty($income[$i])){
+                    $income[$i]->update([
+                        'case_id' => $caseId,
+                        'source_type' => $request->income_source_type[$i],
+                        'notes' => $request->income_notes[$i],
+                        'monthly_amount' => $request->income_monthly_amount[$i],
+                        'source_flow' => $request->income_source_flow[$i],
+                    ]);
+                }
             }
- 
-
-        }
-    
-       elseif (isset($income[$i])&&!is_null($income[$i]) && !empty($income[$i])){
-               
-              $income[$i]->update([
+        }elseif (sizeof($income)==0 &&!is_null($request->income_source_type) && !empty($request->income_source_type)){
+            for ($i = 0; $i < count($request->income_source_type); $i++) {
+                $income = Income::create([
                     'case_id' => $caseId,
                     'source_type' => $request->income_source_type[$i],
                     'notes' => $request->income_notes[$i],
                     'monthly_amount' => $request->income_monthly_amount[$i],
                     'source_flow' => $request->income_source_flow[$i],
                 ]);
-     
-        
+            }
         }
-    }
-   }
-    elseif (sizeof($income)==0 &&!is_null($request->income_source_type) && !empty($request->income_source_type)){
-        for ($i = 0; $i < count($request->income_source_type); $i++) {
-                $income = Income::create([
-                'case_id' => $caseId,
-                'source_type' => $request->income_source_type[$i],
-                'notes' => $request->income_notes[$i],
-                'monthly_amount' => $request->income_monthly_amount[$i],
-                'source_flow' => $request->income_source_flow[$i],
-            ]);
-       }
-    }
             
         return 'done income';
     }
@@ -1168,7 +1104,6 @@ class CasesController extends Controller
      */
     private function updateSupportData (Request $request , $caseId)
     {
-
         $support = Support::where('case_id', $caseId)->get();
         if(sizeof($support)>0){
             for ($i = 0; $i < count($request->support_source_category); $i++) {
@@ -1218,57 +1153,43 @@ class CasesController extends Controller
     {
         $debts = Debts::where('case_id', $caseId)->get();
 
-    if(sizeof($debts)>0){
-     for ($i = 0; $i < count($request->debts_amount); $i++) {
-            // dd(!isset($partners[$i]));
-        // dd($request->all());
-
-        if (!isset($debts[$i]))
-         { 
-
-            if (!is_null($request->debts_amount[$i])&& !empty($request->debts_amount)){
-
-                $debts = Debts::create([
-                    'case_id' => $caseId,
-                    'amount' => $request->debts_amount[$i],
-                    'stay' => $request->debts_stay[$i],
-                    'reason' => $request->debts_reason[$i],
-                    'refund_method' => $request->debts_refund_method[$i],
-                    'monthly_amount' => $request->debts_monthly_amount[$i],
-                ]);
+        if(sizeof($debts)>0){
+            for ($i = 0; $i < count($request->debts_amount); $i++) {
+                if (!isset($debts[$i])){ 
+                    if (!is_null($request->debts_amount[$i])&& !empty($request->debts_amount)){
+                        $debts = Debts::create([
+                            'case_id' => $caseId,
+                            'amount' => $request->debts_amount[$i],
+                            'stay' => $request->debts_stay[$i],
+                            'reason' => $request->debts_reason[$i],
+                            'refund_method' => $request->debts_refund_method[$i],
+                            'monthly_amount' => $request->debts_monthly_amount[$i],
+                        ]);
+                    }
+                }elseif (isset($debts[$i])&&!is_null($debts[$i]) && !empty($debts[$i])){
+                    $debts[$i]->update([
+                        'case_id' => $caseId,
+                        'amount' => $request->debts_amount[$i],
+                        'stay' => $request->debts_stay[$i],
+                        'reason' => $request->debts_reason[$i],
+                        'refund_method' => $request->debts_refund_method[$i],
+                        'monthly_amount' => $request->debts_monthly_amount[$i],
+                    ]);
+                }
             }
- 
-
+        }elseif (sizeof($debts)==0 &&!is_null($request->debts_amount) && !empty($request->debts_amount)){
+             for ($i = 0; $i < count($request->debts_amount); $i++) {
+                    $debts = Debts::create([
+                        'case_id' => $caseId,
+                        'amount' => $request->debts_amount[$i],
+                        'stay' => $request->debts_stay[$i],
+                        'reason' => $request->debts_reason[$i],
+                        'refund_method' => $request->debts_refund_method[$i],
+                        'monthly_amount' => $request->debts_monthly_amount[$i],
+                    ]);
+                
+            }
         }
-    
-       elseif (isset($debts[$i])&&!is_null($debts[$i]) && !empty($debts[$i])){
-               
-              $debts[$i]->update([
-                    'case_id' => $caseId,
-                    'amount' => $request->debts_amount[$i],
-                    'stay' => $request->debts_stay[$i],
-                    'reason' => $request->debts_reason[$i],
-                    'refund_method' => $request->debts_refund_method[$i],
-                    'monthly_amount' => $request->debts_monthly_amount[$i],
-                ]);
-     
-        
-        }
-    }
-   }
-    elseif (sizeof($debts)==0 &&!is_null($request->debts_amount) && !empty($request->debts_amount)){
-         for ($i = 0; $i < count($request->debts_amount); $i++) {
-                $debts = Debts::create([
-                    'case_id' => $caseId,
-                    'amount' => $request->debts_amount[$i],
-                    'stay' => $request->debts_stay[$i],
-                    'reason' => $request->debts_reason[$i],
-                    'refund_method' => $request->debts_refund_method[$i],
-                    'monthly_amount' => $request->debts_monthly_amount[$i],
-                ]);
-            
-        }
-    }
         return 'done debts';
     }
 
@@ -1278,55 +1199,42 @@ class CasesController extends Controller
     private function updateRoomsData (Request $request , $caseId)
     {
         $rooms = Rooms::where('case_id', $caseId)->get();
-         if(sizeof($rooms)>0){
-    for ($i = 0; $i < count($request->room_type); $i++) {
-
-        if (!isset($rooms[$i]))
-         { 
-
-            if (!is_null($request->room_type[$i])&& !empty($request->room_type)){
-
-                $room = Rooms::create([
-                "case_id" => $caseId,
-                'type' => $request->room_type[$i],
-                'roof_type' => $request->room_roof_type[$i],
-                'roof_status' => $request->room_roof_status[$i],
-                'paint' => $request->room_paint[$i],
-                'notes' => $request->room_notes[$i],
-            ]);
+        if(sizeof($rooms)>0){
+            for ($i = 0; $i < count($request->room_type); $i++) {
+                if (!isset($rooms[$i])){ 
+                    if (!is_null($request->room_type[$i])&& !empty($request->room_type)){
+                        $room = Rooms::create([
+                            "case_id" => $caseId,
+                            'type' => $request->room_type[$i],
+                            'roof_type' => $request->room_roof_type[$i],
+                            'roof_status' => $request->room_roof_status[$i],
+                            'paint' => $request->room_paint[$i],
+                            'notes' => $request->room_notes[$i],
+                        ]);
+                    }
+                }elseif (isset($rooms[$i])&&!is_null($rooms[$i]) && !empty($rooms[$i])){
+                    $rooms[$i]->update([
+                        "case_id" => $caseId,
+                        'type' => $request->room_type[$i],
+                        'roof_type' => $request->room_roof_type[$i],
+                        'roof_status' => $request->room_roof_status[$i],
+                        'paint' => $request->room_paint[$i],
+                        'notes' => $request->room_notes[$i],
+                    ]);
+                }
             }
- 
-
-        }
-    
-       elseif (isset($rooms[$i])&&!is_null($rooms[$i]) && !empty($rooms[$i])){
-               
-              $rooms[$i]->update([
+        }elseif (sizeof($rooms)==0 &&!is_null($request->room_type) && !empty($request->room_type)){
+            for ($i = 0; $i < count($request->room_type); $i++) {
+                $room = Rooms::create([
                     "case_id" => $caseId,
                     'type' => $request->room_type[$i],
                     'roof_type' => $request->room_roof_type[$i],
                     'roof_status' => $request->room_roof_status[$i],
                     'paint' => $request->room_paint[$i],
                     'notes' => $request->room_notes[$i],
-                ]);
-     
-        
+                ]);  
+            }
         }
-    }
-   }
-    elseif (sizeof($rooms)==0 &&!is_null($request->room_type) && !empty($request->room_type)){
-         for ($i = 0; $i < count($request->room_type); $i++) {
-                $room = Rooms::create([
-                "case_id" => $caseId,
-                'type' => $request->room_type[$i],
-                'roof_type' => $request->room_roof_type[$i],
-                'roof_status' => $request->room_roof_status[$i],
-                'paint' => $request->room_paint[$i],
-                'notes' => $request->room_notes[$i],
-            ]);
-            
-        }
-    }
         return 'done rooms';
     }
 

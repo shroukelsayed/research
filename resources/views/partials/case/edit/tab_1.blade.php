@@ -26,25 +26,32 @@
         </div>
         <div class="col-md-6" ></div>
     </div>
-      @foreach($case->caseStatus as $key => $status)
+      <?php 
+          $i = 0;
+      ?>
+      @foreach($case_status_date as $key => $status)
         <div class="row dates oldDates">
-          <div class="col-md-12 old-status-{{$key}}">
+          <div class="col-md-12 old-status-{{$i}}">
               <span class="child-dates">
                   <div class="col-md-6">
                       <div class="form-group">
-                          <label>{{$status->status}}</label>
-                          <input type="hidden" name="old_case_status[]" value="{{$status->status}}">
-                          <input type="date" name="old_status_date[{{$key}}][]" class="form-control" value="{{$status->date}}">
+                          <label>{{$key}}</label>
+                          <input type="hidden" name="old_case_status[]" value="{{$key}}">
+                          @foreach($status as $s => $s_date)
+                            <input type="date" name="old_status_date[{{$i}}][{{$s}}]" class="form-control" value="{{$s_date}}">
+                          @endforeach
                       </div>
                   </div>
               </span>
               <div class="col-md-6">
-                  <button class="btn btn-block btn-success mt-25 add-new-date-input" data-index="{{$key}}" data-status="{{$status->status}}">إضافة تاريخ جديد لحالة [ {{$status->status}} ]</button>
+                  <button class="btn btn-block btn-success mt-25 add-new-date-input" data-index="{{$i}}" data-status="{{$key}}">إضافة تاريخ جديد لحالة [ {{$key}} ]</button>
               </div>
           </div>
         </div>
-        <!-- {!! Form::label('case_status', $status->date) !!} -->
+        <?php $i++; ?>
       @endforeach
+
+     
                  
     {{-- all dates container --}}
     <div class="dates newDates row"></div>
