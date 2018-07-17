@@ -325,8 +325,11 @@
             $("#supports").show();
 
             var max=count-count_old-1;
+            // console.log(count_old);
+            // console.log(i);
+            // console.log(max);
 
-            if(max == 0){
+            if(max == 0 && count_old > 0){
                 $('.support:last').find('.support_type').attr('onchange','drawOther(3,'+i+',$(this).val())');
                 $('.support:last').find('.support_period').attr('onchange','drawOther(4,'+i+',$(this).val())');
                 $('.support:last').find('.support_source_category').attr('onchange','drawOther(1,'+i+',$(this).val())');
@@ -340,8 +343,8 @@
             }
 
             while(max--){
-                console.log(max);
-                if(max == 0){
+                // console.log(max);
+                if(max == 0 && count_old > 0){
                     $('.support:last').find('.support_type').attr('onchange','drawOther(3,'+i+',$(this).val())');
                     $('.support:last').find('.support_period').attr('onchange','drawOther(4,'+i+',$(this).val())');
                     $('.support:last').find('.support_source_category').attr('onchange','drawOther(1,'+i+',$(this).val())');
