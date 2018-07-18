@@ -734,21 +734,21 @@ class CasesController extends Controller
      */
     private function updateStatusesData (Request $request , $caseId)
     {
-        // echo "<pre>";
-        if(isset($request->status_date) && is_array($request->status_date)){
+
+        // if(isset($request->status_date) && is_array($request->status_date)){
 
             $cases = CaseStatuses::where('case_id',$caseId)->get();
 
             foreach ($cases as $k => $case ) {
             //     if(!in_array($case['status'],$request->case_status) ){
                     $case->delete();
-            //         var_dump("0");
             //     }
             }
 
             $statusDates = array();
             foreach ($request->case_status as $status_key => $status_value) {
-                foreach (array_merge($request->old_status_date,$request->status_date) as $date_key => $date_value) {
+                $new_date = (isset($request->status_date) && is_array($request->status_date))? array_merge($request->old_status_date,$request->status_date) : $request->old_status_date ;
+                foreach ($new_date as $date_key => $date_value) {
                     if($status_key == $date_key){
                         foreach ($date_value as $key => $value) {
                             if(!is_null($value)){
@@ -779,7 +779,7 @@ class CasesController extends Controller
                                     'date' => $key,
                                     ]);
             }
-        }
+        // }
         return 'done status date';
     }
 
