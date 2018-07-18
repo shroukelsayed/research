@@ -406,25 +406,24 @@
     $(document).ready(function(){
 
         var c = $('.case_support_count').val();
-        // console.log(c);
         for (var x = 0; x < c ; x++) {
             console.log($('#other_two_'+x).find('input:text').val());
-            if($('#other_one_'+x).find('input:text').val() !== null && $('#other_one_'+x).find('input:text').val() !== '')
+            if($('#other_one_'+x).find('input:text').val() !== null && $('#other_one_'+x).find('input:text').val() != '')
                 $('#other_one_'+x).show();
             else 
                 $('#other_one_'+x).hide();
 
-            if($('#other_two_'+x).find('input:text').val() !== null && $('#other_one_'+x).find('input:text').val() !== '')
+            if($('#other_two_'+x).find('input:text').val() !== null && $('#other_two_'+x).find('input:text').val() != '')
                 $('#other_two_'+x).show();
             else 
                 $('#other_two_'+x).hide();
 
-            if($('#other_three_'+x).find('input:text').val() !== null && $('#other_one_'+x).find('input:text').val() !== '')
+            if($('#other_three_'+x).find('input:text').val() !== null && $('#other_three_'+x).find('input:text').val() != '')
                 $('#other_three_'+x).show();
             else 
                 $('#other_three_'+x).hide();
 
-            if($('#other_four_'+x).find('input:text').val() !== null && $('#other_one_'+x).find('input:text').val() !== '')
+            if($('#other_four_'+x).find('input:text').val() !== null && $('#other_four_'+x).find('input:text').val() != '')
                 $('#other_four_'+x).show();
             else 
                 $('#other_four_'+x).hide();
