@@ -10,7 +10,7 @@
         <div class="col-md-6">
             <div class="form-group">
                 {!! Form::label('case_assets_house_status', 'هل المنزل') !!}
-                {!! Form::select('case_assets_house_status', ['تمليك' => 'تمليك', 'ورث' => 'ورث', 'هبة' => 'هبة', 'إيجار' => 'إيجار'], $case->assets_house_status, array('placeholder' => 'لا شيء' , 'class' => 'form-control select2', 'style' => 'width:100%', 'onchange' => 'if($(this).val()=="تمليك"){$("#tamleek").show();}else{$("#tamleek").hide();}')) !!}
+                {!! Form::select('case_assets_house_status', ['تمليك' => 'تمليك', 'ورث' => 'ورث', 'هبة' => 'هبة', 'إيجار' => 'إيجار'], $case->assets_house_status, array('placeholder' => 'لا شيء' , 'class' => 'form-control select2 case_assets_house_status', 'style' => 'width:100%', 'onchange' => 'if($(this).val()=="تمليك"){$("#tamleek").show();}else{$("#tamleek").hide();}')) !!}
             </div>
         </div>
     </div>
@@ -48,7 +48,7 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
-                    {!! Form::label('case_assets_electric_meter_other', '‏في حالة عدم وجود عداد مياه فكيف تحصلون عليها؟') !!}
+                    {!! Form::label('case_assets_electric_meter_other', '‏في حالة عدم وجود عداد كهرباء فكيف تحصلون عليها؟') !!}
                     {!! Form::select('case_assets_electric_meter_other', ['لا يوجد كهرباء' => 'لا يوجد كهرباء' , 'وصلة خلسة (سرقة)' => 'وصلة خلسة (سرقة)'], old('case_assets_electric_meter_other') or null, array('placeholder' => 'لا شيء' , 'class' => 'form-control select2', 'style' => 'width:100%')) !!}
                 </div>
             </div>
@@ -67,20 +67,28 @@
     <div class="row">
         <div class="col-md-6">
             <div class="form-group">
-                {!! Form::label('case_assets_farm', 'عندكوا أرض زراعية؟') !!}
-                {!! Form::select('case_assets_farm', ['لا يوجد' => 'لا يوجد', 'تمليك' => 'تمليك', 'ورث' => 'ورث', 'هبة' => 'هبة', 'إيجار' => 'إيجار'], $case->assets_farm, array('placeholder' => 'لا شيء' , 'class' => 'form-control select2', 'style' => 'width:100%')) !!}
+                {!! Form::label('case_assets_farm', 'هل لديك أرض زراعية؟') !!}
+                {!! Form::select('case_assets_farm', ['لا يوجد' => 'لا يوجد', 'تمليك' => 'تمليك', 'ورث' => 'ورث', 'هبة' => 'هبة', 'إيجار' => 'إيجار'], $case->assets_farm, array( 'class' => 'form-control select2', 'style' => 'width:100%','onchange' => 'if($(this).val()!="لا يوجد"){$("#farm_space").show();}else{$("#farm_space").hide();}')) !!}
             </div>
         </div>
-        <div class="col-md-6" >
-            <div class="form-group">
-                {!! Form::label('case_assets_pets', 'عندكوا مواشي/ طيور؟') !!}
-                {!! Form::select('case_assets_pets',  ['لا يوجد' => 'لا يوجد', 'طيور' => 'طيور', 'ماعز' => 'ماعز', 'إبل' => 'إبل', 'بقر / جاموس' => 'بقر / جاموس' ],json_decode($case->assets_pets), [ 'class' => 'form-control select2' ,'multiple'=>'multiple','name'=>'case_assets_pets[]','placeholder'=>'لا شئ' ,'style' => 'width:100%','onchange' => 'if($(this).val()!="لا يوجد"){$("#pets_alternative").show();}else{$("#pets_alternative").hide();}']) !!}
-                 
+        <div id="farm_space" hidden>
+            <div class="col-md-6" >
+                <div class="form-group">
+                    {!! Form::label('case_assets_farm_space', 'مساحتها؟') !!}
+                    {!! Form::text('case_assets_farm_space', $case->assets_farm_space, array('class' => 'form-control')) !!}
+                </div>
             </div>
         </div>
     </div>
-     <div id="pets_alternative" hidden>
-        <div class="row">
+    <div class="row">
+        <div class="col-md-6" >
+            <div class="form-group">
+                {!! Form::label('case_assets_pets', 'عندكوا مواشي/ طيور؟') !!}
+                {!! Form::select('case_assets_pets',  ['لا يوجد' => 'لا يوجد', 'طيور' => 'طيور', 'ماعز' => 'ماعز', 'إبل' => 'إبل', 'بقر / جاموس' => 'بقر / جاموس' ],json_decode($case->assets_pets), [ 'class' => 'form-control select2' ,'multiple'=>'multiple','name'=>'case_assets_pets[]','style' => 'width:100%','onchange' => 'if($(this).val()!="لا يوجد"){$("#pets_alternative").show();}else{$("#pets_alternative").hide();}']) !!}
+                 
+            </div>
+        </div>
+        <div id="pets_alternative" hidden>
             <div class="col-md-6" >
                 <div class="form-group">
                     {!! Form::label('case_assets_pets_alternative', 'كيف حصلتوا عليهم؟') !!}
@@ -94,7 +102,7 @@
         <div class="col-md-6">
             <div class="form-group">
                 {!! Form::label('case_assets_vehicle', 'انتوا عندكوا أي وسيلة انتقال؟') !!}
-                {!! Form::select('case_assets_vehicle', ['لا يوجد'=>'لا يوجد','حمار'=>'حمار','موتوسكل'=>'موتوسكل','تروسكل/ توك توك'=>'تروسكل/ توك توك','جرار'=>'جرار','سيارة'=>'سيارة'],  $case->assets_vehicle, array('placeholder' => 'لا شيء' , 'class' => 'form-control select2', 'style' => 'width:100%','onchange' => 'if($(this).val()!="لا"){$("#vehicle_alternative").show();}else{$("#vehicle_alternative").hide();}')) !!}
+                {!! Form::select('case_assets_vehicle', ['لا يوجد'=>'لا يوجد','حمار'=>'حمار','موتوسكل'=>'موتوسكل','تروسكل/ توك توك'=>'تروسكل/ توك توك','جرار'=>'جرار','سيارة'=>'سيارة'],  $case->assets_vehicle, array( 'class' => 'form-control select2', 'style' => 'width:100%','onchange' => 'if($(this).val()!="لا يوجد"){$("#vehicle_alternative").show();}else{$("#vehicle_alternative").hide();}')) !!}
             </div>
         </div>
         <div id="vehicle_alternative" hidden>
@@ -132,3 +140,46 @@
         </div>
     </div>
 </div>
+
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        if($('#case_assets_house_status').val() == 'تمليك')
+            $("#tamleek").show();
+        else
+            $("#tamleek").hide();
+
+        if(($('#case_assets_electric_meter').val() != 'لا') || ($('#case_assets_electric_meter').val() != '') )
+            $("#electric_other").hide();
+        else
+            $("#electric_other").show();
+
+        if($('#case_assets_water_meter').val() != 'لا' &&  $('#case_assets_water_meter').val() != '')
+            $("#water_meter").show();
+        else
+            $("#water_meter").hide();
+
+        if($('#case_assets_farm').val() != 'لا يوجد' && $('#case_assets_farm').val() != '')
+            $("#farm_space").show();
+        else
+            $("#farm_space").hide();
+
+        if($('#case_assets_pets').val() != 'لا يوجد' && $('#case_assets_pets').val() != '')
+            $("#pets_alternative").show();
+        else
+            $("#pets_alternative").hide();
+
+        if($('#case_assets_vehicle').val() != 'لا يوجد' && $('#case_assets_vehicle').val() != '' )
+            $("#vehicle_alternative").show();
+        else
+            $("#vehicle_alternative").hide();
+
+        if($('#case_assets_house_alternative_status').val() !== 'لا' && $('#case_assets_house_alternative_status').val() !== '')
+            $("#alt_house").show();
+        else
+            $("#alt_house").hide();
+
+
+
+    });
+</script>

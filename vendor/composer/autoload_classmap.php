@@ -6,6 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'AddFarmSpaceTable' => $baseDir . '/database/migrations/2018_07_22_114008_add_farm_space_table.php',
     'App\\CaseStatuses' => $baseDir . '/app/CaseStatuses.php',
     'App\\Cases' => $baseDir . '/app/Cases.php',
     'App\\Children' => $baseDir . '/app/Children.php',

@@ -68,19 +68,27 @@
         <div class="col-md-6">
             <div class="form-group">
                 {!! Form::label('case_assets_farm', 'هل لديك أرض زراعية؟') !!}
-                {!! Form::select('case_assets_farm', ['لا يوجد' => 'لا يوجد', 'تمليك' => 'تمليك', 'ورث' => 'ورث', 'هبة' => 'هبة', 'إيجار' => 'إيجار'], old('case_assets_farm') or null, array('placeholder' => 'لا شيء' , 'class' => 'form-control select2', 'style' => 'width:100%')) !!}
+                {!! Form::select('case_assets_farm', ['لا يوجد' => 'لا يوجد', 'تمليك' => 'تمليك', 'ورث' => 'ورث', 'هبة' => 'هبة', 'إيجار' => 'إيجار'], old('case_assets_farm') or null, array('placeholder' => 'لا شيء' , 'class' => 'form-control select2', 'style' => 'width:100%','onchange' => 'if($(this).val()!="لا يوجد"){$("#farm_space").show();}else{$("#farm_space").hide();}')) !!}
             </div>
         </div>
-        <div class="col-md-6" >
-            <div class="form-group">
-                {!! Form::label('case_assets_pets', 'عندكوا مواشي/ طيور؟') !!}
-                {!! Form::select('case_assets_pets',  ['لا يوجد' => 'لا يوجد', 'طيور' => 'طيور', 'ماعز' => 'ماعز', 'إبل' => 'إبل', 'بقر / جاموس' => 'بقر / جاموس' ],old('case_assets_pets') or null, [ 'class' => 'form-control select2' ,'multiple'=>'multiple','name'=>'case_assets_pets[]','placeholder'=>'لا شئ' ,'style' => 'width:100%','onchange' => 'if($(this).val()!="لا يوجد"){$("#pets_alternative").show();}else{$("#pets_alternative").hide();}']) !!}
-                 
+        <div id="farm_space" hidden>
+            <div class="col-md-6" >
+                <div class="form-group">
+                    {!! Form::label('case_assets_farm_space', 'مساحتها؟') !!}
+                    {!! Form::text('case_assets_farm_space', old('case_assets_farm_space') or null, array('class' => 'form-control')) !!}
+                </div>
             </div>
         </div>
     </div>
-    <div id="pets_alternative" hidden>
-        <div class="row">
+    <div class="row">
+        <div class="col-md-6" >
+            <div class="form-group">
+                {!! Form::label('case_assets_pets', 'عندكوا مواشي/ طيور؟') !!}
+                {!! Form::select('case_assets_pets',  ['لا يوجد' => 'لا يوجد', 'طيور' => 'طيور', 'ماعز' => 'ماعز', 'إبل' => 'إبل', 'بقر / جاموس' => 'بقر / جاموس' ],old('case_assets_pets') or null, [ 'class' => 'form-control select2' ,'multiple'=>'multiple','name'=>'case_assets_pets[]' ,'style' => 'width:100%','onchange' => 'if($(this).val()!="لا يوجد"){$("#pets_alternative").show();}else{$("#pets_alternative").hide();}']) !!}
+                 
+            </div>
+        </div>
+        <div id="pets_alternative" hidden>
             <div class="col-md-6" >
                 <div class="form-group">
                     {!! Form::label('case_assets_pets_alternative', 'كيف حصلتوا عليهم؟') !!}
@@ -94,7 +102,7 @@
         <div class="col-md-6">
             <div class="form-group">
                 {!! Form::label('case_assets_vehicle', 'هل لديك أي وسيلة انتقال؟') !!}
-                {!! Form::select('case_assets_vehicle', ['لا يوجد'=>'لا يوجد','حمار'=>'حمار','موتوسكل'=>'موتوسكل','تروسكل/ توك توك'=>'تروسكل/ توك توك','جرار'=>'جرار','سيارة'=>'سيارة'], old('case_assets_vehicle') or null, array('placeholder' => 'لا شيء' , 'class' => 'form-control select2', 'style' => 'width:100%','onchange' => 'if($(this).val()!="لا"){$("#vehicle_alternative").show();}else{$("#vehicle_alternative").hide();}')) !!}
+                {!! Form::select('case_assets_vehicle', ['لا يوجد'=>'لا يوجد','حمار'=>'حمار','موتوسكل'=>'موتوسكل','تروسكل/ توك توك'=>'تروسكل/ توك توك','جرار'=>'جرار','سيارة'=>'سيارة'], old('case_assets_vehicle') or null, array('placeholder' => 'لا شيء' , 'class' => 'form-control select2', 'style' => 'width:100%','onchange' => 'if($(this).val()!="لا يوجد"){$("#vehicle_alternative").show();}else{$("#vehicle_alternative").hide();}')) !!}
             </div>
         </div>
         <div id="vehicle_alternative" hidden>

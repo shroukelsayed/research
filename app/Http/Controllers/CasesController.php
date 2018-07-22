@@ -79,6 +79,9 @@ class CasesController extends Controller
      */
     public function store(Request $request)
     {
+        // var_dump($request->case_status);
+        // var_dump($request->status_date);
+        // die;
         // echo "<pre>";
         // var_dump($request->all());
         // die();
@@ -260,6 +263,7 @@ class CasesController extends Controller
                 'assets_water_meter' => $request->case_assets_water_meter,
                 'assets_water_alternative' => $request->case_assets_water_alternative,
                 'assets_farm' => $request->case_assets_farm,
+                'assets_farm_space' => $request->case_assets_farm_space,
                 'assets_pets' => json_encode($request->case_assets_pets),
                 'case_assets_pets_alternative' => $request->case_assets_pets_alternative,
                 'assets_vehicle' => $request->case_assets_vehicle,
@@ -450,7 +454,7 @@ class CasesController extends Controller
                     'education_status' => $request->roommate_education_status[$i],
                     'work_status' => $request->roommate_work_status[$i],
                     'profession' => $request->roommate_profession[$i],
-                    'relativity' => $request->roommate_relativity[$i],
+                    'relativity' => ($request->roommate_relativity[$i] == 'أخرى')? $request->roommate_relativity_other : $request->roommate_relativity[$i],
                     'is_ill' => $request->roommate_is_ill[$i],
                     'illness_type' => json_encode($request->roommate_illness_type[$i]),
                     'illness_description' => $request->roommate_illness_description[$i],
@@ -679,6 +683,7 @@ class CasesController extends Controller
                 'assets_water_meter' => $request->case_assets_water_meter,
                 'assets_water_alternative' => $request->case_assets_water_alternative,
                 'assets_farm' => $request->case_assets_farm,
+                'assets_farm_space' => $request->case_assets_farm_space,
                 'assets_pets' => json_encode($request->case_assets_pets),
                 'assets_vehicle' => $request->case_assets_vehicle,
                 'assets_house_alternative_status' => $request->case_assets_house_alternative_status,
@@ -990,7 +995,7 @@ class CasesController extends Controller
                             'education_status' => $request->roommate_education_status[$i],
                             'work_status' => $request->roommate_work_status[$i],
                             'profession' => $request->roommate_profession[$i],
-                            'relativity' => $request->roommate_relativity[$i],
+                            'relativity' => ($request->roommate_relativity[$i] == 'أخرى')? $request->roommate_relativity_other : $request->roommate_relativity[$i],
                             'is_ill' => $request->roommate_is_ill[$i],
                             'illness_type' => json_encode($request->roommate_illness_type[$i]),
                             'illness_description' => $request->roommate_illness_description[$i],
@@ -1013,7 +1018,7 @@ class CasesController extends Controller
                         'education_status' => $request->roommate_education_status[$i],
                         'work_status' => $request->roommate_work_status[$i],
                         'profession' => $request->roommate_profession[$i],
-                        'relativity' => $request->roommate_relativity[$i],
+                        'relativity' => ($request->roommate_relativity[$i] == 'أخرى')? $request->roommate_relativity_other : $request->roommate_relativity[$i],
                         'is_ill' => $request->roommate_is_ill[$i],
                         'illness_type' => json_encode($request->roommate_illness_type[$i]),
                         'illness_description' => $request->roommate_illness_description[$i],
@@ -1038,7 +1043,7 @@ class CasesController extends Controller
                     'education_status' => $request->roommate_education_status[$i],
                     'work_status' => $request->roommate_work_status[$i],
                     'profession' => $request->roommate_profession[$i],
-                    'relativity' => $request->roommate_relativity[$i],
+                    'relativity' => ($request->roommate_relativity[$i] == 'أخرى')? $request->roommate_relativity_other : $request->roommate_relativity[$i],
                     'is_ill' => $request->roommate_is_ill[$i],
                     'illness_type' => json_encode($request->roommate_illness_type[$i]),
                     'illness_description' => $request->roommate_illness_description[$i],

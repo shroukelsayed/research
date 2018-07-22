@@ -283,6 +283,7 @@ class ComposerStaticInitfef92565e8109347c040160e2effe35f
     );
 
     public static $classMap = array (
+        'AddFarmSpaceTable' => __DIR__ . '/../..' . '/database/migrations/2018_07_22_114008_add_farm_space_table.php',
         'App\\CaseStatuses' => __DIR__ . '/../..' . '/app/CaseStatuses.php',
         'App\\Cases' => __DIR__ . '/../..' . '/app/Cases.php',
         'App\\Children' => __DIR__ . '/../..' . '/app/Children.php',
