@@ -99,7 +99,7 @@ class CasesController extends Controller
             'case_name' => 'required',
             'case_status' => 'required',
             'case_national_id' => 'required|unique:cases,national_id|digits:14',
-            'case_phone'=>'digits:11',
+            // 'case_phone'=>'digits:11',
             'access_code' => 'required|in:Y5LbAN9ei6pgovLybld6Qmslrskm8h0eg6ErA7kYAFA',
             
         ]);
