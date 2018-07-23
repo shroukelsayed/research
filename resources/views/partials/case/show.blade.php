@@ -643,7 +643,11 @@
             </p>
             <p>
                 عندكوا مواشي/ طيور؟
-                &blacktriangleleft; @foreach(json_decode($case->assets_pets) as $assets_pet) {{$assets_pet }} @endforeach
+                @if(!is_array(json_decode($case->assets_pets)))
+                    &blacktriangleleft; {{json_decode($case->assets_pets) }}  &nbsp&nbsp&nbsp&nbsp&nbsp
+                @else
+                    &blacktriangleleft; @foreach(json_decode($case->assets_pets) as $assets_pet) {{$assets_pet }} @endforeach
+                @endif
             </p>
             @if(!is_null($case->case_assets_pets_alternative))
                 <p>
