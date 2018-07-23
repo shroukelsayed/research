@@ -351,7 +351,7 @@ class CasesController extends Controller
     private function storePartnersData (Request $request , $caseId)
     {
 
-        if(!is_null($request->partner_name)){
+        if(is_array($request->partner_name) && !empty($request->partner_name)){
             for ($i = 0; $i < count($request->partner_name); $i++) {
                 if ($request->partner_name[$i]!==null && !empty($request->partner_name)){
                     if (strpos($request->partner_national_id_front[$i], 'base64')) {
@@ -416,7 +416,7 @@ class CasesController extends Controller
      */
     private function storeChildrenData (Request $request , $caseId)
     {
-        if(!is_null($request->child_name)){
+        if(is_array($request->child_name) && !empty($request->child_name)){
             for ($i = 0; $i < count($request->child_name); $i++) {
                 if ($request->child_name[$i]!==null && !empty($request->child_name)){
                     $child = Children::create([
@@ -449,7 +449,7 @@ class CasesController extends Controller
      */
     private function storeRoommatesData (Request $request , $caseId)
     {
-        if(!is_null($request->roommate_name)){
+        if(is_array($request->roommate_name) && !empty($request->roommate_name)){
             for ($i = 0; $i < count($request->roommate_name); $i++) {
                 if ($request->roommate_name[$i]!==null && !empty($request->roommate_name)){
                     $roommate = Roommates::create([
@@ -484,7 +484,7 @@ class CasesController extends Controller
      */
     private function storeIncomeData (Request $request , $caseId)
     {
-        if(!is_null($request->income_source_type)){
+        if(is_array($request->income_source_type) && !empty($request->income_source_type)){
             for ($i = 0; $i < count($request->income_source_type); $i++) {
                 if (!is_null($request->income_source_type[$i])&& !empty($request->income_source_type)){
                     $income = Income::create([
@@ -505,7 +505,7 @@ class CasesController extends Controller
      */
     private function storeSupportData (Request $request , $caseId)
     {
-        if(!is_null($request->support_source_category)){
+        if(is_array($request->support_source_category ) && !empty($request->support_source_category)){
             for ($i = 0; $i < count($request->support_source_category); $i++) {
                 if ($request->support_source_category[$i]!==null && !empty($request->support_source_category)){
                     $support = Support::create([
@@ -526,7 +526,7 @@ class CasesController extends Controller
      */
      private function storeDebtsData (Request $request , $caseId)
     {
-        if(!is_null($request->debts_amount)){
+        if(is_array($request->debts_amount) && !empty($request->debts_amount)){
             for ($i = 0; $i < count($request->debts_amount); $i++) {
                 if ($request->debts_amount[$i]!==null && !empty($request->debts_amount[$i])) {
                     $debts = Debts::create([
@@ -548,7 +548,7 @@ class CasesController extends Controller
      */
     private function storeRoomsData (Request $request , $caseId)
     {
-        if(!is_null($request->room_type)){
+        if(is_array($request->room_type && !empty($request->room_type))){
             for ($i = 0; $i < count($request->room_type); $i++) {
                 if ($request->room_type[$i]!==null && !empty($request->room_type)) {
                     $room = Rooms::create([
