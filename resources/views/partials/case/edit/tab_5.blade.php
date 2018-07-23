@@ -248,7 +248,7 @@
                         {!! Form::select('roommate_relativity[]', ['الأم/الأب' => 'الأم/الأب', 'والد الزوج/والد الزوجة' => 'والد الزوج/والد الزوجة', 'زوجة الإبن/زوج الإبنة' => 'زوجة الإبن/زوج الإبنة', 'أخ/أخت' => 'أخ/أخت', 'أخ الزوجة/أخت الزوجة' => 'أخ الزوجة/أخت الزوجة', 'حفيد/حفيدة' => 'حفيد/حفيدة','ابن الأخ/الأخت'=>'ابن الأخ/الأخت', 'أخرى' => 'أخرى'], 
 
                         (in_array($case->roommate->relativity,[ 'زوجة الإبن/زوج الإبن','والد الزوج/والد الزوجة','الأم/الأب',
-                        'أخ/أخت' ,'أخ الزوجة/أخت الزوجة', 'حفيد/حفيدة','ابن الأخ/الأخت']))? $case->roommate->relativity : "أخرى" , array('placeholder' => 'لا شيء' , 'class' => 'form-control roommate_relativity', 'style' => 'width:100%','onchange' => 'if($(this).val()=="أخرى"){$("#roommate_relativity_other").show();}else{$("#roommate_relativity_other").hide();}')) !!}
+                        'أخ/أخت' ,'أخ الزوجة/أخت الزوجة', 'حفيد/حفيدة','ابن الأخ/الأخت',"أخرى"]))? $case->roommate->relativity : "أخرى" , array('placeholder' => 'لا شيء' , 'class' => 'form-control roommate_relativity', 'style' => 'width:100%','onchange' => 'if($(this).val()=="أخرى"){$("#roommate_relativity_other").show();}else{$("#roommate_relativity_other").hide();}')) !!}
                     </div>
                 </div>
                 <div class="col-md-6" id="roommate_relativity_other" hidden>
