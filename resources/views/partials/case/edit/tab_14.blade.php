@@ -54,7 +54,7 @@
         <div class="col-md-6">
             <div class="form-group">
                 {!! Form::label('case_need_project', 'مشروع صغير') !!}
-                {!! Form::select('case_need_project', ['نعم' => 'نعم', 'لا' => 'لا'], old('case_need_project') or null, array('placeholder' => 'لا شيء' , 'class' => 'form-control select2', 'style' => 'width:100%','onchange' => 'if($(this).val()!="لا"){$("#project").show();}else{$("#project").hide();}')) !!}
+                {!! Form::select('case_need_project', ['نعم' => 'نعم', 'لا' => 'لا'], $case->case_need_project, array('class' => 'form-control select2', 'style' => 'width:100%','onchange' => 'if($(this).val()=="لا"){$("#project").hide();}else{$("#project").show();}')) !!}
             </div>
         </div>
     </div>
@@ -63,9 +63,19 @@
             <div class="col-md-6">
                 <div class="form-group">
                     {!! Form::label('case_need_project_desc', '‏ما هو المشروع ?') !!}
-                    {!! Form::text('case_need_project_desc', old('case_need_project_desc') or null, array('class' => 'form-control')) !!}
+                    {!! Form::text('case_need_project_desc', $case->case_need_project_desc, array('class' => 'form-control')) !!}
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        if($('#case_need_project').val() != 'لا')
+            $("#project").show();
+        else
+            $("#project").hide();
+
+    });
+</script>

@@ -27,7 +27,8 @@
                     {{-- child_age                []text --}}
                     <div class="form-group">
                         {!! Form::label('child_age[]', 'السن') !!}
-                        {!! Form::text('child_age[]', $case->child->age, array('class' => 'form-control')) !!}
+                        {!! Form::number('child_age[]', $case->child->age, array('class' => 'form-control child_age','step'=>".1")) !!}
+
                     </div>
                 </div>
                 {{--<div class="col-md-6">--}}
@@ -50,7 +51,7 @@
                     {{-- child_edu_status       []select[single,..] --}}
                     <div class="form-group">
                         {!! Form::label('child_education_status[]', 'الحاله التعليمية') !!}
-                        {!! Form::select('child_education_status[]', ['أدون سن التعليم' => 'دون سن التعليم', 'في الابتدائية (1-2-3)' => ' في الابتدائية (1-2-3)', 'في الابتدائية (4-5-6)' => 'في الابتدائية (4-5-6)', 'في الإعدادية' => 'في الإعدادية', 'في الثانوية/ دبلوم' => 'في الثانوية/ دبلوم', 'في الجامعة' => 'في الجامعة' ,'متسرب'=>'متسرب' , 'امي'=>'امي' ,'انهي التعليم الأساسي (اعدادي)'=>'انهي التعليم الأساسي (اعدادي)','انهي التعليم الثانوي/ دبلوم/ الجامعي'=>'انهي التعليم الثانوي/ دبلوم/ الجامعي'], $case->child->education_status, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
+                        {!! Form::select('child_education_status[]', ['أدون سن التعليم' => 'دون سن التعليم', 'في الابتدائية (1-2-3)' => ' في الابتدائية (1-2-3)', 'في الابتدائية (4-5-6)' => 'في الابتدائية (4-5-6)', 'في الإعدادية' => 'في الإعدادية', 'في الثانوية/ دبلوم' => 'في الثانوية/ دبلوم', 'في الجامعة' => 'في الجامعة' ,'متسرب'=>'متسرب' , 'امي'=>'امي','‬ ‫يقر‬أ‫ و يكتب' => '‬ ‫يقر‬أ‫ و يكتب' ,'انهي التعليم الأساسي (اعدادي)'=>'انهي التعليم الأساسي (اعدادي)','انهي التعليم الثانوي/ دبلوم/ الجامعي'=>'انهي التعليم الثانوي/ دبلوم/ الجامعي'], $case->child->education_status, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
                     </div>
                 </div>
             </div>
@@ -176,7 +177,9 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         {!! Form::label('child_age[]', 'السن') !!}
-                        {!! Form::text('child_age[]', old('child_age[]') or null, array('class' => 'form-control')) !!}
+                        {!! Form::number('child_age[]', $case->child->age, array('class' => 'form-control child_age','step'=>".1")) !!}
+                        
+                        <!-- {!! Form::text('child_age[]', old('child_age[]') or null, array('class' => 'form-control')) !!} -->
                     </div>
                 </div>
                <!--  <div class="col-md-6">
@@ -196,7 +199,7 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         {!! Form::label('child_education_status[]', 'الحاله التعليمية') !!}
-                        {!! Form::select('child_education_status[]', ['أمي (غير متعلم)' => 'أمي (غير متعلم)', 'دون سن التعليم' => 'دون سن التعليم', 'يقرأ ويكتب' => 'يقرأ ويكتب', 'تعليم أساسي' => 'تعليم أساسي', 'متوسط' => 'متوسط', 'فوق متوسط' => 'فوق متوسط', 'جامعي' => 'جامعي', 'متسرب من التعليم' => 'متسرب من التعليم'], old('child_education_status[]') or null, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
+                        {!! Form::select('child_education_status[]', ['أدون سن التعليم' => 'دون سن التعليم', 'في الابتدائية (1-2-3)' => ' في الابتدائية (1-2-3)', 'في الابتدائية (4-5-6)' => 'في الابتدائية (4-5-6)', 'في الإعدادية' => 'في الإعدادية', 'في الثانوية/ دبلوم' => 'في الثانوية/ دبلوم', 'في الجامعة' => 'في الجامعة' ,'متسرب'=>'متسرب' , 'امي'=>'امي','‬ ‫يقر‬أ‫ و يكتب' => '‬ ‫يقر‬أ‫ و يكتب' ,'انهي التعليم الأساسي (اعدادي)'=>'انهي التعليم الأساسي (اعدادي)','انهي التعليم الثانوي/ دبلوم/ الجامعي'=>'انهي التعليم الثانوي/ دبلوم/ الجامعي'], old('child_education_status[]') or null, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
                     </div>
                 </div>
             </div>
@@ -317,7 +320,7 @@
         var cloneIndex = $(".drawChild").length;
         // console.log(cloneIndex);
 
-        var newdiv = $('.child').first().clone().insertAfter('.child:last').find('input:text').val("").end();
+        var newdiv = $('.child').first().clone().insertAfter('.child:last').find('input:text').val("").end().find('.child_age').val("").end();
 
         // $(newdiv).appendTo('#childs');
 

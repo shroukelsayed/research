@@ -49,7 +49,7 @@
             <div class="col-md-6">
                 <div class="form-group">
                     {!! Form::label('case_assets_electric_meter_other', '‏في حالة عدم وجود عداد كهرباء فكيف تحصلون عليها؟') !!}
-                    {!! Form::select('case_assets_electric_meter_other', ['لا يوجد كهرباء' => 'لا يوجد كهرباء' , 'وصلة خلسة (سرقة)' => 'وصلة خلسة (سرقة)'], old('case_assets_electric_meter_other') or null, array('placeholder' => 'لا شيء' , 'class' => 'form-control select2', 'style' => 'width:100%')) !!}
+                    {!! Form::select('case_assets_electric_meter_other', ['لا يوجد كهرباء' => 'لا يوجد كهرباء' , 'وصلة خلسة (سرقة)' => 'وصلة خلسة (سرقة)'], $case->case_assets_electric_meter_other, array('placeholder' => 'لا شيء' , 'class' => 'form-control select2', 'style' => 'width:100%')) !!}
                 </div>
             </div>
         </div>
@@ -92,7 +92,7 @@
             <div class="col-md-6" >
                 <div class="form-group">
                     {!! Form::label('case_assets_pets_alternative', 'كيف حصلتوا عليهم؟') !!}
-                    {!! Form::select('case_assets_pets_alternative',  ['شراء' => 'شراء', 'مساعدة من جمعية/ اهل الخير' => 'مساعدة من جمعية/ اهل الخير', 'شرك' => 'شرك'],old('case_assets_pets_alternative') or null, [ 'class' => 'form-control select2','name'=>'case_assets_pets_alternative','placeholder'=>'لا شئ' ,'style' => 'width:100%']) !!}
+                    {!! Form::select('case_assets_pets_alternative',  ['شراء' => 'شراء', 'مساعدة من جمعية/ اهل الخير' => 'مساعدة من جمعية/ اهل الخير', 'شرك' => 'شرك'],$case->case_assets_pets_alternative, [ 'class' => 'form-control select2','name'=>'case_assets_pets_alternative','placeholder'=>'لا شئ' ,'style' => 'width:100%']) !!}
                      
                 </div>
             </div>
@@ -109,7 +109,7 @@
             <div class="col-md-6" >
                 <div class="form-group">
                     {!! Form::label('case_assets_vehicle_alternative', 'كيف حصلتوا عليهم؟') !!}
-                    {!! Form::select('case_assets_vehicle_alternative',  ['شراء' => 'شراء', 'مساعدة من جمعية/ اهل الخير' => 'مساعدة من جمعية/ اهل الخير', 'شرك' => 'شرك'],old('case_assets_vehicle_alternative') or null, [ 'class' => 'form-control select2','name'=>'case_assets_vehicle_alternative','placeholder'=>'لا شئ' ,'style' => 'width:100%']) !!}
+                    {!! Form::select('case_assets_vehicle_alternative',  ['شراء' => 'شراء', 'مساعدة من جمعية/ اهل الخير' => 'مساعدة من جمعية/ اهل الخير', 'شرك' => 'شرك'],$case->case_assets_vehicle_alternative, [ 'class' => 'form-control select2','name'=>'case_assets_vehicle_alternative','placeholder'=>'لا شئ' ,'style' => 'width:100%']) !!}
                      
                 </div>
             </div>
