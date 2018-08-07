@@ -96,7 +96,7 @@
             {{-- phone              text --}}
             <div class="form-group">
                 {!! Form::label('case_phone', 'رقم الموبايل') !!}
-                {!! Form::text('case_phone', old('case_phone') or null, array('class' => 'form-control','maxlength' =>"7")) !!}
+                {!! Form::text('case_phone', old('case_phone') or null, array('class' => 'form-control','maxlength' =>"11")) !!}
             </div>
         </div>
         <div class="col-md-6">
