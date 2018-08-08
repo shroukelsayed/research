@@ -177,7 +177,7 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         {!! Form::label('child_age[]', 'السن') !!}
-                        {!! Form::number('child_age[]', $case->child->age, array('class' => 'form-control child_age','step'=>".1")) !!}
+                        {!! Form::number('child_age[]', old('child_age[]') or null, array('class' => 'form-control child_age','step'=>".1")) !!}
                         
                         <!-- {!! Form::text('child_age[]', old('child_age[]') or null, array('class' => 'form-control')) !!} -->
                     </div>

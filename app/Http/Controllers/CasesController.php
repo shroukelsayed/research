@@ -83,27 +83,45 @@ class CasesController extends Controller
         // var_dump($request->case_status);
         // var_dump($request->status_date);
         // die;
-        // echo "<pre>";
-        // var_dump($request->all());
-        // die();
-
-       // return $request->all();
-        // $request->partner_national_id=implode("|",$request->partner_national_id);
-        // $request->partner_phone=implode("|",$request->partner_phone);
-        // dd($request->partner_national_id . ',' . $request->partner_phone );
        if(isset($request->debts_stay)){
          $sum_of_debts_stay = array_sum($request->debts_stay);
         }
-    
-        $validator = Validator::make($request->all(), [
-            'case_typer_id' => 'required|exists:users,id',
-            'case_name' => 'required',
-            'case_status' => 'required',
-            'case_national_id' => 'required|unique:cases,national_id|digits:14',
-            // 'case_phone'=>'digits:11',
-            'access_code' => 'required|in:Y5LbAN9ei6pgovLybld6Qmslrskm8h0eg6ErA7kYAFA',
-            
-        ]);
+        
+        if($request->input('case_national_id') !== null && $request->input('case_phone') !== null){
+            $validator = Validator::make($request->all(), [
+                'case_typer_id' => 'required|exists:users,id',
+                'case_name' => 'required',
+                'case_status' => 'required',
+                'case_national_id' => 'unique:cases,national_id|digits:14',
+                'case_phone'=>'digits:11',
+                'access_code' => 'required|in:Y5LbAN9ei6pgovLybld6Qmslrskm8h0eg6ErA7kYAFA', 
+            ]);
+        }elseif($request->input('case_phone') !== null){
+            $validator = Validator::make($request->all(), [
+                'case_typer_id' => 'required|exists:users,id',
+                'case_name' => 'required',
+                'case_status' => 'required',
+                'case_phone'=>'digits:11',
+                'access_code' => 'required|in:Y5LbAN9ei6pgovLybld6Qmslrskm8h0eg6ErA7kYAFA', 
+            ]);
+        }elseif($request->input('case_national_id') !== null){
+            $validator = Validator::make($request->all(), [
+                'case_typer_id' => 'required|exists:users,id',
+                'case_name' => 'required',
+                'case_status' => 'required',
+                'case_national_id' => 'unique:cases,national_id|digits:14',
+                'access_code' => 'required|in:Y5LbAN9ei6pgovLybld6Qmslrskm8h0eg6ErA7kYAFA', 
+            ]);
+        }else{
+            $validator = Validator::make($request->all(), [
+                'case_typer_id' => 'required|exists:users,id',
+                'case_name' => 'required',
+                'case_status' => 'required',
+                'access_code' => 'required|in:Y5LbAN9ei6pgovLybld6Qmslrskm8h0eg6ErA7kYAFA', 
+            ]);
+        }
+
+        
         if(isset($request->case_debts_total)&&$request->case_debts_total > $sum_of_debts_stay){
             $validator->after(function($validator) {
             $validator->errors()->add('اجمال الديون ', 'case debts total must be less than or equal debts_stay ');
@@ -573,13 +591,35 @@ class CasesController extends Controller
         // var_dump($request->all());
         // die();
         
-        $validator = Validator::make($request->all(), [
-           // 'case_typer_id' => 'required|exists:users,id',
-            'case_name' => 'required',
-            'case_status' => 'required',
-            'case_national_id' => 'numeric|digits:14',
-            'case_phone'=>'digits:11',
-        ]);
+
+        if($request->input('case_national_id') !== null && $request->input('case_phone') !== null){
+            $validator = Validator::make($request->all(), [
+               // 'case_typer_id' => 'required|exists:users,id',
+                'case_name' => 'required',
+                'case_status' => 'required',
+                'case_national_id' => 'numeric|digits:14',
+                'case_phone'=>'digits:11',
+            ]);
+        }elseif($request->input('case_phone') !== null){
+            $validator = Validator::make($request->all(), [
+                'case_name' => 'required',
+                'case_status' => 'required',
+                'case_phone'=>'digits:11',
+            ]);
+        }elseif($request->input('case_national_id') !== null){
+            $validator = Validator::make($request->all(), [
+                'case_name' => 'required',
+                'case_status' => 'required',
+                'case_national_id' => 'numeric|digits:14',
+            ]);
+        }else{
+            $validator = Validator::make($request->all(), [
+                'case_name' => 'required',
+                'case_status' => 'required',
+            ]);
+        }
+
+
 
         if ($validator->fails()) {
             if(!Auth::check()){
