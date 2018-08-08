@@ -860,10 +860,21 @@
                 &blacktriangleleft; {{ $case->need_education }}
             </p>
             <p>
-                لا للجوع
+                اطمن
                 &blacktriangleleft; {{ $case->need_food }}
             </p>
 
+            <p>
+                مشروع صغير
+                &blacktriangleleft; {{ $case->case_need_project }}
+            </p>
+
+            @if($case->case_need_project == 'نعم')
+             <p>
+                ما هو المشروع ?
+                &blacktriangleleft; {{ $case->case_need_project_desc }}
+            </p>
+            @endif
             <hr>
 
             <h4>ملحوظات اضافية</h4>

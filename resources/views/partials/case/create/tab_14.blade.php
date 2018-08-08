@@ -45,7 +45,7 @@
     <div class="row">
         <div class="col-md-6">
             <div class="form-group">
-                {!! Form::label('case_need_food', 'لا للجوع') !!}
+                {!! Form::label('case_need_food', 'اطمن') !!}
                 {!! Form::select('case_need_food', ['نعم' => 'نعم', 'لا' => 'لا'], old('case_need_food') or null, array('placeholder' => 'لا شيء' , 'class' => 'form-control select2', 'style' => 'width:100%')) !!}
             </div>
         </div>
