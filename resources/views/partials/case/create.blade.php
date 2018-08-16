@@ -131,7 +131,7 @@
                 ملحوظات اضافية
               </a>
             </li>
-            <li>
+            <!-- <li>
               <a href="#tab_16" data-toggle="tab">
                 معلومات المراجعة
               </a>
@@ -150,7 +150,7 @@
               <a href="#tab_19" data-toggle="tab">
                 خيارات النشر
               </a>
-            </li>
+            </li> -->
           </ul>
         </div>
 
@@ -173,10 +173,10 @@
             @include('partials.case.create.tab_13')
             @include('partials.case.create.tab_14')
             @include('partials.case.create.tab_15')
-            @include('partials.case.create.tab_16')
+           <!--  @include('partials.case.create.tab_16')
             @include('partials.case.create.tab_17')
             @include('partials.case.create.tab_18')
-            @include('partials.case.create.tab_19')
+            @include('partials.case.create.tab_19') -->
 
           </div>
         </div>
