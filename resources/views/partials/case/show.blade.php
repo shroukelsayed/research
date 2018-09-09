@@ -38,15 +38,17 @@
             </p>
             <p>
                 المركز
-                &blacktriangleleft; {{ $case->city }}
+                &blacktriangleleft;<span id="city"> {{ $case->city }} </span>
+                <!-- <input type="text" name="city" id="city" value="{{$case->city}}"> -->
+                
             </p>
             <p>
                 القرية
-                &blacktriangleleft; {{ $case->district }}
+                &blacktriangleleft; <span id="district"> {{ $case->district }} </span>
             </p>
             <p>
                 التابع
-                &blacktriangleleft; {{ $case->following }}
+                &blacktriangleleft; <span id="following"> {{ $case->following }} </span>
             </p>
             <p>
                 التاريخ
@@ -890,6 +892,31 @@
     <script type="text/javascript">
         $(document).ready(function () {
             $('.btnPrint').printPage();
+
+            $.ajax({
+                url: '/get-city/{id}',
+                data: {'id': $("#city").text() },
+                success:function(data) {                 
+                    $("#city").text(data);
+                }
+            });
+
+            $.ajax({
+                url: '/get-district/{id}',
+                data: {'id': $("#district").text() },
+                success:function(data) {                 
+                    $("#district").text(data);
+                }
+            });
+
+
+            $.ajax({
+                url: '/get-following/{id}',
+                data: {'id': $("#following").text() },
+                success:function(data) {                 
+                    $("#following").text(data);
+                }
+            });
         })
     </script>
 @endsection

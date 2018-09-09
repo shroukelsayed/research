@@ -49,6 +49,12 @@ Route::group(['middleware' => 'auth'] , function (){
     //printing layout
     Route::get('cases/{id}/print', 'CasesController@printView')->name('case-print');
 
+
+    Route::get('get-city/{id}' , 'CasesController@getCity');
+    Route::get('get-district/{id}' , 'CasesController@getDistrict');
+    Route::get('get-following/{id}' , 'CasesController@getFollowing');
+
+
 });
 
 
