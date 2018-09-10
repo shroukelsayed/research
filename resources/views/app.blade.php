@@ -75,6 +75,19 @@
 										<a href="{{url('cases/filter')}}"><b>فلتره الإستمارات</b></a>
 									</ul>
 								</li>
+								<li>
+									<!-- <a href="#">
+										<span>
+										<i class="fa fa-menu-arrow pull-right"></i>
+											الإستمارات
+										</span>
+									</a>
+									<ul> -->
+										<a href="{{url('add-governorate')}}"><b>اضافة محافظة</b></a>
+										<!-- <a href="{{url('cases/create')}}"><b>اضافة إستمارة </b></a>
+										<a href="{{url('cases/filter')}}"><b>فلتره الإستمارات</b></a> -->
+									<!-- </ul> -->
+								</li>
 						</ul>
 					</nav>
 					<!-- MAIN MENU -->

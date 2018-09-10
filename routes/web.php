@@ -50,6 +50,11 @@ Route::group(['middleware' => 'auth'] , function (){
     Route::get('cases/{id}/print', 'CasesController@printView')->name('case-print');
 
 
+    Route::get('add-governorate' , 'HomeController@addGovernorate');
+    Route::post('add-governorate' , 'HomeController@storeGovernorate');
+
+
+
     Route::get('get-city/{id}' , 'CasesController@getCity');
     Route::get('get-district/{id}' , 'CasesController@getDistrict');
     Route::get('get-following/{id}' , 'CasesController@getFollowing');
