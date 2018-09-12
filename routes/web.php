@@ -51,7 +51,13 @@ Route::group(['middleware' => 'auth'] , function (){
 
 
     Route::get('add-governorate' , 'HomeController@addGovernorate');
-    Route::post('add-governorate' , 'HomeController@storeGovernorate');
+    Route::post('store-governorate' , 'HomeController@storeGovernorate');
+    Route::get('add-city' , 'HomeController@addCity');
+    Route::post('store-city' , 'HomeController@storeCity');
+    Route::get('add-district' , 'HomeController@addDistrict');
+    Route::post('store-district' , 'HomeController@storeDistrict');
+    Route::get('add-following' , 'HomeController@addFollowing');
+    Route::post('store-following' , 'HomeController@storeFollowing');
 
 
 

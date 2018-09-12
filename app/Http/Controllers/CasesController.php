@@ -19,6 +19,11 @@ use App\Support;
 use App\Debts;
 use App\CaseStatuses;
 
+use App\Governorate;
+use App\City;
+use App\District;
+use App\Following;
+
 class CasesController extends Controller
 {
 
@@ -47,7 +52,12 @@ class CasesController extends Controller
 
     public function create()
     {
-        return view('partials.case.create');
+        $govs = Governorate::pluck('name','code');
+        $cities = City::pluck('name','code');
+        $districts = District::pluck('name','code');
+        $followings = Following::pluck('name','code');
+
+        return view('partials.case.create',compact('govs','cities','districts','followings'));
     }
 
     public function edit($id)

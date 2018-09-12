@@ -76,17 +76,16 @@
 									</ul>
 								</li>
 								<li>
-									<!-- <a href="#">
-										<span>
-										<i class="fa fa-menu-arrow pull-right"></i>
-											الإستمارات
-										</span>
-									</a>
-									<ul> -->
-										<a href="{{url('add-governorate')}}"><b>اضافة محافظة</b></a>
-										<!-- <a href="{{url('cases/create')}}"><b>اضافة إستمارة </b></a>
-										<a href="{{url('cases/filter')}}"><b>فلتره الإستمارات</b></a> -->
-									<!-- </ul> -->
+									<a href="{{url('add-governorate')}}"><b>اضافة محافظة</b></a>
+								</li>
+								<li>
+									<a href="{{url('add-city')}}"><b>اضافة مركز</b></a>
+								</li>
+								<li>
+									<a href="{{url('add-district')}}"><b>اضافة قرية</b></a>
+								</li>
+								<li>
+									<a href="{{url('add-following')}}"><b>اضافة تابع</b></a>
 								</li>
 						</ul>
 					</nav>
