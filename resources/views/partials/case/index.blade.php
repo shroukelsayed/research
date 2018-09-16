@@ -25,7 +25,7 @@
                 <th>الباحث</th>
                 <th>تاريخ البحث</th>
 
-                <th>المحافظه</th>
+                <!-- <th>المحافظه</th> -->
                 {{--<th>حالة الاستماره</th>--}}
                 <th>رقم البحث</th>
                 {{--<th>تاريخ التنفيذ</th>--}}
@@ -53,7 +53,7 @@
 
             <td>{{ $case->researcher_name }}</td>
             <td>{{ $case->real_date }}</td>
-            <td>{{ $case->governorate }}</td>
+            <!-- <td>{{ $case->governorate }}</td> -->
             <td>{{ $case->id }}</td>
             <td>{{ $case->relationship_status }}</td>
               <!-- we will also add show, edit, and delete buttons -->

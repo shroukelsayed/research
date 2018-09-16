@@ -74,8 +74,13 @@ class CasesController extends Controller
 
         }
 
+        $govs = Governorate::pluck('name','code');
+        $cities = City::pluck('name','code');
+        $districts = District::pluck('name','code');
+        $followings = Following::pluck('name','code');
+
         // var_dump($case_status_date);die;
-        return view('partials.case.edit', compact('case','case_status','case_status_date'));
+        return view('partials.case.edit', compact('case','case_status','case_status_date','govs','cities','districts','followings'));
     }
 
 
@@ -1317,120 +1322,5 @@ class CasesController extends Controller
          return back();
     }
 
-    public function getCity( Request $request)
-    {
-
-        // $case = Cases::find($id);
-        // $case->delete();
-        $id = $request->input('id');
-
-
-        $city = '';
-
-        if($id == '1')
-            $city = 'أدفو    كود رقم  1';
-        elseif ($id == '2') 
-            $city = 'اطسا    كود رقم  2';
-        elseif ($id == '3') 
-            $city = 'الصف    كود رقم  3';
-        elseif ($id == '4') 
-            $city = 'بني سويف    كود رقم  4';
-        elseif ($id == '5') 
-            $city = 'نصر النوبة    كود رقم  5';
-        elseif ($id == '6') 
-            $city = 'اطا    كود رقم  6';
-        elseif ($id == '7') 
-            $city = 'اهنسيا    كود رقم  7';
-        elseif ($id == '8') 
-            $city = 'سمسطا    كود رقم 8';
-        elseif ($id == '9') 
-            $city = 'قنا    كود رقم  9';
-        elseif ($id == '10') 
-            $city = 'يوسف الصديق  كود رقم  10';
-        return $city;
-    }
-
-
     
-    public function getDistrict( Request $request)
-    {
-
-        $id = $request->input('id');
-
-        $district = '';
-
-        if($id == '1')
-            $district =  'الشودك   كود رقم  1';
-        elseif ($id == '2') 
-            $district = 'الشيخ على   كود رقم 2 ';
-        elseif ($id == '3') 
-            $district = 'الفويرة   كود رقم 3 ';
-        elseif ($id == '4') 
-            $district = 'القناوية   كود رقم 4 ';
-        elseif ($id == '5') 
-            $district = 'الكرملاوي   كود رقم 5 ';
-        elseif ($id == '6') 
-            $district = 'النزل   كود رقم 6 ';
-        elseif ($id == '7') 
-            $district = 'الها   كود رقم 7 ';
-        elseif ($id == '8') 
-            $district = 'بهنساوي   كود رقم 8 ';
-        elseif ($id == '9') 
-            $district = 'خليل بريك   كود رقم 9 ';
-        elseif ($id == '10') 
-            $district = 'سعيد بكير   كود رقم 10 ';
-        elseif ($id == '11') 
-            $district = 'شويش   كود رقم 11 ';
-        elseif ($id == '12') 
-            $district = 'عزبة الازهرى   كود رقم 12 ';
-        elseif ($id == '13') 
-            $district = 'عزبة الدكتور بهجت   كود رقم 13 ';
-        elseif ($id == '14') 
-            $district = 'عزبة بشرا الشرقية   كود رقم 14 ';
-        elseif ($id == '15') 
-            $district = 'غمازة الكبرى   كود رقم 15 ';
-        elseif ($id == '16') 
-            $district = 'كساب   كود رقم 16 ';
-        elseif ($id == '17') 
-            $district = 'ميانه كود رقم 17 ';
-        return $district;
-    }
-
-    public function getFollowing(Request $request)
-    {
-        $id = $request->input('id');
-
-        $following = '';
-
-        if($id == '1')
-            $following =  'الجوهرجى   كود رقم  1';
-        elseif ($id == '2') 
-            $following = 'الحجرى   كود رقم  2';
-        elseif ($id == '3') 
-            $following = 'الحجري   كود رقم  3';
-        elseif ($id == '4') 
-            $following = 'الدكتور بهجت   كود رقم  4';
-        elseif ($id == '5') 
-            $following = 'الصمدي   كود رقم  5';
-        elseif ($id == '6') 
-            $following = 'الوكيل   كود رقم  6';
-        elseif ($id == '7') 
-            $following = 'عزبة العرب   كود رقم  7';
-        elseif ($id == '8') 
-            $following = 'عزبة العمدة   كود رقم  8';
-        elseif ($id == '9') 
-            $following = 'عزبة القذافي   كود رقم  9';
-        elseif ($id == '10') 
-            $following = 'عزبة محمود   كود رقم  10';
-        elseif ($id == '11') 
-            $following = 'مطيريد   كود رقم  11';
-        elseif ($id == '12') 
-            $following = 'ميانة   كود رقم  12';
-        elseif ($id == '13') 
-            $following = 'وش الباب   كود رقم  13';
-        elseif ($id == '14') 
-            $following = 'يمانة   كود رقم  14';
-        
-        return $following;
-    }
 }

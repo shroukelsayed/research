@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use DB;
 
 use App\Governorate;
 use App\City;
@@ -119,5 +120,37 @@ class HomeController extends Controller
         $govs = District::pluck('name','code');
         return view('partials.add-following',compact('govs'));
     
+    }
+
+
+    public function getGovernorate( Request $request)
+    {
+
+        $governorate = DB::table('governorates')->where('code' , '=', $request->input('id'))->first();
+        return $governorate->name;
+    }
+
+
+    public function getCity( Request $request)
+    {
+
+        $city = DB::table('cities')->where('code' , '=', $request->input('id'))->first();
+        return $city->name;
+    }
+
+
+    
+    public function getDistrict( Request $request)
+    {
+
+        $district = DB::table('districts')->where('code' , '=', $request->input('id'))->first();
+        return $district->name;
+    }
+
+    public function getFollowing(Request $request)
+    {
+
+        $following = DB::table('followings')->where('code' , '=', $request->input('id'))->first();      
+        return $following->name;
     }
 }

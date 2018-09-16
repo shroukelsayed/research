@@ -61,9 +61,10 @@ Route::group(['middleware' => 'auth'] , function (){
 
 
 
-    Route::get('get-city/{id}' , 'CasesController@getCity');
-    Route::get('get-district/{id}' , 'CasesController@getDistrict');
-    Route::get('get-following/{id}' , 'CasesController@getFollowing');
+    Route::get('get-gov/{id}' , 'HomeController@getGovernorate');
+    Route::get('get-city/{id}' , 'HomeController@getCity');
+    Route::get('get-district/{id}' , 'HomeController@getDistrict');
+    Route::get('get-following/{id}' , 'HomeController@getFollowing');
 
 
 });

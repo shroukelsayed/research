@@ -34,7 +34,7 @@
             </p>
             <p>
                 المحافظة
-                &blacktriangleleft; {{ $case->governorate }}
+                &blacktriangleleft;<span id="gov"> {{ $case->governorate }}  </span>
             </p>
             <p>
                 المركز
@@ -892,6 +892,14 @@
     <script type="text/javascript">
         $(document).ready(function () {
             $('.btnPrint').printPage();
+
+            $.ajax({
+                url: '/get-gov/{id}',
+                data: {'id': $("#gov").text() },
+                success:function(data) {                 
+                    $("#gov").text(data);
+                }
+            });
 
             $.ajax({
                 url: '/get-city/{id}',
