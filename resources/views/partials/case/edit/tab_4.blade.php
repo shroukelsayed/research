@@ -150,7 +150,20 @@
                         </div>
                     </div>
                 </div>
-         
+                <div class="row">
+                <div class="col-md-6">
+                    <div id="inc4">
+                        <div class="form-group">
+                            {!! Form::label('inc4', 'حذف إبن') !!}<br>
+                                @if($key == 0)
+                                    <a href="#" class="btn btn-primary remove">-</a>
+                                @else
+                                    <a href="#" class="btn btn-primary remove" onclick='deleteChild("<?php echo $key; ?>",$(this))' >-</a>
+                                @endif
+                        </div>
+                    </div>
+                </div>
+            </div>
             <hr>
 
         </div>
@@ -296,6 +309,16 @@
                     </div>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div id="inc4">
+                        <div class="form-group">
+                            {!! Form::label('inc4', 'حذف إبن') !!}<br>
+                            <a href="#" class="btn btn-primary remove" >-</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <hr>
         </div>
     </div>
@@ -328,6 +351,11 @@
 
         $('.drawChild').last().next().next().remove();
 
+    }
+
+    function deleteChild(i,div){
+        // console.log(i);
+        div.closest(".child").remove();
     }
 
 </script>

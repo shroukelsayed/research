@@ -162,6 +162,17 @@
                     </div>
                 </div>
             </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div id="inc4">
+                        <div class="form-group">
+                            {!! Form::label('inc4', 'حذف إبن') !!}<br>
+                            <a href="#" class="btn btn-primary remove" hidden>-</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <hr>
         </div>
     </div>
@@ -191,7 +202,15 @@
 
         $('.drawRoomate').select2().last().attr('name','roommate_illness_type['+cloneIndex+'][]');
 
+        $('.roommate').last().find('.remove').show();
+        $('.roommate').last().find('.remove').attr('onclick','deleteRoomate('+cloneIndex+',$(this))');
+
         $('.drawRoomate').last().next().next().remove();
+    }
+
+    function deleteRoomate(i,div){
+        // console.log(i);
+        div.closest(".roommate").remove();
     }
 
 </script>

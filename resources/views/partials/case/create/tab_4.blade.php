@@ -144,6 +144,17 @@
                     </div>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div id="inc4">
+                        <div class="form-group">
+                            {!! Form::label('inc4', 'حذف إبن') !!}<br>
+                            <a href="#" class="btn btn-primary remove" hidden>-</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <hr>
         </div>
     </div>
@@ -164,14 +175,25 @@
     function drawChild(){
 
         var cloneIndex = $(".drawChild").length;
-        // console.log(cloneIndex);
+        console.log(cloneIndex);
 
         var newdiv = $('.child').first().clone().insertAfter('.child:last').find('input:text').val("").end().find('.child_age').val("").end();
         // $(newdiv).appendTo('#childs');
 
         $('.drawChild').select2().last().attr('name','child_illness_type['+cloneIndex+'][]');
+        
+        $('.child').last().find('.remove').show();
+        $('.child').last().find('.remove').attr('onclick','deleteChild('+cloneIndex+',$(this))');
+
 
         $('.drawChild').last().next().next().remove();
     }
+
+    function deleteChild(i,div){
+        // console.log(i);
+        div.closest(".child").remove();
+    }
+
+
 
 </script>

@@ -194,7 +194,20 @@
                         </div>
                     </div>
                 </div>
-           
+                <div class="row">
+                    <div class="col-md-6">
+                        <div id="inc4">
+                            <div class="form-group">
+                                {!! Form::label('inc4', 'حذف زوج/زوجه') !!}<br>
+                                @if($key == 0)
+                                    <a href="#" class="btn btn-primary remove">-</a>
+                                @else
+                                    <a href="#" class="btn btn-primary remove" onclick='deletePartner("<?php echo $key; ?>",$(this))' >-</a>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                </div>
             <hr>
         </div>
     </div>
@@ -374,6 +387,16 @@
                 </div>
             </div>
         </div>
+        <div class="row">
+                <div class="col-md-6">
+                    <div id="inc4">
+                        <div class="form-group">
+                            {!! Form::label('inc4', 'حذف زوج/زوجه') !!}<br>
+                            <a href="#" class="btn btn-primary remove" >-</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         <hr>
     </div>
     @endif
@@ -404,5 +427,11 @@
 
         $('.draw').last().next().next().remove();
     }
+
+    function deletePartner(i,div){
+        // console.log(i);
+        div.closest(".partner").remove();
+    }
+
 
 </script>

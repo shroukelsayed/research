@@ -183,6 +183,16 @@
                 </div>
             </div>
         </div>
+        <div class="row">
+                <div class="col-md-6">
+                    <div id="inc4">
+                        <div class="form-group">
+                            {!! Form::label('inc4', 'حذف إبن') !!}<br>
+                            <a href="#" class="btn btn-primary remove" hidden>-</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         <hr>
     </div>
     <div class="row">
@@ -212,8 +222,18 @@
 
         $('.draw').select2().last().attr('name','partner_illness_type['+cloneIndex+'][]');
 
+        $('.partner').last().find('.remove').show();
+        $('.partner').last().find('.remove').attr('onclick','deletePartner('+cloneIndex+',$(this))');
+
+
+
         $('.draw').last().next().next().remove();
 
+    }
+
+    function deletePartner(i,div){
+        // console.log(i);
+        div.closest(".partner").remove();
     }
 
 </script>

@@ -37,15 +37,10 @@ class HomeController extends Controller
     {
         $govs = Governorate::pluck('name','code');
         return view('partials.add-governorate',compact('govs'));
-    
     }
 
     public function storeGovernorate(Request $request)
     {
-
-        // var_dump($request->all());
-        // die();
-
         $governorate = new Governorate();
         $governorate->name = $request->input('name');
         $governorate->code = $request->input('code');
@@ -53,22 +48,16 @@ class HomeController extends Controller
 
         $govs = Governorate::pluck('name','code');
         return view('partials.add-governorate',compact('govs'));
-    
     }
 
     public function addCity()
     {
         $govs = Governorate::pluck('name','code');
         return view('partials.add-city',compact('govs'));
-    
     }
 
     public function storeCity(Request $request)
     {
-
-        // var_dump($request->all());
-        // die();
-
         $city = new City();
         $city->name = $request->input('name');
         $city->code = $request->input('code');
@@ -77,19 +66,16 @@ class HomeController extends Controller
 
         $govs = Governorate::pluck('name','code');
         return view('partials.add-city',compact('govs'));
-    
     }
 
     public function addDistrict()
     {
         $govs = City::pluck('name','code');
         return view('partials.add-district',compact('govs'));
-    
     }
 
     public function storeDistrict(Request $request)
     {
-
         $district = new District();
         $district->name = $request->input('name');
         $district->code = $request->input('code');
@@ -98,19 +84,16 @@ class HomeController extends Controller
 
         $govs = City::pluck('name','code');
         return view('partials.add-district',compact('govs'));
-    
     }
 
     public function addFollowing()
     {
         $govs = District::pluck('name','code');
         return view('partials.add-following',compact('govs'));
-    
     }
 
     public function storeFollowing(Request $request)
     {
-
         $following = new Following();
         $following->name = $request->input('name');
         $following->code = $request->input('code');
@@ -119,13 +102,11 @@ class HomeController extends Controller
 
         $govs = District::pluck('name','code');
         return view('partials.add-following',compact('govs'));
-    
     }
 
 
     public function getGovernorate( Request $request)
     {
-
         $governorate = DB::table('governorates')->where('code' , '=', $request->input('id'))->first();
         return $governorate->name;
     }
@@ -133,7 +114,6 @@ class HomeController extends Controller
 
     public function getCity( Request $request)
     {
-
         $city = DB::table('cities')->where('code' , '=', $request->input('id'))->first();
         return $city->name;
     }
@@ -142,14 +122,12 @@ class HomeController extends Controller
     
     public function getDistrict( Request $request)
     {
-
         $district = DB::table('districts')->where('code' , '=', $request->input('id'))->first();
         return $district->name;
     }
 
     public function getFollowing(Request $request)
     {
-
         $following = DB::table('followings')->where('code' , '=', $request->input('id'))->first();      
         return $following->name;
     }

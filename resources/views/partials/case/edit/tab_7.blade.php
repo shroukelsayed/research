@@ -407,7 +407,7 @@
 
         var c = $('.case_support_count').val();
         for (var x = 0; x < c ; x++) {
-            console.log($('#other_two_'+x).find('input:text').val());
+            // console.log($('#other_two_'+x).find('input:text').val());
             if($('#other_one_'+x).find('input:text').val() !== null && $('#other_one_'+x).find('input:text').val() != '')
                 $('#other_one_'+x).show();
             else 

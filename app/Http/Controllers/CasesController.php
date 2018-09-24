@@ -926,6 +926,17 @@ class CasesController extends Controller
                 }
         
             }
+
+            // Removing Partner while updating case -> by shrouk
+            if ( sizeof($partners) > count($request->partner_name)){
+                $c = sizeof($partners) - count($request->partner_name);
+                for ($j=0; $j < $c; $j++) { 
+                    $partner = Partners::find($partners[count($request->partner_name)+$j]->id);
+                    $partner->delete();
+                }
+                
+            }
+
         }elseif (sizeof($partners)==0 &&!is_null($request->partner_name) && !empty($request->partner_name)){
             for ($i = 0; $i < count($request->partner_name); $i++) {
                 if (!is_null($request->partner_name) && !empty($request->partner_name)){
@@ -971,6 +982,7 @@ class CasesController extends Controller
     private function updateChildrenData (Request $request , $caseId)
     {
         $children = Children::where('case_id', $caseId)->get();
+
         if(sizeof($children)>0){
             for ($i = 0; $i < count($request->child_name); $i++) {
                 if (!isset($children[$i])){    
@@ -1018,6 +1030,16 @@ class CasesController extends Controller
                     ]);
                 }
             }
+
+            // Removing Child while updating case -> by shrouk
+            if ( sizeof($children) > count($request->child_name)){
+                $c = sizeof($children) - count($request->child_name);
+                for ($j=0; $j < $c; $j++) { 
+                    $child = Children::find($children[count($request->child_name)+$j]->id);
+                    $child->delete();
+                }
+                
+            }
         }elseif (sizeof($children)==0 &&!is_null($request->child_name) && !empty($request->child_name)){
             for ($i = 0; $i < count($request->child_name); $i++) {
                 $child = Children::create([
@@ -1041,6 +1063,7 @@ class CasesController extends Controller
                    ]);
             }
         }
+
         
         return 'done children';
     }
@@ -1101,6 +1124,16 @@ class CasesController extends Controller
                         'need_operation' => $request->roommate_illness_need_operation[$i],
                     ]);
                 }
+            }
+
+            // Removing Rommate while updating case -> by shrouk
+            if ( sizeof($roommates) > count($request->roommate_name)){
+                $c = sizeof($roommates) - count($request->roommate_name);
+                for ($j=0; $j < $c; $j++) { 
+                    $partner = Roommates::find($roommates[count($request->roommate_name)+$j]->id);
+                    $partner->delete();
+                }
+                
             }
         }elseif (sizeof($roommates)==0 &&!is_null($request->roommate_name) && !empty($request->roommate_name)){
             for ($i = 0; $i < count($request->roommate_name); $i++) {
