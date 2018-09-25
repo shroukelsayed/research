@@ -206,13 +206,13 @@ class CasesController extends Controller
     {
          
         if (!is_null($request->case_name) && !empty($request->case_name)){
-            $support_count = 0 ;
-            if(!is_null($request->support_source_category)){
-                foreach ($request->support_source_category as $key => $value) {
-                    if(!is_null($value))
-                        $support_count ++;
-                }
-            }
+            // $support_count = 0 ;
+            // if(!is_null($request->support_source_category)){
+            //     foreach ($request->support_source_category as $key => $value) {
+            //         if(!is_null($value))
+            //             $support_count ++;
+            //     }
+            // }
 
             if (strpos($request->case_national_id_front, 'base64')) {
                
@@ -268,8 +268,8 @@ class CasesController extends Controller
                     'need_operation' => $request->case_need_operation,
                     'income_amount' => $request->case_income_amount,
                     'income_amount_category' => $request->case_income_amount_category,
-                    'income_source_count' => $request->case_income_source_count,
-                    'support_count' => $support_count,
+                    'income_source_count' => count($request->income_source_type),
+                    'support_count' => count($request->support_source_category),
                     'debts_total' => $request->case_debts_total,
                     'debts_total_range' => $request->case_debts_total_range,
                     'expenses_house_rent' => $request->case_expenses_house_rent,
@@ -309,7 +309,7 @@ class CasesController extends Controller
                     'assets_house_alternative_leave' => $request->case_assets_house_alternative_leave,
                     'assets_house_construction' => $request->case_assets_house_construction,
                     'assets_house_floors_count' => $request->case_assets_house_floors_count,
-                    'assets_house_rooms_count' => $request->case_assets_house_rooms_count,
+                    'assets_house_rooms_count' => count($request->room_type),
                     'has_bathroom' => $request->case_has_bathroom,
                     'bathroom_has_door' => $request->case_bathroom_has_door,
                     'bathroom_has_basin' => $request->case_bathroom_has_basin,
@@ -539,6 +539,7 @@ class CasesController extends Controller
      */
     private function storeSupportData (Request $request , $caseId)
     {
+        // var_dump($request->all());die;
         if(is_array($request->support_source_category ) && !empty($request->support_source_category)){
             for ($i = 0; $i < count($request->support_source_category); $i++) {
                 if ($request->support_source_category[$i]!==null && !empty($request->support_source_category)){
@@ -686,11 +687,11 @@ class CasesController extends Controller
     {
         
         if (!is_null($request->case_name) && !empty($request->case_name)){
-            $support_count = 0 ;
-            foreach ($request->support_source_category as $key => $value) {
-                if(!is_null($value))
-                    $support_count ++;
-            }
+            // $support_count = 0 ;
+            // foreach ($request->support_source_category as $key => $value) {
+            //     if(!is_null($value))
+            //         $support_count ++;
+            // }
             $case = Cases::find($id);
 
             $case->update([
@@ -724,8 +725,8 @@ class CasesController extends Controller
                 'need_operation' => $request->case_need_operation,
                 'income_amount' => $request->case_income_amount,
                 'income_amount_category' => $request->case_income_amount_category,
-                'income_source_count' => $request->case_income_source_count,
-                'support_count' => $support_count,
+                'income_source_count' => count($request->income_source_type),
+                'support_count' => count($request->support_source_category),
                 'debts_total' => $request->case_debts_total,
                 'debts_total_range' => $request->case_debts_total_range,
                 'expenses_house_rent' => $request->expenses_house_rent,
@@ -762,7 +763,7 @@ class CasesController extends Controller
                 'assets_house_alternative_leave' => $request->case_assets_house_alternative_leave,
                 'assets_house_construction' => $request->case_assets_house_construction,
                 'assets_house_floors_count' => $request->case_assets_house_floors_count,
-                'assets_house_rooms_count' => $request->case_assets_house_rooms_count,
+                'assets_house_rooms_count' => count($request->room_type),
                 'has_bathroom' => $request->case_has_bathroom,
                 'bathroom_has_door' => $request->case_bathroom_has_door,
                 'bathroom_has_basin' => $request->case_bathroom_has_basin,
@@ -1175,7 +1176,7 @@ class CasesController extends Controller
             for ($i = 0; $i < count($request->income_source_type); $i++) {
                 if (!isset($income[$i])){  
                     if (!is_null($request->income_source_type[$i])&& !empty($request->income_source_type)){
-                        $income = Income::create([
+                        $income1 = Income::create([
                             'case_id' => $caseId,
                             'source_type' => $request->income_source_type[$i],
                             'notes' => $request->income_notes[$i],
@@ -1193,6 +1194,17 @@ class CasesController extends Controller
                     ]);
                 }
             }
+
+            // Removing Income while updating case -> by shrouk
+            if ( sizeof($income) > count($request->income_source_type)){
+                $c = sizeof($income) - count($request->income_source_type);
+                for ($j=0; $j < $c; $j++) { 
+                    $income = Income::find($income[count($request->income_source_type)+$j]->id);
+                    $income->delete();
+                }
+                
+            }
+
         }elseif (sizeof($income)==0 &&!is_null($request->income_source_type) && !empty($request->income_source_type)){
             for ($i = 0; $i < count($request->income_source_type); $i++) {
                 $income = Income::create([
@@ -1218,7 +1230,7 @@ class CasesController extends Controller
             for ($i = 0; $i < count($request->support_source_category); $i++) {
                 if (!isset($support[$i])){  
                     if ($request->support_source_category[$i]!==null && !empty($request->support_source_category)){
-                        $support = Support::create([
+                        $support1 = Support::create([
                             'case_id' => $caseId,
                             'source_category' => ($request->support_source_category[$i] !== "أخرى") ? $request->support_source_category[$i] : $request->support_source_category_other[$i],
                             'source_name' => ($request->support_source_name[$i] !== "أخرى") ? $request->support_source_name[$i] : $request->support_source_name_other[$i],
@@ -1239,6 +1251,17 @@ class CasesController extends Controller
                     }
                 }
             }
+
+            // Removing Support while updating case -> by shrouk
+            if ( sizeof($support) > count($request->support_source_category)){
+                $c = sizeof($support) - count($request->support_source_category);
+                for ($j=0; $j < $c; $j++) { 
+                    $support = Support::find($support[count($request->support_source_category)+$j]->id);
+                    $support->delete();
+                }
+                
+            }
+
         }elseif (sizeof($support)==0 &&!is_null($request->support_source_category) && !empty($request->support_source_category)){
               for ($i = 0; $i < count($request->support_source_category); $i++) {
                 if ($request->support_source_category[$i]!==null && !empty($request->support_source_category)){
@@ -1261,12 +1284,11 @@ class CasesController extends Controller
     private function updateDebtsData (Request $request , $caseId)
     {
         $debts = Debts::where('case_id', $caseId)->get();
-
         if(sizeof($debts)>0){
             for ($i = 0; $i < count($request->debts_amount); $i++) {
                 if (!isset($debts[$i])){ 
                     if (!is_null($request->debts_amount[$i])&& !empty($request->debts_amount)){
-                        $debts = Debts::create([
+                        $debt = Debts::create([
                             'case_id' => $caseId,
                             'amount' => $request->debts_amount[$i],
                             'stay' => $request->debts_stay[$i],
@@ -1285,6 +1307,16 @@ class CasesController extends Controller
                         'monthly_amount' => $request->debts_monthly_amount[$i],
                     ]);
                 }
+            }
+
+            // Removing Debt while updating case -> by shrouk
+            if ( sizeof($debts) > count($request->debts_amount)){
+                $c = sizeof($debts) - count($request->debts_amount);
+                for ($j=0; $j < $c; $j++) { 
+                    $partner = Debts::find($debts[count($request->debts_amount)+$j]->id);
+                    $partner->delete();
+                }
+                
             }
         }elseif (sizeof($debts)==0 &&!is_null($request->debts_amount) && !empty($request->debts_amount)){
              for ($i = 0; $i < count($request->debts_amount); $i++) {
@@ -1331,6 +1363,16 @@ class CasesController extends Controller
                         'notes' => $request->room_notes[$i],
                     ]);
                 }
+            }
+
+            // Removing Room while updating case -> by shrouk
+            if ( sizeof($rooms) > count($request->room_type)){
+                $c = sizeof($rooms) - count($request->room_type);
+                for ($j=0; $j < $c; $j++) { 
+                    $room = Rooms::find($rooms[count($request->room_type)+$j]->id);
+                    $room->delete();
+                }
+                
             }
         }elseif (sizeof($rooms)==0 &&!is_null($request->room_type) && !empty($request->room_type)){
             for ($i = 0; $i < count($request->room_type); $i++) {

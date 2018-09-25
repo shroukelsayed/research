@@ -1,6 +1,6 @@
 <div id="tab_7" class="tab-pane">
     <h4>المساعدات</h4>
-    <div class="row">
+    <!-- <div class="row">
         <div class="col-md-6">
             <div class="form-group">
                 {!! Form::label('case_support_count', 'عدد المساعدات') !!}<br>
@@ -9,8 +9,8 @@
             </div>
         </div>
     </div> 
-
-    <div id="supports" hidden>
+ -->
+    <div id="supports">
         <div class="support">
             <h5>مصدر مساعده</h5>
             <div class="row">
@@ -102,7 +102,28 @@
                     </div>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div id="inc4">
+                        <div class="form-group">
+                            {!! Form::label('inc4', 'حذف مساعدة') !!}<br>
+                            <a href="#" class="btn btn-primary remove" hidden>-</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <hr>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div id="inc3">
+                <div class="form-group">
+                    {!! Form::label('inc3', 'أضف مساعدة') !!}<br>
+                    <a href="#" class="btn btn-primary" onclick="drawHelp()">+</a>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -111,7 +132,8 @@
 <script type="text/javascript">
     
     function drawHelp() {
-        var count = $('.case_support_count').val();
+        var cloneIndex = $(".support").length;
+        var count = cloneIndex+1;
         var i = 1;
         if(count != null && count > 0){
             $(".support").slice(1).remove();$("#supports").show();
@@ -128,6 +150,11 @@
                 $(".support").find('#other_four').last().attr('id','other_four_'+i).attr('name','other_four['+i+']').end();
                 i++;
             }
+
+            $('.support').last().find('.remove').show();
+            $('.support').last().find('.remove').attr('onclick','deleteSupport('+cloneIndex+',$(this))');
+
+
         }else{
             $(".support").slice(1).remove();
             $("#supports").hide();
@@ -136,14 +163,12 @@
 
     function drawOther(number,index,val) {
         // var cloneIndex = $(".support_source_category").data('index');
-
-        console.log(val);
         if(number == 1){
             if(index == 0){
-                    console.log("one");
+                    // console.log("one");
 
                 if(val == "أخرى"){
-                    console.log("one other");
+                    // console.log("one other");
                     $("#other_one").show();
                 }else{
                     $('#other_one').hide();
@@ -198,6 +223,11 @@
                 }
             }
         }
+    }
+
+    function deleteSupport(i,div){
+        // console.log(i);
+        div.closest(".support").remove();
     }
 
 </script>

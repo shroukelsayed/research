@@ -417,7 +417,7 @@
     function drawDiv(){
 
         var cloneIndex = $(".draw").length;
-        console.log(cloneIndex);
+        // console.log(cloneIndex);
 
         var newdiv = $('.partner').first().clone().insertAfter('.partner:last').find('input:text').val("").end();
 

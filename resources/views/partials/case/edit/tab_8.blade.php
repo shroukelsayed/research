@@ -20,12 +20,12 @@
         <div class="col-md-6">
             <div class="form-group">
                 {!! Form::label('add', 'أضف دين') !!}<br>
-                <a href="#" class="btn btn-primary" onclick="$('.debt').first().clone().appendTo('#debts');">+</a>
+                <a href="#" class="btn btn-primary" onclick="drawDebt()">+</a>
             </div>
         </div>
     </div>
     @if(sizeof($case->debts) >0)
-    @foreach($case->debts as $case->debt)
+    @foreach($case->debts as $key => $case->debt)
 
     <div id="debts">
         <div class="debt">
@@ -71,8 +71,22 @@
                     </div>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div id="inc4">
+                        <div class="form-group">
+                            {!! Form::label('inc4', 'حذف إبن') !!}<br>
+                                @if($key == 0)
+                                    <a href="#" class="btn btn-primary remove">-</a>
+                                @else
+                                    <a href="#" class="btn btn-primary remove" onclick='deleteDebt("<?php echo $key; ?>",$(this))' >-</a>
+                                @endif
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
         </div>
-        <hr>
       
     </div>
     @endforeach
@@ -120,8 +134,38 @@
                     </div>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div id="inc4">
+                        <div class="form-group">
+                            {!! Form::label('inc4', 'حذف إبن') !!}<br>
+                            <a href="#" class="btn btn-primary remove" >-</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
         </div>
     </div>
     @endif
 
 </div>
+
+<script type="text/javascript">
+
+    function drawDebt(){
+
+        // var cloneIndex = $(".debt").length;
+        // console.log(cloneIndex);
+
+        var newdiv = $('.debt').first().clone().insertAfter('.debt:last').find('input:text').val("").end();
+        // $('.debt').first().clone().appendTo('#debts');
+    }
+    
+
+    function deleteDebt(i,div){
+        // console.log(i);
+        div.closest(".debt").remove();
+    }
+
+</script>

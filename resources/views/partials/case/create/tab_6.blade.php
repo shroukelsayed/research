@@ -14,15 +14,15 @@
             </div>
         </div>
     </div>
-    <div class="row">
+    <!-- <div class="row">
         <div class="col-md-6">
             <div class="form-group">
                 {!! Form::label('case_income_source_count', 'عدد مصادر الدخل') !!}<br>
                 {!! Form::select('case_income_source_count', ['1' => '1', '2' => '2', '3' => '3', '4' => '4', '5' => '5'], old('case_income_source_count') or null, array('placeholder' => 'لا شيء', 'id' => 'all', 'class' => 'form-control', 'onchange' => 'if($(this).val() != null && $(this).val() > 0){$(".source").slice(1).remove();$("#sources").show();var max=$(this).val()-1;while(max--){$(".source").first().clone().appendTo("#sources");}}else{$(".source").slice(1).remove();$("#sources").hide();}')) !!}
             </div>
         </div>
-    </div>
-    <div id="sources" hidden>
+    </div> -->
+    <div id="sources">
         <div class="source">
             <h5>مصدر دخل</h5>
             <div class="row">
@@ -67,7 +67,53 @@
                     </div>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div id="inc4">
+                        <div class="form-group">
+                            {!! Form::label('inc4', 'حذف مصدر‏') !!}<br>
+                            <a href="#" class="btn btn-primary remove" hidden>-</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <hr>
         </div>
     </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div id="inc3">
+                <div class="form-group">
+                    {!! Form::label('inc3', 'أضف مصدر‏') !!}<br>
+                    <a href="#" class="btn btn-primary" onclick="drawDiv()">+</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>
+
+<script type="text/javascript">
+    
+    function drawDiv(){
+
+        var cloneIndex = $(".source").length;
+
+        var newdiv = $('.source').first().clone().insertAfter('.source:last').find('input:text').val("").end();
+
+        $('.source').last().find('.remove').show();
+        $('.source').last().find('.remove').attr('onclick','deleteSource('+cloneIndex+',$(this))');
+
+
+
+        $('.source').last().next().next().remove();
+
+    }
+
+    function deleteSource(i,div){
+        // console.log(i);
+        div.closest(".source").remove();
+    }
+
+</script>

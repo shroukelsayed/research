@@ -20,12 +20,13 @@
         <div class="col-md-6">
             <div class="form-group">
                 {!! Form::label('add', 'أضف دين') !!}<br>
-                <a href="#" class="btn btn-primary" onclick="$('#debt').first().clone().appendTo('#debts');$('#del').show();">+</a>
+                <a href="#" class="btn btn-primary" onclick="var cloneIndex = $('.debt').length; $('.debt').first().clone().appendTo('#debts');$('#del').show(); 
+                                $('.debt').last().find('.remove').show();$('.debt').last().find('.remove').attr('onclick','deleteDebt('+cloneIndex+',$(this))');">+</a>
             </div>
         </div>
     </div>
     <div id="debts">
-        <div id="debt">
+        <div class="debt">
             <h5>دين قسم فرعي</h5>
             <div class="row">
                 <div class="col-md-6">
@@ -67,6 +68,31 @@
                     </div>
                 </div>
             </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div id="inc4">
+                        <div class="form-group">
+                            {!! Form::label('inc4', 'حذف إبن') !!}<br>
+                            <a href="#" class="btn btn-primary remove" hidden>-</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <hr>
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+    
+   
+    function deleteDebt(i,div){
+        // console.log(i);
+        div.closest(".debt").remove();
+    }
+
+
+
+</script>
