@@ -1248,6 +1248,8 @@ class CasesController extends Controller
                             'type' => ($request->support_type[$i] !== "أخرى") ? $request->support_type[$i] : $request->support_type_other[$i],
                             'period' => ($request->support_period[$i] !== "أخرى") ? $request->support_period[$i] : $request->support_period_other[$i],
                         ]);
+                    }else{
+                        $support[$i]->delete();
                     }
                 }
             }
@@ -1259,7 +1261,6 @@ class CasesController extends Controller
                     $support = Support::find($support[count($request->support_source_category)+$j]->id);
                     $support->delete();
                 }
-                
             }
 
         }elseif (sizeof($support)==0 &&!is_null($request->support_source_category) && !empty($request->support_source_category)){
