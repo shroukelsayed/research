@@ -86,7 +86,7 @@
             <div id="inc3">
                 <div class="form-group">
                     {!! Form::label('inc3', 'أضف مصدر‏') !!}<br>
-                    <a href="#" class="btn btn-primary" onclick="drawDiv()">+</a>
+                    <a href="#" class="btn btn-primary" onclick="drawSource()">+</a>
                 </div>
             </div>
         </div>
@@ -96,10 +96,9 @@
 
 <script type="text/javascript">
     
-    function drawDiv(){
+    function drawSource(){
 
         var cloneIndex = $(".source").length;
-
         var newdiv = $('.source').first().clone().insertAfter('.source:last').find('input:text').val("").end();
 
         $('.source').last().find('.remove').show();

@@ -42,7 +42,6 @@ class CasesController extends Controller
         // dd( $assets_pets);
       
         return view('partials.case.show', compact('case'));
-
     }
 
     public function printView($id){

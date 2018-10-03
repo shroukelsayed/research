@@ -144,7 +144,7 @@
             <div id="inc4">
                 <div class="form-group">
                     {!! Form::label('inc4', 'أضف غرفه') !!}<br>
-                    <a href="#" class="btn btn-primary" onclick="drawDiv()">+</a>
+                    <a href="#" class="btn btn-primary" onclick="drawRoom()">+</a>
                 </div>
             </div>
         </div>
@@ -154,7 +154,7 @@
 
 <script type="text/javascript">
     
-    function drawDiv(){
+    function drawRoom(){
 
         var cloneIndex = $(".a_room").length;
 

@@ -405,7 +405,7 @@
             <div id="inc3">
                 <div class="form-group">
                     {!! Form::label('inc3', 'أضف زوج/زوجه') !!}<br>
-                    <a href="#" class="btn btn-primary" onclick="drawDiv()">+</a>
+                    <a href="#" class="btn btn-primary" onclick="drawPartner()">+</a>
                 </div>
             </div>
         </div>
@@ -414,7 +414,7 @@
 
 <script type="text/javascript">
     
-    function drawDiv(){
+    function drawPartner(){
 
         var cloneIndex = $(".draw").length;
         // console.log(cloneIndex);

@@ -151,7 +151,7 @@
             <div id="inc4">
                 <div class="form-group">
                     {!! Form::label('inc4', 'أضف مصدر‏') !!}<br>
-                    <a href="#" class="btn btn-primary" onclick="drawDiv()">+</a>
+                    <a href="#" class="btn btn-primary" onclick="drawSource()">+</a>
                 </div>
             </div>
         </div>
@@ -160,7 +160,7 @@
 
 <script type="text/javascript">
     
-    function drawDiv(){
+    function drawSource(){
 
         var cloneIndex = $(".source").length;
 
