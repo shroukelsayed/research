@@ -62,7 +62,6 @@ class CasesController extends Controller
     public function edit($id)
     {
         $case = Cases::find($id);
-        // var_dump($case);die();
         $case_status = array();
 
         $case_status_date = array();
@@ -70,7 +69,6 @@ class CasesController extends Controller
         foreach ($case->caseStatus as $key => $value) {
             array_push($case_status, $value->status);
             $case_status_date[$value->status][] = $value->date;
-
         }
 
         $govs = Governorate::pluck('name','code');

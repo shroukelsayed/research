@@ -64,7 +64,7 @@
             <div class="form-group">
                 {!! Form::label('case_governorate', 'المحافظة') !!}
                 {!! Form::select('case_governorate', $govs,
-                  old('case_governorate') or null, array('placeholder' => 'لا شيء' , 'class' => 'form-control select2')) !!}
+                  old('case_governorate') or null, array('placeholder' => 'لا شيء' , 'class' => 'form-control select2' ,'onchange' => 'getCities($(this).val())' )) !!}
             </div>
         </div>
     </div>
@@ -73,13 +73,13 @@
         <div class="col-md-6">
             <div class="form-group">
                 {!! Form::label('case_city', 'المركز') !!}
-                {!! Form::select('case_city',$cities, old('case_city') or null, array('placeholder' => 'لا شيء' , 'class' => 'form-control select2')) !!}
+                {!! Form::select('case_city',$cities, old('case_city') or null, array('placeholder' => 'لا شيء' , 'class' => 'form-control select2' ,'onchange' => 'getDistricts($(this).val())')) !!}
             </div>
         </div>
         <div class="col-md-6">
             <div class="form-group">
                 {!! Form::label('case_district', 'القرية') !!}
-                {!! Form::select('case_district', $districts, old('case_district') or null, array('placeholder' => 'لا شيء' , 'class' => 'form-control select2')) !!}
+                {!! Form::select('case_district', $districts, old('case_district') or null, array('placeholder' => 'لا شيء' , 'class' => 'form-control select2' ,'onchange' => 'getFollowings($(this).val())')) !!}
             </div>
         </div>
     </div>
@@ -88,7 +88,7 @@
         <div class="col-md-6">
             <div class="form-group">
                 {!! Form::label('case_following', 'التابع') !!}
-                {!! Form::select('case_following',$followings, old('case_following') or null, array('class' => 'form-control select2')) !!}
+                {!! Form::select('case_following',$followings, old('case_following') or null, array('placeholder' => 'لا شيء' ,'class' => 'form-control select2')) !!}
 
             </div>
         </div>
@@ -102,101 +102,148 @@
 </div>
 
 <script>
-  $(document).ready(function(){  
-    var i = 1;      
+    $(document).ready(function(){  
+        var i = 1;      
 
-    $("#case_status").on("select2:unselect", function (evt) {
+        $("#case_status").on("select2:unselect", function (evt) {
 
-        var element = evt.params.data.element;
-        var $element = $(element);
+            var element = evt.params.data.element;
+            var $element = $(element);
 
-        $("label:contains("+element.value+")").parents(".col-md-12").remove();
+            $("label:contains("+element.value+")").parents(".col-md-12").remove();
 
-    });
+        });
 
-    $("#case_status").on("select2:select", function (evt) {
-        var element = evt.params.data.element;
-        var $element = $(element);
-        
-        $element.detach();
-        $(this).append($element);
+        $("#case_status").on("select2:select", function (evt) {
+            var element = evt.params.data.element;
+            var $element = $(element);
+            
+            $element.detach();
+            $(this).append($element);
 
-        // when deselect an option delete refrence div
-        var unselected = [];
-        // var $sel = $(this),
-        // val = $(this).val(),
-        // $opts = $sel.children(),
-        // prevUnselected = $sel.data('unselected');
-        // // create array of currently unselected 
-        // var currUnselected = $opts.not(':selected').map(function() {
-        //   return this.value
-        // }).get();
-        // // see if previous data stored
-        // if (prevUnselected) {
-        //   var unselected = currUnselected.reduce(function(a, curr) {
-        //     if ($.inArray(curr, prevUnselected) == -1) {
-        //       a.push(curr)
-        //     }
-        //     return a
-        //   }, []);
-        //   // "unselected" is an array if it has length some were removed
-        //   if (unselected.length) {
-        //       $("label:contains("+unselected+")").parents(".col-md-12").remove();
-        //   }
-        // }
-        // $sel.data('unselected', currUnselected)
-        // console.log( unselected );
+            // when deselect an option delete refrence div
+            var unselected = [];
+            // var $sel = $(this),
+            // val = $(this).val(),
+            // $opts = $sel.children(),
+            // prevUnselected = $sel.data('unselected');
+            // // create array of currently unselected 
+            // var currUnselected = $opts.not(':selected').map(function() {
+            //   return this.value
+            // }).get();
+            // // see if previous data stored
+            // if (prevUnselected) {
+            //   var unselected = currUnselected.reduce(function(a, curr) {
+            //     if ($.inArray(curr, prevUnselected) == -1) {
+            //       a.push(curr)
+            //     }
+            //     return a
+            //   }, []);
+            //   // "unselected" is an array if it has length some were removed
+            //   if (unselected.length) {
+            //       $("label:contains("+unselected+")").parents(".col-md-12").remove();
+            //   }
+            // }
+            // $sel.data('unselected', currUnselected)
+            // console.log( unselected );
 
-        if ($(this).val() != null && $(this).val().length > 0 && unselected.length === 0) {
-            // get selectedValue name
-            var selectedValue = $("option:selected:last",this).val();
-            // prepare template
-            var template = `<div class="col-md-12 status-${i}">
-                                <span class="child-dates">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label>${selectedValue}</label>
-                                            <input type="date" name="status_date[${i}][]" class="form-control">
+            if ($(this).val() != null && $(this).val().length > 0 && unselected.length === 0) {
+                // get selectedValue name
+                var selectedValue = $("option:selected:last",this).val();
+                // prepare template
+                var template = `<div class="col-md-12 status-${i}">
+                                    <span class="child-dates">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>${selectedValue}</label>
+                                                <input type="date" name="status_date[${i}][]" class="form-control">
+                                            </div>
                                         </div>
+                                    </span>
+                                    <div class="col-md-6">
+                                        <button class="btn btn-block btn-success mt-25 add-new-date-input" data-index="${i}" data-status="${selectedValue}">إضافة تاريخ جديد لحالة [ ${selectedValue} ]</button>
                                     </div>
-                                </span>
-                                <div class="col-md-6">
-                                    <button class="btn btn-block btn-success mt-25 add-new-date-input" data-index="${i}" data-status="${selectedValue}">إضافة تاريخ جديد لحالة [ ${selectedValue} ]</button>
+                                </div>`;
+
+                // append date with selected value in [dates] container
+                $('.dates').append(template);
+                // $(".dates option[value='selectedValue']").remove();
+
+                i = i +1;
+            }
+        });
+
+        // add more date input for every status
+        $('.dates').on('click', '.add-new-date-input', function(e) {
+            // prevent Button Default to prevent submit form
+            e.preventDefault();
+            // get status name
+            var selectedValue = $(this).data('status');
+            // get index of this status in selectedValues ARRAY
+            var selectedIndex = $(this).data('index');
+            // prepaire child date template
+            var template = `<div class="col-md-6">
+                                <span class="remove-child-date-input"><i class="fa fa-times"></i></span>
+                                <div class="form-group">
+                                    <label>${selectedValue}</label>
+                                    <input type="date" name="status_date[${selectedIndex}][]" class="form-control">
                                 </div>
                             </div>`;
+            // append date in child date container
+            $(`.status-${selectedIndex} .child-dates`).append(template);
+        });
 
-            // append date with selected value in [dates] container
-            $('.dates').append(template);
-            // $(".dates option[value='selectedValue']").remove();
-
-            i = i +1;
-        }
-    });
-
-    // add more date input for every status
-    $('.dates').on('click', '.add-new-date-input', function(e) {
-        // prevent Button Default to prevent submit form
-        e.preventDefault();
-        // get status name
-        var selectedValue = $(this).data('status');
-        // get index of this status in selectedValues ARRAY
-        var selectedIndex = $(this).data('index');
-        // prepaire child date template
-        var template = `<div class="col-md-6">
-                            <span class="remove-child-date-input"><i class="fa fa-times"></i></span>
-                            <div class="form-group">
-                                <label>${selectedValue}</label>
-                                <input type="date" name="status_date[${selectedIndex}][]" class="form-control">
-                            </div>
-                        </div>`;
-        // append date in child date container
-        $(`.status-${selectedIndex} .child-dates`).append(template);
-    });
-
-    // remove child date input
-    $('.dates').on('click', '.remove-child-date-input', function() {
-        $(this).parents('.col-md-6').remove();
-    });  
+        // remove child date input
+        $('.dates').on('click', '.remove-child-date-input', function() {
+            $(this).parents('.col-md-6').remove();
+        });  
      
-  });
+    });
+
+    function getCities(gov_id) {        
+        $.ajax({
+            url: '/get-cities',
+            type: "GET",
+            data: {'governorate_id': gov_id},
+            success:function(data) {  
+                var model = $('#case_city');
+                model.empty();
+                $.each(data, function (index, element) {
+                    model.append("<option value='" + element.code + "'>" + element.name + "</option>");
+                });
+            }
+        });
+    }
+
+    function getDistricts(city_id) {        
+        $.ajax({
+            url: '/get-districts',
+            type: "GET",
+            data: {'city_id': city_id},
+            success:function(data) {  
+                var model = $('#case_district');
+                model.empty();
+                $.each(data, function (index, element) {
+                    model.append("<option value='" + element.code + "'>" + element.name + "</option>");
+                });
+            }
+        });
+    }
+
+    function getFollowings(district_id) {        
+        $.ajax({
+            url: '/get-followings',
+            type: "GET",
+            data: {'district_id': district_id},
+            success:function(data) {  
+                var model = $('#case_following');
+                model.empty();
+                $.each(data, function (index, element) {
+                    model.append("<option value='" + element.code + "'>" + element.name + "</option>");
+                });
+            }
+        });
+    }
+
+
 </script>

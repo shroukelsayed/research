@@ -59,12 +59,14 @@ Route::group(['middleware' => 'auth'] , function (){
     Route::get('add-following' , 'HomeController@addFollowing');
     Route::post('store-following' , 'HomeController@storeFollowing');
 
-
-
     Route::get('get-gov/{id}' , 'HomeController@getGovernorate');
     Route::get('get-city/{id}' , 'HomeController@getCity');
     Route::get('get-district/{id}' , 'HomeController@getDistrict');
     Route::get('get-following/{id}' , 'HomeController@getFollowing');
+
+    Route::get('get-cities' , 'HomeController@getCities');
+    Route::get('get-districts' , 'HomeController@getDistricts');
+    Route::get('get-followings' , 'HomeController@getFollowings');
 
 
 });

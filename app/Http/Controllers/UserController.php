@@ -57,12 +57,12 @@ class UserController extends Controller
             return back()->withErrors('لم يتم حفظ لمستخدم بنجاح');  
         }
 
-        for ($i = 0; $i < count($request->roles); $i++) {
-         UserRole::create([
-            'user_id' => $store->id,
-            'role_id' => $request->roles[$i]
-        ]);
-     }
+     //    // for ($i = 0; $i < count($request->roles); $i++) {
+     //    //  UserRole::create([
+     //    //     'user_id' => $store->id,
+     //    //     'role_id' => $request->roles[$i]
+     //    // ]);
+     // }
 
  });
         return redirect($this->redirectLink)->with('message' , 'تم حفظ المستخدم بنجاح');
