@@ -134,15 +134,21 @@
 
 </div>
 
-    <script type="text/javascript">
+<script type="text/javascript">
         
-        $(".expenses").blur( function () {
-            var expenses_total = Number($(":input[name='case_expenses_total']").val());
-            if($(this).val() != ''){
-                expenses_total += Number($(this).val());
-            }
-            $(":input[name='case_expenses_total']").val(expenses_total);
-        });
+    $(".expenses").blur( function () {
+        var expenses_total = 0;
+        expenses_total  +=  Number($(":input[name='expenses_house_rent']").val()) + Number($(":input[name='expenses_farm_rent']").val()) + 
+                            Number($(":input[name='case_expenses_treatment']").val()) + Number($(":input[name='case_expenses_detergent']").val()) +
+                            Number($(":input[name='case_expenses_school_subscription']").val()) + Number($(":input[name='case_expenses_child_course']").val()) +
+                            Number($(":input[name='case_expenses_water_receipt']").val()) + Number($(":input[name='case_expenses_electricity_receipt']").val()) +
+                            Number($(":input[name='case_expenses_clothes']").val()) + Number($(":input[name='case_expenses_phone_credit']").val()) +
+                            Number($(":input[name='case_expenses_debts']").val()) + Number($(":input[name='case_expenses_transportation']").val()) +
+                            Number($(":input[name='case_expenses_pets_food']").val()) + Number($(":input[name='case_expenses_smoking']").val()) +
+                            Number($(":input[name='case_expenses_food']").val()) + Number($(":input[name='case_expenses_other']").val());
+
+        $(":input[name='case_expenses_total']").val(expenses_total);
+    });
 
 
-    </script>
+</script>
