@@ -32,7 +32,7 @@
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <div id="other_one_{{$key}}" name="other_one[{{$key}}]" hidden>
+                    <div id="other_one_{{$key}}" name="other_one[0]" hidden>
                         <div class="form-group">
                             {!! Form::label('support_source_category_other[]', 'أخرى') !!}
                             {!! Form::text('support_source_category_other[]',in_array($case->support->source_category,['جمعية خيرية' ,'أهل الخير', 'الأهل أو الأقارب'])? '' : $case->support->source_category , array('class' => 'form-control')) !!}
@@ -223,11 +223,8 @@
                     <div id="inc4">
                         <div class="form-group">
                             {!! Form::label('inc4', 'حذف مساعدة') !!}<br>
-                            @if($key == 0)
                                 <a href="#" class="btn btn-primary remove">-</a>
-                            @else
-                                <a href="#" class="btn btn-primary remove" onclick='deleteSupport("<?php echo $key; ?>",$(this))' >-</a>
-                            @endif
+                            
                         </div>
                     </div>
                 </div>

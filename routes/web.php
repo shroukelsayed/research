@@ -68,6 +68,11 @@ Route::group(['middleware' => 'auth'] , function (){
     Route::get('get-districts' , 'HomeController@getDistricts');
     Route::get('get-followings' , 'HomeController@getFollowings');
 
+    Route::post('edit-gov', 'HomeController@editGovernorate');
+    Route::post('edit-city', 'HomeController@editCity');
+    Route::post('edit-district', 'HomeController@editDistrict');
+    Route::post('edit-following', 'HomeController@editFollowig');
+
 
 });
 

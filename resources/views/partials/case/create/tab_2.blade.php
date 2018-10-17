@@ -12,7 +12,7 @@
             {{-- gender             bool[male,female] --}}
             <div class="form-group">
                 {!! Form::label('case_gender', 'النوع (ذكر-أنثى)') !!}<br>
-                {!! Form::select('case_gender', ['ذكر' => 'ذكر', 'أنثى' => 'أنثى'], old('case_gender') or null, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
+                {!! Form::select('case_gender', ['1' => 'ذكر', '0' => 'أنثى'], old('case_gender') or null, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
             </div>
         </div>
     </div>
@@ -54,7 +54,7 @@
             {{-- case_work_status       select[single,..] --}}
             <div class="form-group">
                 {!! Form::label('case_work_status', 'المهنة') !!}
-                {!! Form::select('case_work_status', ['لا يعمل' => 'لا يعمل', 'يعمل بشكل متقطع (المواسم/ الاجازات)' => 'يعمل بشكل متقطع (المواسم/ الاجازات)', 'يعمل بشكل دائم (سواء ارزقي او دائم)' => 'يعمل بشكل دائم (سواء ارزقي او دائم)', 'أخرى' => 'أخرى'], null, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
+                {!! Form::select('case_work_status', ['لا يعمل' => 'لا يعمل', 'متقطع' => 'يعمل بشكل متقطع (المواسم/ الاجازات)', 'دائم' => 'يعمل بشكل دائم (سواء ارزقي او دائم)', 'أخرى' => 'أخرى'], null, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
             </div>
         </div>
         <div class="col-md-6">
@@ -102,7 +102,7 @@
         <div class="col-md-6">
             <div class="form-group">
                 {!! Form::label('case_is_ill', 'يعاني من مرض؟') !!}<br>
-                {!! Form::select('case_is_ill', ['نعم' => 'نعم', 'لا' => 'لا'], old('case_is_ill') or null, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
+                {!! Form::select('case_is_ill', ['1' => 'نعم', '0' => 'لا'], old('case_is_ill') or null, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
             </div>
         </div>
     </div>
@@ -149,7 +149,7 @@
         <div class="col-md-6">
             <div class="form-group">
                 {!! Form::label('case_need_monthly_treatment', '‏هل تحتاج إلي علاج شهري') !!}<br>
-                {!! Form::select('case_need_monthly_treatment', ['نعم' => 'نعم', 'لا' => 'لا'], old('case_need_monthly_treatment') or null, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
+                {!! Form::select('case_need_monthly_treatment', ['1' => 'نعم', '0' => 'لا'], old('case_need_monthly_treatment') or null, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
            </div>
         </div>
     </div>
@@ -157,13 +157,13 @@
         <div class="col-md-6">
             <div class="form-group">
                 {!! Form::label('case_has_national_support', '‏‏هل تأخذ علاج على نفقة الدولة') !!}
-                {!! Form::select('case_has_national_support', ['نعم كل العلاج' => 'نعم كل العلاج', 'نعم  جزء من العلاج' => 'نعم  جزء من العلاج', 'لا' => 'لا'], old('case_has_national_support') or null, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
+                {!! Form::select('case_has_national_support',['كل' => 'نعم كل العلاج', 'جزء' => 'نعم  جزء من العلاج', 'لا' => 'لا'], old('case_has_national_support') or null, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
             </div>
         </div>
         <div class="col-md-6">
             <div class="form-group">
                 {!! Form::label('case_treatment_monthly_amount', '‏تكلفة العلاج الشهري') !!}
-                {!! Form::select('case_treatment_monthly_amount', ['أقل من 100 جنية' => 'أقل من 100 جنية', 'من 100 إلى أقل من 300' => 'من 100 إلى أقل من 300', 'من 300 إلى أقل من 600' => 'من 300 إلى أقل من 600', 'أكثر من 600' => 'أكثر من 600'], old('case_treatment_monthly_amount') or null, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
+                {!! Form::select('case_treatment_monthly_amount',['100' => 'أقل من 100 جنية', '300' => 'من 100 إلى أقل من 300', '600' => 'من 300 إلى أقل من 600', '700' => 'أكثر من 600'], old('case_treatment_monthly_amount') or null, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
             </div>
         </div>
     </div>
@@ -171,13 +171,13 @@
         <div class="col-md-6">
             <div class="form-group">
                 {!! Form::label('case_treatment_affordable', '‏هل تقوم بشراء العلاج ‏') !!}
-                {!! Form::select('case_treatment_affordable', ['نعم كل العلاج' => 'نعم كل العلاج', 'نعم  جزء من العلاج' => 'نعم  جزء من العلاج', 'لا' => 'لا'], old('case_treatment_affordable') or null, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
+                {!! Form::select('case_treatment_affordable', ['كل' => 'نعم كل العلاج', 'جزء' => 'نعم  جزء من العلاج', 'لا' => 'لا'], old('case_treatment_affordable') or null, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
             </div>
         </div>
         <div class="col-md-6">
             <div class="form-group">
                 {!! Form::label('case_need_operation', '‏هل تحتاج إلي عملية') !!}<br>
-                {!! Form::select('case_need_operation', ['نعم' => 'نعم', 'لا' => 'لا'], old('case_need_operation') or null, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
+                {!! Form::select('case_need_operation', ['1' => 'نعم', '0' => 'لا'], old('case_need_operation') or null, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
             </div>
         </div>
     </div>

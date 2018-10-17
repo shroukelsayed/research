@@ -63,7 +63,7 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         {!! Form::label('income_source_flow[]', 'نوع المصدر‏') !!}
-                        {!! Form::select('income_source_flow[]', ['غير مستقر' => 'غير مستقر', 'شبه مستقر' => 'شبه مستقر', 'مستقر' => 'مستقر'], old('income_source_flow[]') or null, array('placeholder' => 'لا شيء' , 'class' => 'form-control', 'style' => 'width:100%')) !!}
+                        {!! Form::select('income_source_flow[]', ['غير مستقر' => 'غير مستقر', 'شبه-مستقر' => 'شبه مستقر', 'مستقر' => 'مستقر'], old('income_source_flow[]') or null, array('placeholder' => 'لا شيء' , 'class' => 'form-control', 'style' => 'width:100%')) !!}
                     </div>
                 </div>
             </div>

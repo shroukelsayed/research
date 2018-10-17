@@ -58,8 +58,7 @@ class HomeController extends Controller
         $governorate->code = $new_gov_code;
         $governorate->save();
 
-        $govs = Governorate::all();
-        return view('partials.add-governorate',compact('govs'));
+        return $this->addGovernorate();
     }
 
     public function addCity()
@@ -89,8 +88,7 @@ class HomeController extends Controller
         $city->governorate_id = $request->input('governorate_id');
         $city->save();
 
-        $govs = Governorate::pluck('name','code');
-        return view('partials.add-city',compact('govs','cities'));
+        return $this->addCity();
     }
 
     public function addDistrict()
@@ -122,8 +120,7 @@ class HomeController extends Controller
         $district->city_id = $request->input('city_id');
         $district->save();
 
-        $cities = City::pluck('name','code');
-        return view('partials.add-district',compact('cities'));
+        return $this->addDistrict();
     }
 
     public function addFollowing()
@@ -155,8 +152,7 @@ class HomeController extends Controller
         $following->district_id = $request->input('district_id');
         $following->save();
 
-        $districts = District::pluck('name','code');
-        return view('partials.add-following',compact('districts','followings'));
+        return $this->addFollowing();
     }
 
 
@@ -207,5 +203,41 @@ class HomeController extends Controller
         return $followings;
     }
     
+    public function editGovernorate( Request $request)
+    {
+        // var_dump($request->all());die;
+        $gov = Governorate::find($request->input('id'));
+        $gov->name = $request->input('name');
+        $gov->save();
+        return $this->addGovernorate();
+    }
+
+    public function editCity( Request $request)
+    {
+        // var_dump($request->all());die;
+        $gov = City::find($request->input('id'));
+        $gov->name = $request->input('name');
+        $gov->save();
+        return $this->addCity();
+    }
+
+    public function editDistrict( Request $request)
+    {
+        // var_dump($request->all());die;
+        $gov = District::find($request->input('id'));
+        $gov->name = $request->input('name');
+        $gov->save();
+        return $this->addDistrict();
+    }
+
+    public function editFollowig( Request $request)
+    {
+        // var_dump($request->all());die;
+        $gov = Following::find($request->input('id'));
+        $gov->name = $request->input('name');
+        $gov->save();
+        return $this->addFollowing();
+    }
+
    
 }
