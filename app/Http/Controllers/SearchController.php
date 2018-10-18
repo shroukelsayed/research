@@ -16,12 +16,23 @@ use App\Support;
 use App\Debts;
 use App\Rooms;
 
+use App\Governorate;
+use App\City;
+use App\District;
+use App\Following;
+
 class SearchController extends Controller
 {
 
 	public function index()
 	{
-		return view('partials.search.index');
+
+        $govs = Governorate::pluck('name','code');
+        $cities = City::pluck('name','code');
+        $districts = District::pluck('name','code');
+        $followings = Following::pluck('name','code');
+
+		return view('partials.search.index',compact('govs','cities','districts','followings'));
 	}
 
 	function search(Request $request)

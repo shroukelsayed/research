@@ -9,7 +9,7 @@
         <div class="col-md-4">
             <div class="form-group">
                 {!! Form::label('case_gender', 'النوع (ذكر-أنثى)') !!}<br>
-                {!! Form::select('case_gender', ['ذكر' => 'ذكر', 'أنثى' => 'أنثى'], null, array('placeholder' => 'لا شيء' , 'class' => 'form-control select2 form_input', 'style' => 'width:100%')) !!}
+                {!! Form::select('case_gender', ['1' => 'ذكر', '0' => 'أنثى'], null, array('placeholder' => 'لا شيء' , 'class' => 'form-control select2 form_input', 'style' => 'width:100%')) !!}
             </div>
         </div>
         <div class="col-md-4">
@@ -36,7 +36,7 @@
         <div class="col-md-4">
             <div class="form-group">
                 {!! Form::label('case_education_status', 'الحاله التعليمية') !!}<br>
-                {!! Form::select('case_education_status', ['أمي (غير متعلم)' => 'أمي (غير متعلم)', 'يقرأ ويكتب' => 'يقرأ ويكتب', 'تعليم أساسي' => 'تعليم أساسي', 'متوسط' => 'متوسط', 'فوق متوسط' => 'فوق متوسط', 'جامعي' => 'جامعي'], null, array('placeholder' => 'لا شيء' , 'class' => 'form-control select2 form_input', 'style' => 'width:100%')) !!}
+                {!! Form::select('case_education_status',  ['دون سن التعليم' => 'دون سن التعليم', 'في الابتدائية (1-2-3)' => ' في الابتدائية (1-2-3)', 'في الابتدائية (4-5-6)' => 'في الابتدائية (4-5-6)', 'في الإعدادية' => 'في الإعدادية', 'في الثانوية/ دبلوم' => 'في الثانوية/ دبلوم', 'في الجامعة' => 'في الجامعة' ,'متسرب'=>'متسرب' , 'امي'=>'امي','‬يقرأ ويكتب' => '‬ ‫يقر‬أ‫ و يكتب' ,'انهي التعليم الأساسي (اعدادي)'=>'انهي التعليم الأساسي (اعدادي)','انهي التعليم الثانوي/ دبلوم/ الجامعي'=>'انهي التعليم الثانوي/ دبلوم/ الجامعي'], null, array('placeholder' => 'لا شيء' , 'class' => 'form-control select2 form_input', 'style' => 'width:100%')) !!}
             </div>
         </div>
     </div>

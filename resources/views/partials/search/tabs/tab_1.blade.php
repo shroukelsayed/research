@@ -22,40 +22,14 @@
         <div class="col-md-4">
             <div class="form-group">
                 {!! Form::label('case_governorate', 'المحافظة') !!}
-                {!! Form::select('case_governorate', ['القاهرة' => 'القاهرة',
-                  'الجيزة' => 'الجيزة',
-                  'الإسكندرية' => 'الإسكندرية',
-                  'القليوبية' => 'القليوبية',
-                  'الدقهلية' => 'الدقهلية',
-                  'الشرقية' => 'الشرقية',
-                  'الغربية' => 'الغربية',
-                  'المنوفية' => 'المنوفية',
-                  'البحيرة' => 'البحيرة',
-                  'كفر الشيخ' => 'كفر الشيخ',
-                  'دمياط' => 'دمياط',
-                  'بورسعيد' => 'بورسعيد',
-                  'الإسماعيلية' => 'الإسماعيلية',
-                  'السويس' => 'السويس',
-                  'الفيوم' => 'الفيوم',
-                  'بني سويف' => 'بني سويف',
-                  'المنيا' => 'المنيا',
-                  'أسيوط' => 'أسيوط',
-                  'سوهاج' => 'سوهاج',
-                  'قنا' => 'قنا',
-                  'الأقصر' => 'الأقصر',
-                  'أسوان' => 'أسوان',
-                  'شمال سيناء' => 'شمال سيناء',
-                  'جنوب سيناء' => 'جنوب سيناء',
-                  'مطروح' => 'مطروح',
-                  'البحر الاحمر' => 'البحر الاحمر',
-                  'الوادي الجديد' => 'الوادي الجديد'],
+                {!! Form::select('case_governorate', $govs,
                   null, array('placeholder' => 'لا شيء' , 'class' => 'form-control select2 form_input')) !!}
             </div>
         </div>
         <div class="col-md-4">
             <div class="form-group">
                 {!! Form::label('case_city', 'المركز') !!}
-                {!! Form::select('case_city', ['أدفو' => 'أدفو', 'اطسا' => 'اطسا', 'الصف' => 'الصف', 'بني سويف' => 'بني سويف', 'نصر النوبة' => 'نصر النوبة', 'اطا' => 'اطا', 'اهنسيا' => 'اهنسيا', 'سمسطا' => 'سمسطا', 'قنا' => 'قنا', 'يوسف الصديق' => 'يوسف الصديق'], null, array('placeholder' => 'لا شيء' , 'class' => 'form-control select2 form_input')) !!}
+                {!! Form::select('case_city', $cities, null, array('placeholder' => 'لا شيء' , 'class' => 'form-control select2 form_input')) !!}
             </div>
         </div>
     </div>
@@ -64,29 +38,13 @@
         <div class="col-md-4">
             <div class="form-group">
                 {!! Form::label('case_district', 'القرية') !!}
-                {!! Form::select('case_district', ['الشودك' => 'الشودك',
-                  'الشيخ علي' => 'الشيخ على',
-                  'الفويرة' => 'الفويرة',
-                  'القناوية' => 'القناوية',
-                  'الكرملاوي' => 'الكرملاوي',
-                  'النزل' => 'النزل',
-                  'الها' => 'الها',
-                  'بهنساوي' => 'بهنساوي',
-                  'خليل بريك' => 'خليل بريك',
-                  'سعيد بكير' => 'سعيد بكير',
-                  'شويش' => 'شويش',
-                  'عزبة الازهرى' => 'عزبة الازهرى',
-                  'عزبة الدكتور بهجت' => 'عزبة الدكتور بهجت',
-                  'عزبة بشرا الشرقية' => 'عزبة بشرا الشرقية',
-                  'غمازة الكبرى' => 'غمازة الكبرى',
-                  'كساب' => 'كساب',
-                  'ميانه' => 'ميانه'], null, array('placeholder' => 'لا شيء' , 'class' => 'form-control select2 form_input')) !!}
+                {!! Form::select('case_district', $districts, null, array('placeholder' => 'لا شيء' , 'class' => 'form-control select2 form_input')) !!}
             </div>
         </div>
         <div class="col-md-4">
             <div class="form-group">
                 {!! Form::label('case_following', 'التابع') !!}
-                {!! Form::text('case_following', null, array('class' => 'form-control form_input')) !!}
+                {!! Form::select('case_following', $followings, null, array('placeholder' => 'لا شيء' , 'class' => 'form-control select2 form_input')) !!}
             </div>
         </div>
         <div class="col-md-4">
