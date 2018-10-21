@@ -53,7 +53,7 @@
             {{-- work_status       select[single,..] --}}
             <div class="form-group">
                 {!! Form::label('case_work_status', 'المهنة') !!}
-                {!! Form::select('case_work_status', ['لا يعمل' => 'لا يعمل', 'متقطع' => 'يعمل بشكل متقطع (المواسم/ الاجازات)', 'دائم' => 'يعمل بشكل دائم (سواء ارزقي او دائم)', 'أخرى' => 'أخرى'], $case->work_status, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
+                {!! Form::select('case_work_status', ['لا يعمل' => 'لا يعمل', 'متقطع' => 'يعمل بشكل متقطع (المواسم/ الاجازات)', 'دائم' => 'يعمل بشكل دائم (سواء ارزقي او دائم)', 'other' => 'أخرى'], $case->work_status, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
             </div>
         </div>
         <div class="col-md-6">
@@ -153,7 +153,7 @@
         <div class="col-md-6">
             <div class="form-group">
                 {!! Form::label('case_illness_prevent_movement', '‏هل هذا المرض يعيق الحركة') !!}
-                {!! Form::select('case_illness_prevent_movement', ['نعم بشكل كلي' => 'نعم بشكل كلي', 'نعم بشكل جزئي' => 'نعم بشكل جزئي', 'لا' => 'لا'], $case->illness_prevent_movement, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
+                {!! Form::select('case_illness_prevent_movement', ['كلي' => 'نعم بشكل كلي', 'جزئي' => 'نعم بشكل جزئي', 'لا' => 'لا'], $case->illness_prevent_movement, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
             </div>
         </div>
         <div class="col-md-6">

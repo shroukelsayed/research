@@ -18,7 +18,7 @@
                     {{-- child_gender             []bool[male,female] --}}
                     <div class="form-group">
                         {!! Form::label('child_gender[]', 'النوع (ذكر-أنثى)') !!}<br>
-                        {!! Form::select('child_gender[]', ['ذكر' => 'ذكر', 'أنثى' => 'أنثى'], $case->child->gender, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
+                        {!! Form::select('child_gender[]', ['1' => 'ذكر', '0' => 'أنثى'], $case->child->gender, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
                     </div>
                 </div>
             </div>
@@ -51,7 +51,7 @@
                     {{-- child_edu_status       []select[single,..] --}}
                     <div class="form-group">
                         {!! Form::label('child_education_status[]', 'الحاله التعليمية') !!}
-                        {!! Form::select('child_education_status[]', ['دون سن التعليم' => 'دون سن التعليم', 'حضانة' => 'حضانة', 'في الابتدائية (1-2-3)' => ' في الابتدائية (1-2-3)', 'في الابتدائية (4-5-6)' => 'في الابتدائية (4-5-6)', 'في الإعدادية' => 'في الإعدادية', 'في الثانوية/ دبلوم' => 'في الثانوية/ دبلوم', 'في الجامعة' => 'في الجامعة' ,'متسرب'=>'متسرب' , 'امي'=>'امي','‬ ‫يقر‬أ‫ و يكتب' => '‬ ‫يقر‬أ‫ و يكتب' ,'انهي التعليم الأساسي (اعدادي)'=>'انهي التعليم الأساسي (اعدادي)','انهي التعليم الثانوي/ دبلوم/ الجامعي'=>'انهي التعليم الثانوي/ دبلوم/ الجامعي'], $case->child->education_status, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
+                        {!! Form::select('child_education_status[]', ['دون سن التعليم' => 'دون سن التعليم', 'حضانة' => 'حضانة', 'في الابتدائية (1-2-3)' => ' في الابتدائية (1-2-3)', 'في الابتدائية (4-5-6)' => 'في الابتدائية (4-5-6)', 'في الاعدادية' => 'في الإعدادية', 'في الثانوية/ دبلوم' => 'في الثانوية/ دبلوم', 'في الجامعة' => 'في الجامعة' ,'متسرب'=>'متسرب' , 'امي'=>'امي','‬يقر‬أ‫ ويكتب' => '‬ ‫يقر‬أ‫ و يكتب' ,'انهي التعليم الأساسي (اعدادي)'=>'انهي التعليم الأساسي (اعدادي)','انهي التعليم الثانوي/ دبلوم/ الجامعي'=>'انهي التعليم الثانوي/ دبلوم/ الجامعي'], $case->child->education_status, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
                     </div>
                 </div>
             </div>
@@ -60,7 +60,7 @@
                     {{-- child_work_status       []select[single,..] --}}
                     <div class="form-group">
                         {!! Form::label('child_work_status[]', 'المهنة') !!}
-                        {!! Form::select('child_work_status[]', ['لا يعمل' => 'لا يعمل', 'يعمل بشكل متقطع (المواسم/ الاجازات)' => 'يعمل بشكل متقطع (المواسم/ الاجازات)', 'يعمل بشكل دائم (سواء ارزقي او دائم)' => 'يعمل بشكل دائم (سواء ارزقي او دائم)', 'أخرى' => 'أخرى'], $case->child->work_status, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
+                        {!! Form::select('child_work_status[]', ['لا يعمل' => 'لا يعمل', 'يعمل بشكل متقطع' => 'يعمل بشكل متقطع (المواسم/ الاجازات)', 'يعمل بشكل دائم' => 'يعمل بشكل دائم (سواء ارزقي او دائم)', 'other' => 'أخرى'], $case->child->work_status, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -75,7 +75,7 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         {!! Form::label('child_is_ill[]', 'يعاني من مرض؟') !!}<br>
-                        {!! Form::select('child_is_ill[]', ['نعم' => 'نعم', 'لا' => 'لا'], $case->child->is_ill, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
+                        {!! Form::select('child_is_ill[]', ['1' => 'نعم', '0' => 'لا'], $case->child->is_ill, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
                     </div>
                 </div>
             </div> 
@@ -112,13 +112,13 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             {!! Form::label('child_illness_prevent_movement[]', '‏هل هذا المرض يعيق الحركة') !!}
-                            {!! Form::select('child_illness_prevent_movement[]', ['نعم بشكل كلي' => 'نعم بشكل كلي', 'نعم بشكل جزئي' => 'نعم بشكل جزئي', 'لا' => 'لا'], $case->child->illness_prevent_movement, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
+                            {!! Form::select('child_illness_prevent_movement[]', ['كلي' => 'نعم بشكل كلي', 'جزئي' => 'نعم بشكل جزئي', 'لا' => 'لا'], $case->child->illness_prevent_movement, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             {!! Form::label('child_illness_need_monthly_support[]', '‏هل تحتاج إلي علاج شهري') !!}<br>
-                            {!! Form::select('child_illness_need_monthly_support[]', ['نعم' => 'نعم', 'لا' => 'لا'], $case->child->need_monthly_treatment, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
+                            {!! Form::select('child_illness_need_monthly_support[]', ['1' => 'نعم', '0' => 'لا'], $case->child->need_monthly_treatment, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
                         </div>
                     </div>
                 </div>
@@ -126,13 +126,13 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             {!! Form::label('child_illness_is_national_support[]', '‏‏هل تأخذ علاج على نفقة الدولة') !!}
-                            {!! Form::select('child_illness_is_national_support[]', ['نعم كل العلاج' => 'نعم كل العلاج', 'نعم  جزء من العلاج' => 'نعم  جزء من العلاج', 'لا' => 'لا'], $case->child->has_national_support, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
+                            {!! Form::select('child_illness_is_national_support[]', ['كل' => 'نعم كل العلاج', 'جزء' => 'نعم  جزء من العلاج', 'لا' => 'لا'], $case->child->has_national_support, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             {!! Form::label('child_illness_treatment_monthly_amount[]', '‏تكلفة العلاج الشهري') !!}
-                            {!! Form::select('child_illness_treatment_monthly_amount[]', ['أقل من 100 جنية' => 'أقل من 100 جنية', 'من 100 إلى أقل من 300' => 'من 100 إلى أقل من 300', 'من 300 إلى أقل من 600' => 'من 300 إلى أقل من 600', 'أكثر من 600' => 'أكثر من 600'], $case->child->treatment_monthly_amount, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
+                            {!! Form::select('child_illness_treatment_monthly_amount[]', ['100' => 'أقل من 100 جنية', '300' => 'من 100 إلى أقل من 300', '600' => 'من 300 إلى أقل من 600', '700' => 'أكثر من 600'], $case->child->treatment_monthly_amount, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
                         </div>
                     </div>
                 </div>
@@ -140,13 +140,13 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             {!! Form::label('child_illness_affordable[]', '‏هل تقوم بشراء العلاج ‏') !!}
-                            {!! Form::select('child_illness_affordable[]', ['نعم كل العلاج' => 'نعم كل العلاج', 'نعم  جزء من العلاج' => 'نعم  جزء من العلاج', 'لا' => 'لا'], $case->child->treatment_affordable, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
+                            {!! Form::select('child_illness_affordable[]', ['كل' => 'نعم كل العلاج', 'جزء' => 'نعم  جزء من العلاج', 'لا' => 'لا'], $case->child->treatment_affordable, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             {!! Form::label('child_illness_need_operation[]', '‏هل تحتاج إلي عملية') !!}<br>
-                            {!! Form::select('child_illness_need_operation[]', ['نعم' => 'نعم', 'لا' => 'لا'], $case->child->need_operation, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
+                            {!! Form::select('child_illness_need_operation[]', ['1' => 'نعم', '0' => 'لا'], $case->child->need_operation, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
                         </div>
                     </div>
                 </div>
@@ -182,7 +182,7 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         {!! Form::label('child_gender[]', 'النوع (ذكر-أنثى)') !!}<br>
-                        {!! Form::select('child_gender[]', ['ذكر' => 'ذكر', 'أنثى' => 'أنثى'], old('child_gender[]') or null, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
+                        {!! Form::select('child_gender[]', ['1' => 'ذكر', '0' => 'أنثى'], old('child_gender[]') or null, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
                     </div>
                 </div>
             </div>
@@ -212,7 +212,7 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         {!! Form::label('child_education_status[]', 'الحاله التعليمية') !!}
-                        {!! Form::select('child_education_status[]', ['أدون سن التعليم' => 'دون سن التعليم', 'في الابتدائية (1-2-3)' => ' في الابتدائية (1-2-3)', 'في الابتدائية (4-5-6)' => 'في الابتدائية (4-5-6)', 'في الإعدادية' => 'في الإعدادية', 'في الثانوية/ دبلوم' => 'في الثانوية/ دبلوم', 'في الجامعة' => 'في الجامعة' ,'متسرب'=>'متسرب' , 'امي'=>'امي','‬ ‫يقر‬أ‫ و يكتب' => '‬ ‫يقر‬أ‫ و يكتب' ,'انهي التعليم الأساسي (اعدادي)'=>'انهي التعليم الأساسي (اعدادي)','انهي التعليم الثانوي/ دبلوم/ الجامعي'=>'انهي التعليم الثانوي/ دبلوم/ الجامعي'], old('child_education_status[]') or null, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
+                        {!! Form::select('child_education_status[]', ['أدون سن التعليم' => 'دون سن التعليم', 'في الابتدائية (1-2-3)' => ' في الابتدائية (1-2-3)', 'في الابتدائية (4-5-6)' => 'في الابتدائية (4-5-6)', 'في الاعدادية' => 'في الإعدادية', 'في الثانوية/ دبلوم' => 'في الثانوية/ دبلوم', 'في الجامعة' => 'في الجامعة' ,'متسرب'=>'متسرب' , 'امي'=>'امي','‬ ‫يقر‬أ‫ و يكتب' => '‬ ‫يقر‬أ‫ و يكتب' ,'انهي التعليم الأساسي (اعدادي)'=>'انهي التعليم الأساسي (اعدادي)','انهي التعليم الثانوي/ دبلوم/ الجامعي'=>'انهي التعليم الثانوي/ دبلوم/ الجامعي'], old('child_education_status[]') or null, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
                     </div>
                 </div>
             </div>
@@ -220,7 +220,7 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         {!! Form::label('child_work_status[]', 'المهنة') !!}
-                        {!! Form::select('child_work_status[]', ['لا يعمل' => 'لا يعمل', 'يعمل بشكل متقطع (المواسم/ الاجازات)' => 'يعمل بشكل متقطع (المواسم/ الاجازات)', 'يعمل بشكل دائم (سواء ارزقي او دائم)' => 'يعمل بشكل دائم (سواء ارزقي او دائم)', 'أخرى' => 'أخرى'], old('child_work_status[]') or null, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
+                        {!! Form::select('child_work_status[]', ['لا يعمل' => 'لا يعمل', 'يعمل بشكل متقطع' => 'يعمل بشكل متقطع (المواسم/ الاجازات)', 'يعمل بشكل دائم' => 'يعمل بشكل دائم (سواء ارزقي او دائم)', 'other' => 'أخرى'], old('child_work_status[]') or null, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -234,7 +234,7 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         {!! Form::label('child_is_ill[]', 'يعاني من مرض؟') !!}<br>
-                        {!! Form::select('child_is_ill[]', ['نعم' => 'نعم', 'لا' => 'لا'], old('child_is_ill[]') or null, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
+                        {!! Form::select('child_is_ill[]', ['1' => 'نعم', '0' => 'لا'], old('child_is_ill[]') or null, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
                     </div>
                 </div>
             </div>
@@ -271,13 +271,13 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         {!! Form::label('child_illness_prevent_movement[]', '‏هل هذا المرض يعيق الحركة') !!}
-                        {!! Form::select('child_illness_prevent_movement[]', ['نعم بشكل كلي' => 'نعم بشكل كلي', 'نعم بشكل جزئي' => 'نعم بشكل جزئي', 'لا' => 'لا'], old('child_illness_prevent_movement[]') or null, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
+                        {!! Form::select('child_illness_prevent_movement[]', ['كلي' => 'نعم بشكل كلي', 'جزئي' => 'نعم بشكل جزئي', 'لا' => 'لا'], old('child_illness_prevent_movement[]') or null, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
                         {!! Form::label('child_illness_need_monthly_support[]', '‏هل تحتاج إلي علاج شهري') !!}<br>
-                        {!! Form::select('child_illness_need_monthly_support[]', ['نعم' => 'نعم', 'لا' => 'لا'], old('child_illness_need_monthly_support[]') or null, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
+                        {!! Form::select('child_illness_need_monthly_support[]', ['1' => 'نعم', '0' => 'لا'], old('child_illness_need_monthly_support[]') or null, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
                     </div>
                 </div>
             </div>
@@ -285,13 +285,13 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         {!! Form::label('child_illness_is_national_support[]', '‏‏هل تأخذ علاج على نفقة الدولة') !!}
-                        {!! Form::select('child_illness_is_national_support[]', ['نعم كل العلاج' => 'نعم كل العلاج', 'نعم  جزء من العلاج' => 'نعم  جزء من العلاج', 'لا' => 'لا'], old('child_illness_is_national_support[]') or null, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
+                        {!! Form::select('child_illness_is_national_support[]', ['كل' => 'نعم كل العلاج', 'جزء' => 'نعم  جزء من العلاج', 'لا' => 'لا'], old('child_illness_is_national_support[]') or null, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
                         {!! Form::label('child_illness_treatment_monthly_amount[]', '‏تكلفة العلاج الشهري') !!}
-                        {!! Form::select('child_illness_treatment_monthly_amount[]', ['أقل من 100 جنية' => 'أقل من 100 جنية', 'من 100 إلى أقل من 300' => 'من 100 إلى أقل من 300', 'من 300 إلى أقل من 600' => 'من 300 إلى أقل من 600', 'أكثر من 600' => 'أكثر من 600'], old('child_illness_treatment_monthly_amount[]') or null, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
+                        {!! Form::select('child_illness_treatment_monthly_amount[]', ['100' => 'أقل من 100 جنية', '300' => 'من 100 إلى أقل من 300', '600' => 'من 300 إلى أقل من 600', '700' => 'أكثر من 600'], old('child_illness_treatment_monthly_amount[]') or null, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
                     </div>
                 </div>
             </div>
@@ -299,13 +299,13 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         {!! Form::label('child_illness_affordable[]', '‏هل تقوم بشراء العلاج ‏') !!}
-                        {!! Form::select('child_illness_affordable[]', ['نعم كل العلاج' => 'نعم كل العلاج', 'نعم  جزء من العلاج' => 'نعم  جزء من العلاج', 'لا' => 'لا'], old('child_illness_affordable[]') or null, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
+                        {!! Form::select('child_illness_affordable[]', ['كل' => 'نعم كل العلاج', 'جزء' => 'نعم  جزء من العلاج', 'لا' => 'لا'], old('child_illness_affordable[]') or null, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
                         {!! Form::label('child_illness_need_operation[]', '‏هل تحتاج إلي عملية') !!}<br>
-                        {!! Form::select('child_illness_need_operation[]', ['نعم' => 'نعم', 'لا' => 'لا'], old('child_illness_need_operation[]') or null, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
+                        {!! Form::select('child_illness_need_operation[]', ['1' => 'نعم', '0' => 'لا'], old('child_illness_need_operation[]') or null, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
                     </div>
                 </div>
             </div>

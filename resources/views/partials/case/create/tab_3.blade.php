@@ -12,7 +12,7 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         {!! Form::label('partner_gender[]', 'النوع (ذكر-أنثى)') !!}<br>
-                        {!! Form::select('partner_gender[]', ['ذكر' => 'ذكر', 'أنثى' => 'أنثى'], old('partner_gender[]') or null, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
+                        {!! Form::select('partner_gender[]', ['1' => 'ذكر', '0' => 'أنثى'], old('partner_gender[]') or null, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
                     </div>
                 </div>
             </div>
@@ -45,7 +45,7 @@
                     {{-- partner_edu_status       []select[single,..] --}}
                     <div class="form-group">
                         {!! Form::label('partner_education_status[]', 'الحاله التعليمية') !!}
-                        {!! Form::select('partner_education_status[]', ['أدون سن التعليم' => 'دون سن التعليم', 'في الابتدائية (1-2-3)' => ' في الابتدائية (1-2-3)', 'في الابتدائية (4-5-6)' => 'في الابتدائية (4-5-6)', 'في الإعدادية' => 'في الإعدادية', 'في الثانوية/ دبلوم' => 'في الثانوية/ دبلوم', 'في الجامعة' => 'في الجامعة' ,'متسرب'=>'متسرب' , 'امي'=>'امي','‬ ‫يقر‬أ‫ و يكتب' => '‬ ‫يقر‬أ‫ و يكتب' ,'انهي التعليم الأساسي (اعدادي)'=>'انهي التعليم الأساسي (اعدادي)','انهي التعليم الثانوي/ دبلوم/ الجامعي'=>'انهي التعليم الثانوي/ دبلوم/ الجامعي'], null, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
+                        {!! Form::select('partner_education_status[]', ['أدون سن التعليم' => 'دون سن التعليم', 'في الابتدائية (1-2-3)' => ' في الابتدائية (1-2-3)', 'في الابتدائية (4-5-6)' => 'في الابتدائية (4-5-6)', 'في الإعدادية' => 'في الإعدادية', 'في الثانوية/ دبلوم' => 'في الثانوية/ دبلوم', 'في الجامعة' => 'في الجامعة' ,'متسرب'=>'متسرب' , 'امي'=>'امي','‬يقرأ ويكتب' => '‬ ‫يقر‬أ‫ و يكتب' ,'انهي التعليم الأساسي (اعدادي)'=>'انهي التعليم الأساسي (اعدادي)','انهي التعليم الثانوي/ دبلوم/ الجامعي'=>'انهي التعليم الثانوي/ دبلوم/ الجامعي'], null, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
                     </div>
                 </div>
             </div>
@@ -54,7 +54,7 @@
                     {{-- partner_work_status       []select[single,..] --}}
                     <div class="form-group">
                         {!! Form::label('partner_work_status[]', 'المهنة') !!}
-                        {!! Form::select('partner_work_status[]', ['لا يعمل' => 'لا يعمل', 'يعمل بشكل متقطع (المواسم/ الاجازات)' => 'يعمل بشكل متقطع (المواسم/ الاجازات)', 'يعمل بشكل دائم (سواء ارزقي او دائم)' => 'يعمل بشكل دائم (سواء ارزقي او دائم)', 'أخرى' => 'أخرى'], null, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
+                        {!! Form::select('partner_work_status[]',  ['لا يعمل' => 'لا يعمل', 'متقطع' => 'يعمل بشكل متقطع (المواسم/ الاجازات)', 'دائم' => 'يعمل بشكل دائم (سواء ارزقي او دائم)', 'other' => 'أخرى'], null, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -103,7 +103,7 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         {!! Form::label('partner_is_ill[]', 'يعاني من مرض؟') !!}<br>
-                        {!! Form::select('partner_is_ill[]', ['نعم' => 'نعم', 'لا' => 'لا'], old('partner_is_ill[]') or null, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
+                        {!! Form::select('partner_is_ill[]', ['1' => 'نعم', '0' => 'لا'], old('partner_is_ill[]') or null, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
                     </div>
                 </div>
             </div>
@@ -150,7 +150,7 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         {!! Form::label('partner_illness_need_monthly_treatment[]', '‏هل تحتاج إلي علاج شهري') !!}<br>
-                        {!! Form::select('partner_illness_need_monthly_treatment[]', ['نعم' => 'نعم', 'لا' => 'لا'], old('partner_illness_need_monthly_treatment[]') or null, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
+                        {!! Form::select('partner_illness_need_monthly_treatment[]', ['1' => 'نعم', '0' => 'لا'], old('partner_illness_need_monthly_treatment[]') or null, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
                     </div>
                 </div>
             </div>
@@ -158,13 +158,13 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         {!! Form::label('partner_illness_is_national_support[]', '‏‏هل تأخذ علاج على نفقة الدولة') !!}
-                        {!! Form::select('partner_illness_is_national_support[]', ['نعم كل العلاج' => 'نعم كل العلاج', 'نعم  جزء من العلاج' => 'نعم  جزء من العلاج', 'لا' => 'لا'], old('partner_illness_is_national_support[]') or null, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
+                        {!! Form::select('partner_illness_is_national_support[]', ['كل' => 'نعم كل العلاج', 'جزء' => 'نعم  جزء من العلاج', 'لا' => 'لا'], old('partner_illness_is_national_support[]') or null, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
                         {!! Form::label('partner_illness_treatment_monthly_amount[]', '‏تكلفة العلاج الشهري') !!}
-                        {!! Form::select('partner_illness_treatment_monthly_amount[]', ['أقل من 100 جنية' => 'أقل من 100 جنية', 'من 100 إلى أقل من 300' => 'من 100 إلى أقل من 300', 'من 300 إلى أقل من 600' => 'من 300 إلى أقل من 600', 'أكثر من 600' => 'أكثر من 600'], old('partner_illness_treatment_monthly_amount[]') or null, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
+                        {!! Form::select('partner_illness_treatment_monthly_amount[]', ['100' => 'أقل من 100 جنية', '300' => 'من 100 إلى أقل من 300', '600' => 'من 300 إلى أقل من 600', '700' => 'أكثر من 600'], old('partner_illness_treatment_monthly_amount[]') or null, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
                     </div>
                 </div>
             </div>
@@ -172,13 +172,13 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         {!! Form::label('partner_illness_affordable[]', '‏هل تقوم بشراء العلاج ‏') !!}
-                        {!! Form::select('partner_illness_affordable[]', ['نعم كل العلاج' => 'نعم كل العلاج', 'نعم  جزء من العلاج' => 'نعم  جزء من العلاج', 'لا' => 'لا'], null, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
+                        {!! Form::select('partner_illness_affordable[]', ['كل' => 'نعم كل العلاج', 'جزء' => 'نعم  جزء من العلاج', 'لا' => 'لا'], null, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
                         {!! Form::label('partner_illness_need_operation[]', '‏هل تحتاج إلي عملية') !!}<br>
-                        {!! Form::select('partner_illness_need_operation[]', ['نعم' => 'نعم', 'لا' => 'لا'], old('partner_illness_need_operation[]') or null, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
+                        {!! Form::select('partner_illness_need_operation[]', ['1' => 'نعم', '0' => 'لا'], old('partner_illness_need_operation[]') or null, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
                     </div>
                 </div>
             </div>

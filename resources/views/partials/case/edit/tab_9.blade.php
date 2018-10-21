@@ -121,7 +121,7 @@
         <div class="col-md-6">
             <div class="form-group">
                 {!! Form::label('case_expenses_total_category', 'اجمالى نفقات الأسرة (فئات)') !!}
-                {!! Form::select('case_expenses_total_category', ['أقل من 300 جنية' => 'أقل من 300 جنية', 'من 300 إلى أقل من 600' => 'من 300 إلى أقل من 600', 'من 600 إلى أقل من 900' => 'من 600 إلى أقل من 900', 'من 900 إلى أقل من 1200' => 'من 900 إلى أقل من 1200',  'من 1200 إلى  1500' => 'من 1200 إلى  1500', 'أكثر من 1500' => 'أكثر من 1500', 'أخرى' => 'أخرى'], $case->expenses_total_category, array('placeholder' => 'لا شيء' , 'class' => 'form-control select2', 'style' => 'width:100%')) !!}
+                {!! Form::select('case_expenses_total_category', ['300' => 'أقل من 300 جنية', '600' => 'من 300 إلى أقل من 600', '900' => 'من 600 إلى أقل من 900', '1200' => 'من 900 إلى أقل من 1200',  '1500' => 'من 1200 إلى  1500', '1600' => 'أكثر من 1500', 'other' => 'أخرى'], $case->expenses_total_category, array('placeholder' => 'لا شيء' , 'class' => 'form-control select2', 'style' => 'width:100%')) !!}
             </div>
         </div>
         <div class="col-md-6">

@@ -4,7 +4,7 @@
         <div class="col-md-6">
             <div class="form-group">
                 {!! Form::label('case_assets_house_type', 'أنت ساكن في') !!}
-                {!! Form::select('case_assets_house_type', ['منزل مستقل' => 'منزل مستقل', 'منزل شرك مع أسرة أخرى' => 'منزل شرك مع أسرة أخرى', 'شقة' => 'شقة'], $case->assets_house_type, array('placeholder' => 'لا شيء' , 'class' => 'form-control select2', 'style' => 'width:100%')) !!}
+                {!! Form::select('case_assets_house_type', ['مستقل' => 'منزل مستقل', 'شرك' => 'منزل شرك مع أسرة أخرى', 'شقة' => 'شقة'], $case->assets_house_type, array('placeholder' => 'لا شيء' , 'class' => 'form-control select2', 'style' => 'width:100%')) !!}
             </div>
         </div>
         <div class="col-md-6">
@@ -59,7 +59,7 @@
             <div class="col-md-6">
                 <div class="form-group">
                     {!! Form::label('case_assets_water_alternative', '‏في حالة عدم وجود عداد مياه فكيف تحصلون عليها؟') !!}
-                    {!! Form::select('case_assets_water_alternative', ['ملىء' => 'ملىء', 'طرمبه' => 'طرمبه', 'وصله من الشارع (كسر ماسوره)' => 'وصله من الشارع (كسر ماسوره)', 'وصله من بيت مجاور' => 'وصله من بيت مجاور'], $case->assets_water_alternative, array('placeholder' => 'لا شيء' , 'class' => 'form-control select2', 'style' => 'width:100%')) !!}
+                    {!! Form::select('case_assets_water_alternative', ['ملىء' => 'ملىء', 'طرمبه' => 'طرمبه', 'وصلة من الشارع' => 'وصله من الشارع (كسر ماسوره)', 'وصله من بيت مجاور' => 'وصله من بيت مجاور'], $case->assets_water_alternative, array('placeholder' => 'لا شيء' , 'class' => 'form-control select2', 'style' => 'width:100%')) !!}
                 </div>
             </div>
         </div>
@@ -84,7 +84,7 @@
         <div class="col-md-6" >
             <div class="form-group">
                 {!! Form::label('case_assets_pets', 'عندكوا مواشي/ طيور؟') !!}
-                {!! Form::select('case_assets_pets',  ['لا يوجد' => 'لا يوجد', 'طيور' => 'طيور', 'ماعز' => 'ماعز', 'إبل' => 'إبل', 'بقر / جاموس' => 'بقر / جاموس' ],json_decode($case->assets_pets), [ 'class' => 'form-control select2' ,'multiple'=>'multiple','name'=>'case_assets_pets[]','style' => 'width:100%','onchange' => 'if($(this).val()!="لا يوجد"){$("#pets_alternative").show();}else{$("#pets_alternative").hide();}']) !!}
+                {!! Form::select('case_assets_pets',  ['لا يوجد' => 'لا يوجد', 'طيور' => 'طيور', 'ماعز' => 'ماعز', 'إبل' => 'إبل', 'بقر' => 'بقر / جاموس' ],json_decode($case->assets_pets), [ 'class' => 'form-control select2' ,'multiple'=>'multiple','name'=>'case_assets_pets[]','style' => 'width:100%','onchange' => 'if($(this).val()!="لا يوجد"){$("#pets_alternative").show();}else{$("#pets_alternative").hide();}']) !!}
                  
             </div>
         </div>
@@ -102,7 +102,7 @@
         <div class="col-md-6">
             <div class="form-group">
                 {!! Form::label('case_assets_vehicle', 'انتوا عندكوا أي وسيلة انتقال؟') !!}
-                {!! Form::select('case_assets_vehicle', ['لا يوجد'=>'لا يوجد','حمار'=>'حمار','موتوسكل'=>'موتوسكل','تروسكل/ توك توك'=>'تروسكل/ توك توك','جرار'=>'جرار','سيارة'=>'سيارة'],  $case->assets_vehicle, array( 'class' => 'form-control select2', 'style' => 'width:100%','onchange' => 'if($(this).val()!="لا يوجد"){$("#vehicle_alternative").show();}else{$("#vehicle_alternative").hide();}')) !!}
+                {!! Form::select('case_assets_vehicle', ['لا'=>'لا يوجد','حمار'=>'حمار','موتوسكل'=>'موتوسكل','تروسكل'=>'تروسكل/ توك توك','جرار'=>'جرار','سيارة'=>'سيارة','other' => 'اخرى'],  $case->assets_vehicle, array( 'class' => 'form-control select2', 'style' => 'width:100%','onchange' => 'if($(this).val()!="لا يوجد"){$("#vehicle_alternative").show();}else{$("#vehicle_alternative").hide();}')) !!}
             </div>
         </div>
         <div id="vehicle_alternative" hidden>
@@ -149,15 +149,15 @@
         else
             $("#tamleek").hide();
 
-        if(($('#case_assets_electric_meter').val() != 'لا') || ($('#case_assets_electric_meter').val() != '') )
+        if($('#case_assets_electric_meter').val() != 'لا' && $('#case_assets_electric_meter').val() != '' )
             $("#electric_other").hide();
         else
             $("#electric_other").show();
 
         if($('#case_assets_water_meter').val() != 'لا' &&  $('#case_assets_water_meter').val() != '')
-            $("#water_meter").show();
-        else
             $("#water_meter").hide();
+        else
+            $("#water_meter").show();
 
         if($('#case_assets_farm').val() != 'لا يوجد' && $('#case_assets_farm').val() != '')
             $("#farm_space").show();
@@ -169,7 +169,7 @@
         else
             $("#pets_alternative").hide();
 
-        if($('#case_assets_vehicle').val() != 'لا يوجد' && $('#case_assets_vehicle').val() != '' )
+        if($('#case_assets_vehicle').val() != 'لا' && $('#case_assets_vehicle').val() != '' )
             $("#vehicle_alternative").show();
         else
             $("#vehicle_alternative").hide();

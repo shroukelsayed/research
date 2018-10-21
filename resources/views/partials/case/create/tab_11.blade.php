@@ -4,7 +4,7 @@
         <div class="col-md-6">
             <div class="form-group">
                 {!! Form::label('case_assets_house_construction', 'هل المنزل من؟') !!}
-                {!! Form::select('case_assets_house_construction', ['الطوب الاحمر' => 'الطوب الاحمر', 'البلوك' => 'البلوك', 'الطوب اللبن' => 'الطوب اللبن'], old('case_assets_house_construction') or  null, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
+                {!! Form::select('case_assets_house_construction', ['الطوب الأحمر' => 'الطوب الاحمر', 'البلوك' => 'البلوك', 'الطوب اللبن' => 'الطوب اللبن'], old('case_assets_house_construction') or  null, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
             </div>
         </div>
         <div class="col-md-6">
@@ -38,7 +38,7 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         {!! Form::label('room_roof_type[]', 'نوع السقف') !!}
-                        {!! Form::select('room_roof_type[]', ['مسلح' => 'مسلح', 'خشب' => 'خشب', 'صاج' => 'صاج', 'بوص أو جريد' => 'بوص أو جريد', 'بدون' => 'بدون'], old('room_roof_type[]') or null, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
+                        {!! Form::select('room_roof_type[]', ['مسلح' => 'مسلح', 'خشب' => 'خشب', 'صاج' => 'صاج', 'بوص' => 'بوص أو جريد', 'بدون' => 'بدون'], old('room_roof_type[]') or null, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
                     </div>
                 </div>
             </div>
