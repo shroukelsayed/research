@@ -92,7 +92,7 @@ class CasesController extends Controller
      */
     public function store(Request $request)
     {
-        // var_dump($request->case_status);
+        // var_dump(count($request->case_status));
         // var_dump($request->status_date);
         // die;
        if(isset($request->debts_stay)){
@@ -141,7 +141,11 @@ class CasesController extends Controller
             // dd($sum_of_debts_stay = array_sum($request->debts_stay)) ;
         };
 
-        
+        if(count($request->case_status) == 1){
+            $validator->after(function($validator) {
+                $validator->errors()->add('case_status ', 'Case Status required');
+            });
+        }
 
         if ($validator->fails()) {
             if(!Auth::check()){
@@ -355,7 +359,7 @@ class CasesController extends Controller
      */
     private function storeStatusesData (Request $request , $caseId)
     {
-
+        
         $statusDates = array();
         foreach ($request->case_status as $status_key => $status_value) {
             foreach ($request->status_date as $date_key => $date_value) {
@@ -818,7 +822,8 @@ class CasesController extends Controller
                     $case->delete();
             //     }
             }
-
+            
+            $request->old_status_date = (is_array($request->old_status_date)) ? $request->old_status_date : [];
             $statusDates = array();
             foreach ($request->case_status as $status_key => $status_value) {
                 $new_date = (isset($request->status_date) && is_array($request->status_date))? array_merge($request->old_status_date,$request->status_date) : $request->old_status_date ;

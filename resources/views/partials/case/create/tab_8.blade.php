@@ -20,7 +20,8 @@
         <div class="col-md-6">
             <div class="form-group">
                 {!! Form::label('add', 'أضف دين') !!}<br>
-                <a href="#" class="btn btn-primary" onclick="var cloneIndex = $('.debt').length; $('.debt').first().clone().appendTo('#debts');$('#del').show(); 
+                <a href="#" class="btn btn-primary" onclick="
+                var cloneIndex = $('.debt').first().clone().insertAfter('.debt:last').find('input:text').val('').end();$('#del').show(); 
                                 $('.debt').last().find('.remove').show();$('.debt').last().find('.remove').attr('onclick','deleteDebt('+cloneIndex+',$(this))');">+</a>
             </div>
         </div>

@@ -9,7 +9,7 @@
         <div class="col-md-4">
             <div class="form-group">
                 {!! Form::label('partner_gender', 'النوع (ذكر-أنثى)') !!}<br>
-                {!! Form::select('partner_gender', ['ذكر' => 'ذكر', 'أنثى' => 'أنثى'], null, array('placeholder' => 'لا شيء' , 'class' => 'form-control select2 form_input', 'style' => 'width:100%')) !!}
+                {!! Form::select('partner_gender', ['1' => 'ذكر', '0' => 'أنثى'], null, array('placeholder' => 'لا شيء' , 'class' => 'form-control select2 form_input', 'style' => 'width:100%')) !!}
             </div>
         </div>
         <div class="col-md-4">
@@ -96,7 +96,7 @@
         <div class="col-md-4">
             <div class="form-group">
                 {!! Form::label('partner_illness_need_monthly_support', '‏هل تحتاج إلي علاج شهري') !!}<br>
-                {!! Form::select('partner_illness_need_monthly_support', ['نعم' => 'نعم', 'لا' => 'لا'], null, array('placeholder' => 'لا شيء' , 'class' => 'form-control select2 form_input', 'style' => 'width:100%')) !!}
+                {!! Form::select('partner_illness_need_monthly_support', ['1' => 'نعم', '0' => 'لا'], null, array('placeholder' => 'لا شيء' , 'class' => 'form-control select2 form_input', 'style' => 'width:100%')) !!}
             </div>
         </div>
     </div>
@@ -125,7 +125,7 @@
         <div class="col-md-4">
             <div class="form-group">
                 {!! Form::label('partner_illness_need_operation', '‏هل تحتاج إلي عملية') !!}<br>
-                {!! Form::select('partner_illness_need_operation', ['نعم' => 'نعم', 'لا' => 'لا'], null, array('placeholder' => 'لا شيء' , 'class' => 'form-control select2 form_input', 'style' => 'width:100%')) !!}
+                {!! Form::select('partner_illness_need_operation', ['1' => 'نعم', '0' => 'لا'], null, array('placeholder' => 'لا شيء' , 'class' => 'form-control select2 form_input', 'style' => 'width:100%')) !!}
             </div>
         </div>
     </div>
