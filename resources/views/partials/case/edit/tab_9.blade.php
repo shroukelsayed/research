@@ -4,13 +4,13 @@
         <div class="col-md-6">
             <div class="form-group">
                 {!! Form::label('expenses_house_rent', 'إيجار السكن') !!}
-                {!! Form::text('expenses_house_rent', $case->expenses_house_rent, array('class' => 'form-control expenses')) !!}
+                {!! Form::number('expenses_house_rent', $case->expenses_house_rent, array('class' => 'form-control expenses')) !!}
             </div>
         </div>
         <div class="col-md-6">
             <div class="form-group">
                 {!! Form::label('expenses_farm_rent', 'أيجار أرض زراعية') !!}
-                {!! Form::text('expenses_farm_rent', $case->expenses_farm_rent, array('class' => 'form-control expenses')) !!}
+                {!! Form::number('expenses_farm_rent', $case->expenses_farm_rent, array('class' => 'form-control expenses')) !!}
             </div>
         </div>
     </div>
@@ -18,13 +18,13 @@
         <div class="col-md-6">
             <div class="form-group">
                 {!! Form::label('case_expenses_treatment', 'العلاج والكشف') !!}
-                {!! Form::text('case_expenses_treatment', $case->expenses_treatment, array('class' => 'form-control expenses')) !!}
+                {!! Form::number('case_expenses_treatment', $case->expenses_treatment, array('class' => 'form-control expenses')) !!}
             </div>
         </div>
         <div class="col-md-6">
             <div class="form-group">
                 {!! Form::label('case_expenses_detergent', 'الصابون والمنظفات') !!}
-                {!! Form::text('case_expenses_detergent', $case->expenses_detergent, array('class' => 'form-control expenses')) !!}
+                {!! Form::number('case_expenses_detergent', $case->expenses_detergent, array('class' => 'form-control expenses')) !!}
             </div>
         </div>
     </div>
@@ -32,13 +32,13 @@
         <div class="col-md-6">
             <div class="form-group">
                 {!! Form::label('case_expenses_school_subscription', 'مصاريف المدارس') !!}
-                {!! Form::text('case_expenses_school_subscription', $case->expenses_school_subscription, array('class' => 'form-control expenses')) !!}
+                {!! Form::number('case_expenses_school_subscription', $case->expenses_school_subscription, array('class' => 'form-control expenses')) !!}
             </div>
         </div>
         <div class="col-md-6">
             <div class="form-group">
                 {!! Form::label('case_expenses_child_course', 'دروس الأبناء') !!}
-                {!! Form::text('case_expenses_child_course', $case->expenses_child_course, array('class' => 'form-control expenses')) !!}
+                {!! Form::number('case_expenses_child_course', $case->expenses_child_course, array('class' => 'form-control expenses')) !!}
             </div>
         </div>
     </div>
@@ -47,13 +47,13 @@
         <div class="col-md-6">
             <div class="form-group">
                 {!! Form::label('case_expenses_water_receipt', 'فاتورة المياه') !!}
-                {!! Form::text('case_expenses_water_receipt', $case->expenses_water_receipt, array('class' => 'form-control expenses')) !!}
+                {!! Form::number('case_expenses_water_receipt', $case->expenses_water_receipt, array('class' => 'form-control expenses')) !!}
             </div>
         </div>
         <div class="col-md-6">
             <div class="form-group">
                 {!! Form::label('case_expenses_electricity_receipt', 'فاتورة الكهرباء') !!}
-                {!! Form::text('case_expenses_electricity_receipt', $case->expenses_electricity_receipt, array('class' => 'form-control expenses')) !!}
+                {!! Form::number('case_expenses_electricity_receipt', $case->expenses_electricity_receipt, array('class' => 'form-control expenses')) !!}
             </div>
         </div>
     </div>
@@ -62,13 +62,13 @@
         <div class="col-md-6">
             <div class="form-group">
                 {!! Form::label('case_expenses_clothes', 'الملابس') !!}
-                {!! Form::text('case_expenses_clothes', $case->expenses_clothes, array('class' => 'form-control expenses')) !!}
+                {!! Form::number('case_expenses_clothes', $case->expenses_clothes, array('class' => 'form-control expenses')) !!}
             </div>
         </div>
         <div class="col-md-6">
             <div class="form-group">
                 {!! Form::label('case_expenses_phone_credit', 'رصيد التلفون') !!}
-                {!! Form::text('case_expenses_phone_credit', $case->expenses_phone_credit, array('class' => 'form-control expenses')) !!}
+                {!! Form::number('case_expenses_phone_credit', $case->expenses_phone_credit, array('class' => 'form-control expenses')) !!}
             </div>
         </div>
     </div>
@@ -77,13 +77,13 @@
         <div class="col-md-6">
             <div class="form-group">
                 {!! Form::label('case_expenses_debts', 'سداد ديون') !!}
-                {!! Form::text('case_expenses_debts', $case->expenses_debts, array('class' => 'form-control expenses')) !!}
+                {!! Form::number('case_expenses_debts', $case->expenses_debts, array('class' => 'form-control expenses')) !!}
             </div>
         </div>
         <div class="col-md-6">
             <div class="form-group">
                 {!! Form::label('case_expenses_transportation', 'المواصلات') !!}
-                {!! Form::text('case_expenses_transportation', $case->expenses_transportation, array('class' => 'form-control expenses')) !!}
+                {!! Form::number('case_expenses_transportation', $case->expenses_transportation, array('class' => 'form-control expenses')) !!}
             </div>
         </div>
     </div>
@@ -92,13 +92,13 @@
         <div class="col-md-6">
             <div class="form-group">
                 {!! Form::label('case_expenses_pets_food', 'أكل المواشي') !!}
-                {!! Form::text('case_expenses_pets_food', $case->expenses_pets_food, array('class' => 'form-control expenses')) !!}
+                {!! Form::number('case_expenses_pets_food', $case->expenses_pets_food, array('class' => 'form-control expenses')) !!}
             </div>
         </div>
         <div class="col-md-6">
             <div class="form-group">
                 {!! Form::label('case_expenses_smoking', 'التدخين') !!}
-                {!! Form::text('case_expenses_smoking', $case->expenses_smoking, array('class' => 'form-control expenses')) !!}
+                {!! Form::number('case_expenses_smoking', $case->expenses_smoking, array('class' => 'form-control expenses')) !!}
             </div>
         </div>
     </div>
@@ -107,13 +107,13 @@
         <div class="col-md-6">
             <div class="form-group">
                 {!! Form::label('case_expenses_food', 'إجمالي نفقات الطعام') !!}
-                {!! Form::text('case_expenses_food', $case->expenses_food, array('class' => 'form-control expenses')) !!}
+                {!! Form::number('case_expenses_food', $case->expenses_food, array('class' => 'form-control expenses')) !!}
             </div>
         </div>
         <div class="col-md-6">
             <div class="form-group">
                 {!! Form::label('case_expenses_other', 'نفقات أخرى (وضح)') !!}
-                {!! Form::text('case_expenses_other', $case->expenses_other, array('class' => 'form-control expenses')) !!}
+                {!! Form::number('case_expenses_other', $case->expenses_other, array('class' => 'form-control expenses')) !!}
             </div>
         </div>
     </div>
@@ -127,7 +127,7 @@
         <div class="col-md-6">
             <div class="form-group">
                 {!! Form::label('case_expenses_total', 'اجمالى النفقات') !!}
-                {!! Form::text('case_expenses_total', $case->expenses_total, array('class' => 'form-control')) !!}
+                {!! Form::number('case_expenses_total', $case->expenses_total, array('class' => 'form-control')) !!}
             </div>
         </div>
     </div>
@@ -146,7 +146,6 @@
                             Number($(":input[name='case_expenses_debts']").val()) + Number($(":input[name='case_expenses_transportation']").val()) +
                             Number($(":input[name='case_expenses_pets_food']").val()) + Number($(":input[name='case_expenses_smoking']").val()) +
                             Number($(":input[name='case_expenses_food']").val()) + Number($(":input[name='case_expenses_other']").val());
-
         $(":input[name='case_expenses_total']").val(expenses_total);
     });
 
