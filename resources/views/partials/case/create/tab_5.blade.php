@@ -14,7 +14,7 @@
                     {{-- roommate_gender             []bool[male,female] --}}
                     <div class="form-group">
                         {!! Form::label('roommate_gender[]', 'النوع (ذكر-أنثى)') !!}<br>
-                        {!! Form::select('roommate_gender[]', ['ذكر' => 'ذكر', 'أنثى' => 'أنثى'], old('roommate_gender[]') or null, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
+                        {!! Form::select('roommate_gender[]', ['1' => 'ذكر', '0' => 'أنثى'], old('roommate_gender[]') or null, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
                     </div>
                 </div>
             </div>
@@ -46,7 +46,7 @@
                     {{-- roommate_edu_status       []select[single,..] --}}
                     <div class="form-group">
                         {!! Form::label('roommate_education_status[]', 'الحاله التعليمية') !!}
-                        {!! Form::select('roommate_education_status[]',  ['أدون سن التعليم' => 'دون سن التعليم', 'في الابتدائية (1-2-3)' => ' في الابتدائية (1-2-3)', 'في الابتدائية (4-5-6)' => 'في الابتدائية (4-5-6)', 'في الإعدادية' => 'في الإعدادية', 'في الثانوية/ دبلوم' => 'في الثانوية/ دبلوم', 'في الجامعة' => 'في الجامعة' ,'متسرب'=>'متسرب' , 'امي'=>'امي','‬ ‫يقر‬أ‫ و يكتب' => '‬ ‫يقر‬أ‫ و يكتب' ,'انهي التعليم الأساسي (اعدادي)'=>'انهي التعليم الأساسي (اعدادي)','انهي التعليم الثانوي/ دبلوم/ الجامعي'=>'انهي التعليم الثانوي/ دبلوم/ الجامعي'], old('roommate_education_status[]') or null, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
+                        {!! Form::select('roommate_education_status[]',  ['دون سن التعليم' => 'دون سن التعليم', 'في الابتدائية (1-2-3)' => ' في الابتدائية (1-2-3)', 'في الابتدائية (4-5-6)' => 'في الابتدائية (4-5-6)', 'في الإعدادية' => 'في الإعدادية', 'في الثانوية/ دبلوم' => 'في الثانوية/ دبلوم', 'في الجامعة' => 'في الجامعة' ,'متسرب'=>'متسرب' , 'امي'=>'امي','‬يقرأ ويكتب' => '‬ ‫يقر‬أ‫ و يكتب' ,'انهي التعليم الأساسي (اعدادي)'=>'انهي التعليم الأساسي (اعدادي)','انهي التعليم الثانوي/ دبلوم/ الجامعي'=>'انهي التعليم الثانوي/ دبلوم/ الجامعي'], old('roommate_education_status[]') or null, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
                     </div>
                 </div>
             </div>
@@ -55,7 +55,7 @@
                     {{-- roommate_work_status       []select[single,..] --}}
                     <div class="form-group">
                         {!! Form::label('roommate_work_status[]', 'المهنة') !!}
-                        {!! Form::select('roommate_work_status[]', ['لا يعمل' => 'لا يعمل', 'يعمل بشكل متقطع (المواسم/ الاجازات)' => 'يعمل بشكل متقطع (المواسم/ الاجازات)', 'يعمل بشكل دائم (سواء ارزقي او دائم)' => 'يعمل بشكل دائم (سواء ارزقي او دائم)', 'أخرى' => 'أخرى'], old('roommate_work_status[]') or null, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
+                        {!! Form::select('roommate_work_status[]', ['لا يعمل' => 'لا يعمل', 'متقطع' => 'يعمل بشكل متقطع (المواسم/ الاجازات)', 'دائم' => 'يعمل بشكل دائم (سواء ارزقي او دائم)', 'other' => 'أخرى'], old('roommate_work_status[]') or null, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -70,7 +70,16 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         {!! Form::label('roommate_relativity[]', 'صلة القرابة') !!}
-                        {!! Form::select('roommate_relativity[]', ['الأم/الأب' => 'الأم/الأب', 'والد الزوج/والد الزوجة' => 'والد الزوج/والد الزوجة', 'زوجة الإبن/زوج الإبنة' => 'زوجة الإبن/زوج الإبنة', 'أخ/أخت' => 'أخ/أخت', 'أخ الزوجة/أخت الزوجة' => 'أخ الزوجة/أخت الزوجة', 'حفيد/حفيدة' => 'حفيد/حفيدة','ابن الأخ/الأخت'=>'ابن الأخ/الأخت', 'أخرى' => 'أخرى'], old('roommate_relativity[]') or null, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%','onchange' => 'if($(this).val()=="أخرى"){$("#roommate_relativity_other").show();}else{$("#roommate_relativity_other").hide();}')) !!}
+                        {!! Form::select('roommate_relativity[]', 
+                        ['الام_الاب ' => 'الأم/الأب',
+                         'والد-الزوجة_والدة-الزوجة' => 'والد الزوج/والد الزوجة',
+                         'زوجة-الابن_زوج-الابنة' => 'زوجة الإبن/زوج الإبنة',
+                         'أخ_أخت' => 'أخ/أخت',
+                         'أخ-الزوجة_أخت-الزوجة' => 'أخ الزوجة/أخت الزوجة',
+                         'حفيد_حفيدة' => 'حفيد/حفيدة'
+                         ,'ابن الأخ/الأخت'=>'ابن الأخ/الأخت',
+                         'أخرى' => 'أخرى']
+                        , old('roommate_relativity[]') or null, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%','onchange' => 'if($(this).val()=="أخرى"){$("#roommate_relativity_other").show();}else{$("#roommate_relativity_other").hide();}')) !!}
                     </div>
                 </div>
                 <div class="col-md-6" id="roommate_relativity_other" hidden>
@@ -82,7 +91,7 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         {!! Form::label('roommate_is_ill[]', 'يعاني من مرض؟') !!}<br>
-                        {!! Form::select('roommate_is_ill[]', ['نعم' => 'نعم', 'لا' => 'لا'], old('roommate_is_ill[]') or null, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
+                        {!! Form::select('roommate_is_ill[]', ['1' => 'نعم', '0' => 'لا'], old('roommate_is_ill[]') or null, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
                     </div>
                 </div>
                 
@@ -124,13 +133,13 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         {!! Form::label('roommate_illness_prevent_movement[]', '‏هل هذا المرض يعيق الحركة') !!}
-                        {!! Form::select('roommate_illness_prevent_movement[]', ['نعم بشكل كلي' => 'نعم بشكل كلي', 'نعم بشكل جزئي' => 'نعم بشكل جزئي', 'لا' => 'لا'], old('roommate_illness_prevent_movement[]') or null, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
+                        {!! Form::select('roommate_illness_prevent_movement[]', ['كلي' => 'نعم بشكل كلي', 'جزئي' => 'نعم بشكل جزئي', 'لا' => 'لا'], old('roommate_illness_prevent_movement[]') or null, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
                         {!! Form::label('roommate_illness_need_monthly_support[]', '‏هل تحتاج إلي علاج شهري') !!}<br>
-                        {!! Form::select('roommate_illness_need_monthly_support[]', ['نعم' => 'نعم', 'لا' => 'لا'], old('roommate_illness_need_monthly_support[]') or null, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
+                        {!! Form::select('roommate_illness_need_monthly_support[]', ['1' => 'نعم', '0' => 'لا'], old('roommate_illness_need_monthly_support[]') or null, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
                     </div>
                 </div>
             </div>
@@ -138,7 +147,7 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         {!! Form::label('roommate_illness_is_national_support[]', '‏‏هل تأخذ علاج على نفقة الدولة') !!}
-                        {!! Form::select('roommate_illness_is_national_support[]', ['نعم كل العلاج' => 'نعم كل العلاج', 'نعم  جزء من العلاج' => 'نعم  جزء من العلاج', 'لا' => 'لا'], old('roommate_illness_is_national_support[]') or null, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
+                        {!! Form::select('roommate_illness_is_national_support[]', ['كل' => 'نعم كل العلاج', 'جزء' => 'نعم  جزء من العلاج', 'لا' => 'لا'], old('roommate_illness_is_national_support[]') or null, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
                     </div>
                 </div>
                 <div class="col-md-6">

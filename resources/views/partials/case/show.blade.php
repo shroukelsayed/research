@@ -482,7 +482,25 @@
                     </p>
                     <p>
                         صلة القرابة
-                        &blacktriangleleft; {{ $case->roommate->relativity }}
+                        @if($case->roommate->relativity == 'الام_الاب ')
+                            &blacktriangleleft; الأم/الأب 
+                        @elseif($case->roommate->relativity == 'والد-الزوجة_والدة-الزوجة')
+                            &blacktriangleleft; والد الزوج/والد الزوجة
+                        @elseif($case->roommate->relativity == 'زوجة-الابن_زوج-الابنة')
+                            &blacktriangleleft; زوجة الإبن/زوج الإبنة
+                        @elseif($case->roommate->relativity == 'أخ_أخت')
+                            &blacktriangleleft; أخ/أخت
+                        @elseif($case->roommate->relativity == 'أخ-الزوجة_أخت-الزوجة')
+                            &blacktriangleleft; أخ الزوجة/أخت الزوجة
+                        @elseif($case->roommate->relativity == 'حفيد_حفيدة')
+                            &blacktriangleleft; حفيد/حفيدة
+                        @elseif($case->roommate->relativity == 'ابن الأخ/الأخت')
+                            &blacktriangleleft; ابن الأخ/الأخت
+                        @else
+                            &blacktriangleleft; أخرى 
+                        @endif
+
+
                     </p>
                     @if($case->roommate->is_ill == 1)
                         <h5>
