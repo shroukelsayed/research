@@ -79,10 +79,10 @@
                          'زوجة-الابن_زوج-الابنة' => 'زوجة الإبن/زوج الإبنة',
                          'أخ_أخت' => 'أخ/أخت',
                          'أخ-الزوجة_أخت-الزوجة' => 'أخ الزوجة/أخت الزوجة',
-                         'حفيد_حفيدة' => 'حفيد/حفيدة'
-                         ,'ابن الأخ/الأخت'=>'ابن الأخ/الأخت',
+                         'حفيد_حفيدة' => 'حفيد/حفيدة',
+                         'ابن الأخ/الأخت'=>'ابن الأخ/الأخت',
                          'other' => 'أخرى'], 
-                        (in_array($case->roommate->relativity['الام_الاب ' ,'والد-الزوجة_والدة-الزوجة' ,'زوجة-الابن_زوج-الابنة' ,'أخ_أخت' ,'أخ-الزوجة_أخت-الزوجة' ,'حفيد_حفيدة','ابن الأخ/الأخت','other']))? $case->roommate->relativity : "other" , array('placeholder' => 'لا شيء' , 'class' => 'form-control roommate_relativity', 'style' => 'width:100%','onchange' => 'if($(this).val()=="other"){$("#roommate_relativity_other").show();}else{$("#roommate_relativity_other").hide();}')) !!}
+                        (in_array($case->roommate->relativity,['الام_الاب ' ,'والد-الزوجة_والدة-الزوجة' ,'زوجة-الابن_زوج-الابنة' ,'أخ_أخت' ,'أخ-الزوجة_أخت-الزوجة' ,'حفيد_حفيدة','ابن الأخ/الأخت','other']))? $case->roommate->relativity : "other" , array('placeholder' => 'لا شيء' , 'class' => 'form-control roommate_relativity', 'style' => 'width:100%','onchange' => 'if($(this).val()=="other"){$("#roommate_relativity_other").show();}else{$("#roommate_relativity_other").hide();}')) !!}
                     </div>
                 </div>
                 <div class="col-md-6" id="roommate_relativity_other" hidden>
@@ -269,8 +269,8 @@
                          'زوجة-الابن_زوج-الابنة' => 'زوجة الإبن/زوج الإبنة',
                          'أخ_أخت' => 'أخ/أخت',
                          'أخ-الزوجة_أخت-الزوجة' => 'أخ الزوجة/أخت الزوجة',
-                         'حفيد_حفيدة' => 'حفيد/حفيدة'
-                         ,'ابن الأخ/الأخت'=>'ابن الأخ/الأخت',
+                         'حفيد_حفيدة' => 'حفيد/حفيدة',
+                         'ابن الأخ/الأخت'=>'ابن الأخ/الأخت',
                          'other' => 'أخرى'], null , array('placeholder' => 'لا شيء' , 'class' => 'form-control roommate_relativity', 'style' => 'width:100%','onchange' => 'if($(this).val()=="other"){$("#roommate_relativity_other").show();}else{$("#roommate_relativity_other").hide();}')) !!}
                     </div>
                 </div>
