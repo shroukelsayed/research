@@ -103,7 +103,7 @@ class CasesController extends Controller
             $validator = Validator::make($request->all(), [
                 'case_typer_id' => 'required|exists:users,id',
                 'case_name' => 'required',
-                'case_status' => 'required',
+                // 'case_status' => 'required',
                 'case_national_id' => 'unique:cases,national_id|digits:14',
                 'case_phone'=>'digits:11',
                 'access_code' => 'required|in:Y5LbAN9ei6pgovLybld6Qmslrskm8h0eg6ErA7kYAFA', 
@@ -112,7 +112,7 @@ class CasesController extends Controller
             $validator = Validator::make($request->all(), [
                 'case_typer_id' => 'required|exists:users,id',
                 'case_name' => 'required',
-                'case_status' => 'required',
+                // 'case_status' => 'required',
                 'case_phone'=>'digits:11',
                 'access_code' => 'required|in:Y5LbAN9ei6pgovLybld6Qmslrskm8h0eg6ErA7kYAFA', 
             ]);
@@ -120,7 +120,7 @@ class CasesController extends Controller
             $validator = Validator::make($request->all(), [
                 'case_typer_id' => 'required|exists:users,id',
                 'case_name' => 'required',
-                'case_status' => 'required',
+                // 'case_status' => 'required',
                 'case_national_id' => 'unique:cases,national_id|digits:14',
                 'access_code' => 'required|in:Y5LbAN9ei6pgovLybld6Qmslrskm8h0eg6ErA7kYAFA', 
             ]);
@@ -128,7 +128,7 @@ class CasesController extends Controller
             $validator = Validator::make($request->all(), [
                 'case_typer_id' => 'required|exists:users,id',
                 'case_name' => 'required',
-                'case_status' => 'required',
+                // 'case_status' => 'required',
                 'access_code' => 'required|in:Y5LbAN9ei6pgovLybld6Qmslrskm8h0eg6ErA7kYAFA', 
             ]);
         }
@@ -141,9 +141,9 @@ class CasesController extends Controller
             // dd($sum_of_debts_stay = array_sum($request->debts_stay)) ;
         };
 
-        if(count($request->case_status) == 1){
+        if(count($request->case_status) == 1 && $request->case_status[0] == null){
             $validator->after(function($validator) {
-                $validator->errors()->add('case_status ', 'Case Status required');
+                $validator->errors()->add('case_status', 'Case Status required');
             });
         }
 
