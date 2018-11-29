@@ -102,7 +102,7 @@
         <div class="col-md-6">
             <div class="form-group">
                 {!! Form::label('case_assets_vehicle', 'هل لديك أي وسيلة انتقال؟') !!}
-                {!! Form::select('case_assets_vehicle', ['لا'=>'لا يوجد','حمار'=>'حمار','موتوسكل'=>'موتوسكل','تروسكل'=>'تروسكل/ توك توك','جرار'=>'جرار','سيارة'=>'سيارة','other' => 'اخرى'], old('case_assets_vehicle') or null, array('placeholder' => 'لا شيء' , 'class' => 'form-control select2', 'style' => 'width:100%','onchange' => 'if($(this).val()!="لا يوجد"){$("#vehicle_alternative").show();}else{$("#vehicle_alternative").hide();}')) !!}
+                {!! Form::select('case_assets_vehicle', ['لا'=>'لا يوجد','حمار'=>'حمار','موتوسكل'=>'موتوسكل','تروسكل'=>'تروسكل/ توك توك','جرار'=>'جرار','سيارة'=>'سيارة','other' => 'اخرى'], old('case_assets_vehicle') or null, array('placeholder' => 'لا شيء' , 'class' => 'form-control select2', 'style' => 'width:100%','onchange' => 'if($(this).val()!="لا"){$("#vehicle_alternative").show();}else{$("#vehicle_alternative").hide();}')) !!}
             </div>
         </div>
         <div id="vehicle_alternative" hidden>

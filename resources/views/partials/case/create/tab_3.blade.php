@@ -95,8 +95,9 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         {!! Form::label('partner_phone[]', 'رقم الموبايل') !!}
-                  <input type="text" id="partner_phone[]" name="partner_phone[]" pattern="[0-9]{11}" class="form-control" />
-
+                  <!-- <input type="text" id="partner_phone" name="partner_phone[]" pattern="[0-9]{11}" class="form-control" /> -->
+                  {!! Form::text('partner_phone', old('partner_phone') or null, array('class' => 'form-control','maxlength' =>"11")) !!}
+                  
                 <!--         {!! Form::text('partner_phone[]', null, array('class' => 'form-control')) !!} -->
                     </div>
                 </div>
