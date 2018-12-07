@@ -9,8 +9,10 @@
         </div>
         <div class="col-md-6">
             <div class="form-group">
+
                 {!! Form::label('case_income_amount_category', 'اجمالى دخل الأسرة (فئات)') !!}
-                {!! Form::select('case_income_amount_category', ['300' => 'أقل من 300 جنية', '600' => 'من 300 إلى أقل من 600', '900' => 'من 600 إلى أقل من 900', '1200' => 'من 900 إلى أقل من 1200',  '1500' => 'من 1200 إلى  1500', '1600' => 'أكثر من 1500', 'أخرى' => 'أخرى'], old('case_income_amount_category') or null, array('placeholder' => 'لا شيء' , 'class' => 'form-control select2', 'style' => 'width:100%')) !!}
+                {!! Form::select('case_income_amount_category', ['أقل من 300 جنية' => 'أقل من 300 جنية', 'من 300 إلى أقل من 600' => 'من 300 إلى أقل من 600', 'من 600 إلى أقل من 900' => 'من 600 إلى أقل من 900', 'من 900 إلى أقل من 1200' => 'من 900 إلى أقل من 1200',  'من 1200 إلى  1500' => 'من 1200 إلى  1500', 'أكثر من 1500' => 'أكثر من 1500', 'أخرى' => 'أخرى'], old('case_income_amount_category') or null, array('placeholder' => 'لا شيء' , 'class' => 'form-control select2', 'style' => 'width:100%')) !!}
+
             </div>
         </div>
     </div>
@@ -30,20 +32,20 @@
                     <div class="form-group">
                         المصدر
                         <br>
-                        {!! Form::select('income_source_type[]', ['شغلك' => 'شغلك',
-                             'الزوجة' => 'شغل الزوجة',
-                             'ابنك' => 'شغل ابنك',
-                             'مواشي' => 'تربية مواشي/طيور',
-                             'محاصيل' => 'أرض زراعية (بيع محاصيل)',
-                             'مشروع' => 'مشروع صغير',
-                             'معاش' => 'معاش',
-                             'أقارب' => 'أقارب عايشين معاكوا في البيت',
-                             'بيع' => 'بيع ممتلكات',
-                             'مدخرات' => 'مدخرات',
-                             'جمعيات' => 'مساعدات مادية من جمعيات',
-                             'افراد' => 'مساعدات مادية من افراد',
-                             'other' => 'مصادر دخل أخرى',
-                             ], old('income_source_type[]') or null, array('placeholder' => 'لا شيء', 'class' => 'form-control', 'style' => 'width:100%')) !!}
+                        {!! Form::select('income_source_type[]',  ['شغلك' => 'شغلك',
+                         'شغل الزوجة' => 'شغل الزوجة',
+                         'شغل ابنك' => 'شغل ابنك',
+                         'تربية مواشي/طيور' => 'تربية مواشي/طيور',
+                         'أرض زراعية (بيع محاصيل)' => 'أرض زراعية (بيع محاصيل)',
+                         'مشروع صغير' => 'مشروع صغير',
+                         'معاش' => 'معاش',
+                         'أقارب عايشين معاكوا في البيت' => 'أقارب عايشين معاكوا في البيت',
+                         'بيع ممتلكات' => 'بيع ممتلكات',
+                         'مدخرات' => 'مدخرات',
+                         'مساعدات مادية من جمعيات' => 'مساعدات مادية من جمعيات',
+                         'مساعدات مادية من افراد' => 'مساعدات مادية من افراد',
+                         'مصادر دخل أخرى' => 'مصادر دخل أخرى',
+                         ], old('income_source_type[]') or null, array('placeholder' => 'لا شيء', 'class' => 'form-control', 'style' => 'width:100%')) !!}
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -63,7 +65,8 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         {!! Form::label('income_source_flow[]', 'نوع المصدر‏') !!}
-                        {!! Form::select('income_source_flow[]', ['غير-مستقر' => 'غير مستقر', 'شبه-مستقر' => 'شبه مستقر', 'مستقر' => 'مستقر'], old('income_source_flow[]') or null, array('placeholder' => 'لا شيء' , 'class' => 'form-control', 'style' => 'width:100%')) !!}
+                        
+                        {!! Form::select('income_source_flow[]', ['غير مستقر' => 'غير مستقر', 'شبه-مستقر' => 'شبه مستقر', 'مستقر' => 'مستقر'], old('income_source_flow[]') or null, array('placeholder' => 'لا شيء' , 'class' => 'form-control', 'style' => 'width:100%')) !!}
                     </div>
                 </div>
             </div>

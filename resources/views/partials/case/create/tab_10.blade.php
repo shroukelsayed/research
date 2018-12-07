@@ -4,7 +4,7 @@
         <div class="col-md-6">
             <div class="form-group">
                 {!! Form::label('case_assets_house_type', 'أنت ساكن في') !!}
-                {!! Form::select('case_assets_house_type',['مستقل' => 'منزل مستقل', 'شرك' => 'منزل شرك مع أسرة أخرى', 'شقة' => 'شقة'], old('case_assets_house_type') or null, array('placeholder' => 'لا شيء' , 'class' => 'form-control select2', 'style' => 'width:100%')) !!}
+                {!! Form::select('case_assets_house_type',['منزل مستقل' => 'منزل مستقل', 'منزل شرك مع أسرة أخرى' => 'منزل شرك مع أسرة أخرى', 'شقة' => 'شقة'], old('case_assets_house_type') or null, array('placeholder' => 'لا شيء' , 'class' => 'form-control select2', 'style' => 'width:100%')) !!}
             </div>
         </div>
         <div class="col-md-6">
@@ -59,7 +59,7 @@
             <div class="col-md-6">
                 <div class="form-group">
                     {!! Form::label('case_assets_water_alternative', '‏في حالة عدم وجود عداد مياه فكيف تحصلون عليها؟') !!}
-                    {!! Form::select('case_assets_water_alternative', ['ملىء' => 'ملىء', 'طرمبه' => 'طرمبه', 'وصله من الشارع' => 'وصله من الشارع (كسر ماسوره)', 'وصله من بيت مجاور' => 'وصله من بيت مجاور'], old('case_assets_water_alternative') or null, array('placeholder' => 'لا شيء' , 'class' => 'form-control select2', 'style' => 'width:100%')) !!}
+                    {!! Form::select('case_assets_water_alternative', ['ملىء' => 'ملىء', 'طرمبه' => 'طرمبه', 'وصله من الشارع (كسر ماسوره)' => 'وصله من الشارع (كسر ماسوره)', 'وصله من بيت مجاور' => 'وصله من بيت مجاور'], old('case_assets_water_alternative') or null, array('placeholder' => 'لا شيء' , 'class' => 'form-control select2', 'style' => 'width:100%')) !!}
                 </div>
             </div>
         </div>
@@ -84,7 +84,7 @@
         <div class="col-md-6" >
             <div class="form-group">
                 {!! Form::label('case_assets_pets', 'عندكوا مواشي/ طيور؟') !!}
-                {!! Form::select('case_assets_pets',  ['لا يوجد' => 'لا يوجد', 'طيور' => 'طيور', 'ماعز' => 'ماعز', 'إبل' => 'إبل', 'بقر / جاموس' => 'بقر / جاموس' ],old('case_assets_pets') or null, [ 'class' => 'form-control select2' ,'multiple'=>'multiple','name'=>'case_assets_pets[]' ,'style' => 'width:100%','onchange' => 'if($(this).val()!="لا يوجد"){$("#pets_alternative").show();}else{$("#pets_alternative").hide();}']) !!}
+                {!! Form::select('case_assets_pets',   ['لا يوجد' => 'لا يوجد', 'طيور' => 'طيور', 'ماعز' => 'ماعز', 'إبل' => 'إبل', 'بقر / جاموس' => 'بقر / جاموس' ],old('case_assets_pets') or null, [ 'class' => 'form-control select2' ,'multiple'=>'multiple','name'=>'case_assets_pets[]' ,'style' => 'width:100%','onchange' => 'if($(this).val()!="لا يوجد"){$("#pets_alternative").show();}else{$("#pets_alternative").hide();}']) !!}
                  
             </div>
         </div>
@@ -92,7 +92,7 @@
             <div class="col-md-6" >
                 <div class="form-group">
                     {!! Form::label('case_assets_pets_alternative', 'كيف حصلتوا عليهم؟') !!}
-                    {!! Form::select('case_assets_pets_alternative', ['لا يوجد' => 'لا يوجد', 'طيور' => 'طيور', 'ماعز' => 'ماعز', 'إبل' => 'إبل', 'بقر' => 'بقر / جاموس' ],old('case_assets_pets_alternative') or null, [ 'class' => 'form-control select2','name'=>'case_assets_pets_alternative','placeholder'=>'لا شئ' ,'style' => 'width:100%']) !!}
+                    {!! Form::select('case_assets_pets_alternative',['شراء' => 'شراء', 'مساعدة من جمعية/ اهل الخير' => 'مساعدة من جمعية/ اهل الخير', 'شرك' => 'شرك'],old('case_assets_pets_alternative') or null, [ 'class' => 'form-control select2','name'=>'case_assets_pets_alternative','placeholder'=>'لا شئ' ,'style' => 'width:100%']) !!}
                      
                 </div>
             </div>
@@ -102,7 +102,7 @@
         <div class="col-md-6">
             <div class="form-group">
                 {!! Form::label('case_assets_vehicle', 'هل لديك أي وسيلة انتقال؟') !!}
-                {!! Form::select('case_assets_vehicle', ['لا'=>'لا يوجد','حمار'=>'حمار','موتوسكل'=>'موتوسكل','تروسكل'=>'تروسكل/ توك توك','جرار'=>'جرار','سيارة'=>'سيارة','other' => 'اخرى'], old('case_assets_vehicle') or null, array('placeholder' => 'لا شيء' , 'class' => 'form-control select2', 'style' => 'width:100%','onchange' => 'if($(this).val()!="لا"){$("#vehicle_alternative").show();}else{$("#vehicle_alternative").hide();}')) !!}
+                {!! Form::select('case_assets_vehicle', ['لا يوجد'=>'لا يوجد','حمار'=>'حمار','موتوسكل'=>'موتوسكل','تروسكل/ توك توك'=>'تروسكل/ توك توك','جرار'=>'جرار','سيارة'=>'سيارة','اخرى'=>'اخرى'], old('case_assets_vehicle') or null, array('placeholder' => 'لا شيء' , 'class' => 'form-control select2', 'style' => 'width:100%','onchange' => 'if($(this).val()!="لا"){$("#vehicle_alternative").show();}else{$("#vehicle_alternative").hide();}')) !!}
             </div>
         </div>
         <div id="vehicle_alternative" hidden>

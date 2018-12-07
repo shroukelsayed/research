@@ -17,10 +17,10 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         {!! Form::label('support_source_category[]', 'القائم بالمساعده') !!}
-                        {!! Form::select('support_source_category[]', ['جمعية-خيرية' => 'جمعية خيرية',
-                         'أهل-الخير' => 'أهل الخير',
-                         'الأهل-الأقارب' => 'الأهل أو الأقارب',
-                         'other' => 'أخرى',
+                        {!! Form::select('support_source_category[]', ['جمعية خيرية' => 'جمعية خيرية',
+                         'أهل الخير' => 'أهل الخير',
+                         'الأهل أو الأقارب' => 'الأهل أو الأقارب',
+                         'أخرى' => 'أخرى',
                          ], old('support_source_category[]') or null, array('placeholder' => 'لا شيء' ,'class' => 'form-control support_source_category', 'style' => 'width:100%','onchange' => 'drawOther(1,0,$(this).val())')) !!}
                     </div>
                     
@@ -38,13 +38,13 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         {!! Form::label('support_source_name[]', 'اسم المصدر') !!}
-                        {!! Form::select('support_source_name[]', ['لا-أعلم' => 'جمعية خيرية',
-                         'مصر-الخير' => 'مصر الخير',
+                        {!! Form::select('support_source_name[]', ['لا أعلم' => 'جمعية خيرية',
+                         'مصر الخير' => 'مصر الخير',
                          'رساله' => 'رساله',
-                         'بنك-الطعام' => 'بنك الطعام',
+                         'بنك الطعام' => 'بنك الطعام',
                          'الأورمان' => 'الأورمان',
-                         'عمار-الأرض' => 'عمار الأرض',
-                         'other' => 'أخرى',
+                         'عمار الأرض' => 'عمار الأرض',
+                         'أخرى' => 'أخرى',
                          ], old('support_source_name[]') or null, array('placeholder' => 'لا شيء', 'class' => 'form-control support_source_name', 'style' => 'width:100%','onchange' => 'drawOther(2,0,$(this).val())')) !!}
                     </div>
                 </div>
@@ -67,7 +67,7 @@
                          'بناء سقف' => 'بناء سقف',
                          'توصيل مياه' => 'توصيل مياه',
                          'أثاث للمنزل' => 'أثاث للمنزل',
-                         'other' => 'أخرى',
+                         'أخرى' => 'أخرى',
                          ], old('support_type[]') or null, array('placeholder' => 'لا شيء', 'class' => 'form-control support_type', 'style' => 'width:100%','onchange' => 'drawOther(3,0,$(this).val())')) !!}
                     </div>
                 </div>
@@ -85,11 +85,11 @@
                     <div class="form-group">
                         {!! Form::label('support_period[]', 'تكرار المساعدة') !!}
                         {!! Form::select('support_period[]', [
-                         'مره' => 'مره واحده',
+                         'مره واحده' => 'مره واحده',
                          'موسمية' => 'موسمية',
                          'شهرية' => 'شهرية',
                          'لا أعلم' => 'لا أعلم',
-                         'other' => 'أخرى',
+                         'أخرى' => 'أخرى',
                          ], old('support_period[]') or null, array('placeholder' => 'لا شيء', 'class' => 'form-control support_period', 'style' => 'width:100%', 'onchange' =>'drawOther(4,0,$(this).val())' )) !!}
                     </div>
                 </div>
