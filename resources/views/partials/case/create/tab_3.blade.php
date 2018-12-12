@@ -28,8 +28,8 @@
                     {{-- partner_national_id        []text --}}
                     <div class="form-group">
                         {!! Form::label('partner_national_id[]', 'رقم البطاقة') !!}
-                        <!-- {!! Form::text('partner_national_id[]', null, array('class' => 'form-control')) !!} -->
-                         <input type="text" id="'partner_national_id[]" name="'partner_national_id[]" pattern="[0-9]{14}" class="form-control" />
+                         {!! Form::text('partner_national_id[]', null, array('class' => 'form-control','maxlength' =>"14")) !!} 
+                         <!--<input type="text" id="partner_national_id[]" name="partner_national_id[]" pattern="[0-9]{14}" class="form-control" />-->
                     </div>
                 </div>
             </div>
@@ -96,7 +96,7 @@
                     <div class="form-group">
                         {!! Form::label('partner_phone[]', 'رقم الموبايل') !!}
                   <!-- <input type="text" id="partner_phone" name="partner_phone[]" pattern="[0-9]{11}" class="form-control" /> -->
-                  {!! Form::text('partner_phone', old('partner_phone') or null, array('class' => 'form-control','maxlength' =>"11")) !!}
+                  {!! Form::text('partner_phone[]', old('partner_phone') or null, array('class' => 'form-control','maxlength' =>"11")) !!}
                   
                 <!--         {!! Form::text('partner_phone[]', null, array('class' => 'form-control')) !!} -->
                     </div>

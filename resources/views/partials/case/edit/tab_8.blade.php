@@ -75,7 +75,7 @@
                 <div class="col-md-6">
                     <div id="inc4">
                         <div class="form-group">
-                            {!! Form::label('inc4', 'حذف إبن') !!}<br>
+                            {!! Form::label('inc4', 'حذف دين') !!}<br>
                                 @if($key == 0)
                                     <a href="#" class="btn btn-primary remove">-</a>
                                 @else
@@ -138,7 +138,7 @@
                 <div class="col-md-6">
                     <div id="inc4">
                         <div class="form-group">
-                            {!! Form::label('inc4', 'حذف إبن') !!}<br>
+                            {!! Form::label('inc4', 'حذف  دين') !!}<br>
                             <a href="#" class="btn btn-primary remove" >-</a>
                         </div>
                     </div>

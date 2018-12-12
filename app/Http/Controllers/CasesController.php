@@ -385,7 +385,6 @@ class CasesController extends Controller
     
     private function storePartnersData (Request $request , $caseId)
     {
-
         if(is_array($request->partner_name) && !empty($request->partner_name)){
             for ($i = 0; $i < count($request->partner_name); $i++) {
                 if ($request->partner_name[$i]!==null && !empty($request->partner_name)){
@@ -584,7 +583,10 @@ class CasesController extends Controller
      */
     private function storeRoomsData (Request $request , $caseId)
     {
-        if(is_array($request->room_type && !empty($request->room_type))){
+//        var_dump($request->all());
+//        var_dump(is_array($request->room_type && !empty($request->room_type)));
+//        die();
+        if(is_array($request->room_type) && !empty($request->room_type)){
             for ($i = 0; $i < count($request->room_type); $i++) {
                 if ($request->room_type[$i]!==null && !empty($request->room_type)) {
                     $room = Rooms::create([

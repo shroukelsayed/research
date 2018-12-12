@@ -149,12 +149,12 @@
         else
             $("#tamleek").hide();
 
-        if($('#case_assets_electric_meter').val() != 'لا' && $('#case_assets_electric_meter').val() != '' )
+        if($('#case_assets_electric_meter').val() != 'لا' && $('#case_assets_electric_meter').val() == '' )
             $("#electric_other").hide();
         else
             $("#electric_other").show();
 
-        if($('#case_assets_water_meter').val() != 'لا' &&  $('#case_assets_water_meter').val() != '')
+        if($('#case_assets_water_meter').val() != 'لا' &&  $('#case_assets_water_meter').val() == '')
             $("#water_meter").hide();
         else
             $("#water_meter").show();
@@ -164,7 +164,7 @@
         else
             $("#farm_space").hide();
 
-        if($('#case_assets_pets').val() != 'لا يوجد' && $('#case_assets_pets').val() != '')
+        if($('#case_assets_pets').val() != 'لا يوجد' && $('#case_assets_pets').val() == '')
             $("#pets_alternative").show();
         else
             $("#pets_alternative").hide();

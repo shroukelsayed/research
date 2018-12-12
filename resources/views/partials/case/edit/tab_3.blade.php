@@ -116,7 +116,7 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         {!! Form::label('partner_is_ill[]', 'يعاني من مرض؟') !!}<br>
-                        {!! Form::select('partner_is_ill[]', ['نعم '=> 'نعم', 'لا' => 'لا'], $case->partner->is_ill, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
+                        {!! Form::select('partner_is_ill[]', [ 'نعم'=> 'نعم', 'لا' => 'لا'], $case->partner->is_ill, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
                     </div>
                 </div>
             </div>
