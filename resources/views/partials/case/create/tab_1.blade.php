@@ -206,25 +206,32 @@
             type: "GET",
             data: {'governorate_id': gov_id},
             success:function(data) {  
-                var model = $('#case_city');
-                model.empty();
+                  $('#case_city').find('option').remove();
+//                $("#case_city").remove();
+//                $('#case_city').find('option').remove();
+//                console.log(model);
+                console.log(data);
+
+//                model.remove();
                 $.each(data, function (index, element) {
-                    model.append("<option value='" + element.code + "'>" + element.name + "</option>");
+                    $('#case_city').append("<option value='" + element.code + "'>" + element.name + "</option>");
                 });
             }
         });
     }
 
-    function getDistricts(city_id) {        
+    function getDistricts(city_id) {  
+        
         $.ajax({
             url: '/get-districts',
             type: "GET",
             data: {'city_id': city_id},
             success:function(data) {  
-                var model = $('#case_district');
-                model.empty();
+//                var model = $('#case_district');
+//                model.remove();
+                $('#case_district').find('option').remove();
                 $.each(data, function (index, element) {
-                    model.append("<option value='" + element.code + "'>" + element.name + "</option>");
+                    $("#case_district").append("<option selected='selected' value='" + element.code + "'>" + element.name + "</option>");
                 });
             }
         });
@@ -237,7 +244,7 @@
             data: {'district_id': district_id},
             success:function(data) {  
                 var model = $('#case_following');
-                model.empty();
+//                model.empty();
                 $.each(data, function (index, element) {
                     model.append("<option value='" + element.code + "'>" + element.name + "</option>");
                 });

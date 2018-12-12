@@ -18,7 +18,7 @@
                      {{-- roommate_gender             []bool[male,female] --}}
                     <div class="form-group">
                         {!! Form::label('roommate_gender[]', 'النوع (ذكر-أنثى)') !!}<br>
-                        {!! Form::select('roommate_gender[]', ['1' => 'ذكر', '0' => 'أنثى'], $case->roommate->gender, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
+                        {!! Form::select('roommate_gender[]', ['ذكر' => 'ذكر', 'أنثى' => 'أنثى'], $case->roommate->gender, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
                     </div>
                 </div>
             </div>
@@ -59,7 +59,7 @@
                     {{-- roommate_work_status       []select[single,..] --}}
                     <div class="form-group">
                         {!! Form::label('roommate_work_status[]', 'المهنة') !!}
-                        {!! Form::select('roommate_work_status[]', ['لا يعمل' => 'لا يعمل', 'متقطع' => 'يعمل بشكل متقطع (المواسم/ الاجازات)', 'دائم' => 'يعمل بشكل دائم (سواء ارزقي او دائم)', 'other' => 'أخرى'], $case->roommate->work_status, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
+                        {!! Form::select('roommate_work_status[]', ['لا يعمل' => 'لا يعمل', 'يعمل بشكل متقطع (المواسم/ الاجازات)' => 'يعمل بشكل متقطع (المواسم/ الاجازات)', 'يعمل بشكل دائم (سواء ارزقي او دائم)' => 'يعمل بشكل دائم (سواء ارزقي او دائم)', 'أخرى' => 'أخرى'], $case->roommate->work_status, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -93,8 +93,9 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
+                    <?php // var_dump()?>
                         {!! Form::label('roommate_is_ill[]', 'يعاني من مرض؟') !!}<br>
-                        {!! Form::select('roommate_is_ill[]', ['1' => 'نعم', '0' => 'لا'], old('roommate_is_ill[]') or null, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
+                        {!! Form::select('roommate_is_ill[]', ['نعم' => 'نعم', 'لا' => 'لا'], $case->roommate->is_ill, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
                     </div>
                 </div>
                 
@@ -137,13 +138,13 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             {!! Form::label('roommate_illness_prevent_movement[]', '‏هل هذا المرض يعيق الحركة') !!}
-                            {!! Form::select('roommate_illness_prevent_movement[]', ['كلي' => 'نعم بشكل كلي', 'جزئي' => 'نعم بشكل جزئي', 'لا' => 'لا'], $case->roommate->illness_prevent_movement, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
+                            {!! Form::select('roommate_illness_prevent_movement[]', ['نعم بشكل كلي' => 'نعم بشكل كلي', 'نعم بشكل جزئي' => 'نعم بشكل جزئي', 'لا' => 'لا'], $case->roommate->illness_prevent_movement, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             {!! Form::label('roommate_illness_need_monthly_support[]', '‏هل تحتاج إلي علاج شهري') !!}<br>
-                            {!! Form::select('roommate_illness_need_monthly_support[]', ['1' => 'نعم', '0' => 'لا'], $case->roommate->need_monthly_treatment, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
+                            {!! Form::select('roommate_illness_need_monthly_support[]', ['نعم' => 'نعم', 'لا' => 'لا'], $case->roommate->need_monthly_treatment, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
                         </div>
                     </div>
                 </div>
@@ -151,7 +152,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             {!! Form::label('has_national_support[]', '‏‏هل تأخذ علاج على نفقة الدولة') !!}
-                            {!! Form::select('has_national_support[]', ['كل' => 'نعم كل العلاج', 'جزء' => 'نعم  جزء من العلاج', 'لا' => 'لا'], $case->roommate->has_national_support, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
+                            {!! Form::select('has_national_support[]', ['نعم كل العلاج' => 'نعم كل العلاج', 'نعم  جزء من العلاج' => 'نعم  جزء من العلاج', 'لا' => 'لا'], $case->roommate->has_national_support, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -165,13 +166,13 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             {!! Form::label('treatment_affordable[]', '‏هل تقوم بشراء العلاج ‏') !!}
-                            {!! Form::select('treatment_affordable[]', ['كل' => 'نعم كل العلاج', 'جزء' => 'نعم  جزء من العلاج', 'لا' => 'لا'], $case->roommate->treatment_affordable, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
+                            {!! Form::select('treatment_affordable[]', ['نعم كل العلاج' => 'نعم كل العلاج', 'نعم  جزء من العلاج' => 'نعم  جزء من العلاج', 'لا' => 'لا'], $case->roommate->treatment_affordable, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             {!! Form::label('roommate_illness_need_operation[]', '‏هل تحتاج إلي عملية') !!}<br>
-                            {!! Form::select('roommate_illness_need_operation[]', ['1' => 'نعم', '0' => 'لا'], $case->roommate->need_operation, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
+                            {!! Form::select('roommate_illness_need_operation[]', ['نعم' => 'نعم', 'لا' => 'لا'], $case->roommate->need_operation, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
                         </div>
                     </div>
                 </div>
@@ -208,7 +209,7 @@
                     {{-- roommate_gender             []bool[male,female] --}}
                     <div class="form-group">
                         {!! Form::label('roommate_gender[]', 'النوع (ذكر-أنثى)') !!}<br>
-                        {!! Form::select('roommate_gender[]', ['1' => 'ذكر', '0' => 'أنثى'], old('roommate_gender[]') or null, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
+                        {!! Form::select('roommate_gender[]', ['ذكر' => 'ذكر', 'أنثى' => 'أنثى'], old('roommate_gender[]') or null, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
                     </div>
                 </div>
             </div>
@@ -249,7 +250,7 @@
                     {{-- roommate_work_status       []select[single,..] --}}
                     <div class="form-group">
                         {!! Form::label('roommate_work_status[]', 'المهنة') !!}
-                        {!! Form::select('roommate_work_status[]', ['لا يعمل' => 'لا يعمل', 'متقطع' => 'يعمل بشكل متقطع (المواسم/ الاجازات)', 'دائم' => 'يعمل بشكل دائم (سواء ارزقي او دائم)', 'other' => 'أخرى'], old('roommate_work_status[]') or null, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
+                        {!! Form::select('roommate_work_status[]', ['لا يعمل' => 'لا يعمل', 'يعمل بشكل متقطع (المواسم/ الاجازات)' => 'يعمل بشكل متقطع (المواسم/ الاجازات)', 'يعمل بشكل دائم (سواء ارزقي او دائم)' => 'يعمل بشكل دائم (سواء ارزقي او دائم)', 'أخرى' => 'أخرى'], old('roommate_work_status[]') or null, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -283,7 +284,7 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         {!! Form::label('roommate_is_ill[]', 'يعاني من مرض؟') !!}<br>
-                        {!! Form::select('roommate_is_ill[]', ['1' => 'نعم', '0' => 'لا'], old('roommate_is_ill[]') or null, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
+                        {!! Form::select('roommate_is_ill[]', ['نعم' => 'نعم', 'لا' => 'لا'], old('roommate_is_ill[]') or null, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
                     </div>
                 </div>
                 
@@ -325,13 +326,13 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         {!! Form::label('roommate_illness_prevent_movement[]', '‏هل هذا المرض يعيق الحركة') !!}
-                        {!! Form::select('roommate_illness_prevent_movement[]', ['كلي' => 'نعم بشكل كلي', 'جزئي' => 'نعم بشكل جزئي', 'لا' => 'لا'], old('roommate_illness_prevent_movement[]') or null, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
+                        {!! Form::select('roommate_illness_prevent_movement[]', ['نعم بشكل كلي' => 'نعم بشكل كلي', 'نعم بشكل جزئي' => 'نعم بشكل جزئي', 'لا' => 'لا'], old('roommate_illness_prevent_movement[]') or null, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
                         {!! Form::label('roommate_illness_need_monthly_support[]', '‏هل تحتاج إلي علاج شهري') !!}<br>
-                        {!! Form::select('roommate_illness_need_monthly_support[]', ['1' => 'نعم', '0' => 'لا'], old('roommate_illness_need_monthly_support[]') or null, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
+                        {!! Form::select('roommate_illness_need_monthly_support[]', ['نعم' => 'نعم', 'لا' => 'لا'], old('roommate_illness_need_monthly_support[]') or null, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
                     </div>
                 </div>
             </div>
@@ -339,13 +340,13 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         {!! Form::label('has_national_support[]', '‏‏هل تأخذ علاج على نفقة الدولة') !!}
-                        {!! Form::select('has_national_support[]', ['كل' => 'نعم كل العلاج', 'جزء' => 'نعم  جزء من العلاج', 'لا' => 'لا'], old('has_national_support[]') or null, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
+                        {!! Form::select('has_national_support[]', ['نعم كل العلاج' => 'نعم كل العلاج', 'نعم  جزء من العلاج' => 'نعم  جزء من العلاج', 'لا' => 'لا'], old('has_national_support[]') or null, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
                         {!! Form::label('treatment_monthly_amount[]', '‏تكلفة العلاج الشهري') !!}
-                        {!! Form::select('treatment_monthly_amount[]', ['أقل من 100 جنية' => 'أقل من 100 جنية', 'من 100 إلى أقل من 300' => 'من 100 إلى أقل من 300', 'من 300 إلى أقل من 600' => 'من 300 إلى أقل من 600', 'أكثر من 600' => 'أكثر من 600'], old('treatment_monthly_amount[]') or null, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
+                        {!! Form::select('treatment_monthly_amount[]',['أقل من 100 جنية' => 'أقل من 100 جنية', 'من 100 إلى أقل من 300' => 'من 100 إلى أقل من 300', 'من 300 إلى أقل من 600' => 'من 300 إلى أقل من 600', 'أكثر من 600' => 'أكثر من 600'] , old('treatment_monthly_amount[]') or null, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
                     </div>
                 </div>
             </div>
@@ -353,13 +354,13 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         {!! Form::label('treatment_affordabletreatment_affordable[]', '‏هل تقوم بشراء العلاج ‏') !!}
-                        {!! Form::select('treatment_affordable[]', ['كل' => 'نعم كل العلاج', 'جزء' => 'نعم  جزء من العلاج', 'لا' => 'لا'], old('treatment_affordable[]') or null, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
+                        {!! Form::select('treatment_affordable[]', ['نعم كل العلاج' => 'نعم كل العلاج', 'نعم  جزء من العلاج' => 'نعم  جزء من العلاج', 'لا' => 'لا'], old('treatment_affordable[]') or null, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
                         {!! Form::label('roommate_illness_need_operation[]', '‏هل تحتاج إلي عملية') !!}<br>
-                        {!! Form::select('roommate_illness_need_operation[]', ['1' => 'نعم', '0' => 'لا'], old('roommate_illness_need_operation[]') or null, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
+                        {!! Form::select('roommate_illness_need_operation[]', ['نعم' => 'نعم', 'لا' => 'لا'], old('roommate_illness_need_operation[]') or null, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
                     </div>
                 </div>
             </div>
