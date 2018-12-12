@@ -583,9 +583,6 @@ class CasesController extends Controller
      */
     private function storeRoomsData (Request $request , $caseId)
     {
-//        var_dump($request->all());
-//        var_dump(is_array($request->room_type && !empty($request->room_type)));
-//        die();
         if(is_array($request->room_type) && !empty($request->room_type)){
             for ($i = 0; $i < count($request->room_type); $i++) {
                 if ($request->room_type[$i]!==null && !empty($request->room_type)) {
