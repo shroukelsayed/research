@@ -1,3 +1,4 @@
+
 @extends('app')
 
 @section('content')
@@ -65,11 +66,7 @@
             </p>
             <p>
                 النوع (ذكر-أنثى)
-                @if($case->gender == '1')
-                    &blacktriangleleft; ذكر
-                @else
-                    &blacktriangleleft; أنثى
-                @endif
+                &blacktriangleleft; {{ $case->gender }}
             </p>
             <p>
                 السن
@@ -108,7 +105,7 @@
                 &blacktriangleleft; {{ $case->phone }}
             </p>
 
-            @if($case->is_ill == 1)
+            @if(!is_null($case->is_ill))
                 <h5>
                     يعاني من مرض*
                 </h5>
@@ -128,61 +125,27 @@
                 </p>
                 <p>
                     ‏هل هذا المرض يعيق الحركة
-                    @if( $case->illness_prevent_movement == 'كلي')
-                        &blacktriangleleft; نعم بشكل كلي
-                    @elseif( $case->illness_prevent_movement == 'جزئي')
-                        &blacktriangleleft; نعم بشكل جزئي
-                    @else
-                        &blacktriangleleft; ﻻ
-                    @endif
+                    &blacktriangleleft; {{ $case->illness_prevent_movement }}
                 </p>
                 <p>
                     ‏هل تحتاج إلي علاج شهري
-                    @if( $case->need_monthly_treatment == 1)
-                        &blacktriangleleft; نعم
-                    @else
-                        &blacktriangleleft; ﻻ
-                    @endif
+                    &blacktriangleleft; {{ $case->need_monthly_treatment }}
                 </p>
                 <p>
                     ‏‏هل تأخذ علاج على نفقة الدولة
-                    @if( $case->has_national_support == 'كل')
-                        &blacktriangleleft; نعم كل العلاج
-                    @elseif( $case->has_national_support == 'جزء')
-                        &blacktriangleleft; نعم  جزء من العلاج
-                    @else
-                        &blacktriangleleft; ﻻ
-                    @endif
+                    &blacktriangleleft; {{ $case->has_national_support }}
                 </p>
                 <p>
                     ‏تكلفة العلاج الشهري
-                    @if( $case->treatment_monthly_amount == '100')
-                        &blacktriangleleft; أقل من 100 جنية
-                    @elseif( $case->treatment_monthly_amount == '300')
-                        &blacktriangleleft; من 100 إلى أقل من 300
-                    @elseif( $case->treatment_monthly_amount == '600')
-                        &blacktriangleleft; من 300 إلى أقل من 600
-                    @else
-                        &blacktriangleleft; أكثر من 600
-                    @endif
+                    &blacktriangleleft; {{ $case->treatment_monthly_amount }}
                 </p>
                 <p>
                     ‏هل تقوم بشراء العلاج‏
-                    @if( $case->treatment_affordable == 'كل')
-                        &blacktriangleleft; نعم كل العلاج
-                    @elseif( $case->treatment_affordable == 'جزء')
-                        &blacktriangleleft; نعم  جزء من العلاج
-                    @else
-                        &blacktriangleleft; ﻻ
-                    @endif
+                    &blacktriangleleft; {{ $case->treatment_affordable }}
                 </p>
                 <p>
                     ‏هل تحتاج إلي عملية
-                    @if($case->need_operation == '1')
-                        &blacktriangleleft; نعم
-                    @else
-                        &blacktriangleleft; ﻻ
-                    @endif
+                    &blacktriangleleft; {{ $case->need_operation }}
                 </p>
             @endif
 
@@ -199,11 +162,7 @@
                     </p>
                     <p>
                         النوع (ذكر-أنثى)
-                        @if($case->partner->gender == '1')
-                            &blacktriangleleft; ذكر
-                        @else
-                            &blacktriangleleft; أنثى
-                        @endif
+                        &blacktriangleleft; {{ $case->partner->gender }}
                     </p>
                     <p>
                         السن
@@ -241,7 +200,7 @@
                         رقم الموبايل
                         &blacktriangleleft; {{ $case->partner->phone }}
                     </p>
-                    @if($case->partner->is_ill == 1)
+                    @if(!is_null($case->partner->is_ill))
                         <h5>
                             يعاني من مرض*
                         </h5>
@@ -261,63 +220,28 @@
                         </p>
                         <p>
                             ‏هل هذا المرض يعيق الحركة
-                            @if( $case->partner->illness_prevent_movement == 'كلي')
-                                &blacktriangleleft; نعم بشكل كلي
-                            @elseif( $case->partner->illness_prevent_movement == 'جزئي')
-                                &blacktriangleleft; نعم بشكل جزئي
-                            @else
-                                &blacktriangleleft; ﻻ
-                            @endif
+                            &blacktriangleleft; {{ $case->partner->illness_prevent_movement }}
                         </p>
                         <p>
                             ‏هل تحتاج إلي علاج شهري
-                            @if( $case->partner->need_monthly_treatment == 1)
-                                &blacktriangleleft; نعم
-                            @else
-                                &blacktriangleleft; ﻻ
-                            @endif
+                            &blacktriangleleft; {{ $case->partner->need_monthly_treatment }}
                         </p>
                         <p>
                             ‏‏هل تأخذ علاج على نفقة الدولة
-                            @if( $case->partner->has_national_support == 'كل')
-                                &blacktriangleleft; نعم كل العلاج
-                            @elseif( $case->partner->has_national_support == 'جزء')
-                                &blacktriangleleft; نعم  جزء من العلاج
-                            @else
-                                &blacktriangleleft; ﻻ
-                            @endif
+                            &blacktriangleleft; {{ $case->partner->has_national_support }}
                         </p>
                         <p>
                             ‏تكلفة العلاج الشهري
-                            @if( $case->partner->treatment_monthly_amount == '100')
-                                &blacktriangleleft; أقل من 100 جنية
-                            @elseif( $case->partner->treatment_monthly_amount == '300')
-                                &blacktriangleleft; من 100 إلى أقل من 300
-                            @elseif( $case->partner->treatment_monthly_amount == '600')
-                                &blacktriangleleft; من 300 إلى أقل من 600
-                            @else
-                                &blacktriangleleft; أكثر من 600
-                            @endif
+                            &blacktriangleleft; {{ $case->partner->treatment_monthly_amount }}
                         </p>
                         <p>
                             ‏هل تقوم بشراء العلاج‏
-                            @if( $case->partner->treatment_affordable == 'كل')
-                                &blacktriangleleft; نعم كل العلاج
-                            @elseif( $case->partner->treatment_affordable == 'جزء')
-                                &blacktriangleleft; نعم  جزء من العلاج
-                            @else
-                                &blacktriangleleft; ﻻ
-                            @endif
+                            &blacktriangleleft; {{ $case->partner->treatment_affordable }}
                         </p>
                         <p>
                             ‏هل تحتاج إلي عملية
-                            @if($case->partner->need_operation == '1')
-                                &blacktriangleleft; نعم
-                            @else
-                                &blacktriangleleft; ﻻ
-                            @endif
+                            &blacktriangleleft; {{ $case->partner->need_operation }}
                         </p>
-          
                     @endif
                 @endforeach
             @endif
@@ -335,11 +259,7 @@
                     </p>
                     <p>
                         النوع (ذكر-أنثى)
-                        @if($case->child->gender == '1')
-                            &blacktriangleleft; ذكر
-                        @else
-                            &blacktriangleleft; أنثى
-                        @endif
+                        &blacktriangleleft; {{ $case->child->gender }}
                     </p>
                     <p>
                         السن
@@ -361,7 +281,7 @@
                         وصف المهنة
                         &blacktriangleleft; {{ $case->child->profession }}
                     </p>
-                    @if($case->child->is_ill == 1)
+                    @if(!is_null($case->child->is_ill))
                         <h5>
                             يعاني من مرض*
                         </h5>
@@ -381,61 +301,27 @@
                         </p>
                         <p>
                             ‏هل هذا المرض يعيق الحركة
-                            @if( $case->child->illness_prevent_movement == 'كلي')
-                                &blacktriangleleft; نعم بشكل كلي
-                            @elseif( $case->child->illness_prevent_movement == 'جزئي')
-                                &blacktriangleleft; نعم بشكل جزئي
-                            @else
-                                &blacktriangleleft; ﻻ
-                            @endif
+                            &blacktriangleleft; {{ $case->child->illness_prevent_movement }}
                         </p>
                         <p>
                             ‏هل تحتاج إلي علاج شهري
-                            @if( $case->child->need_monthly_treatment == 1)
-                                &blacktriangleleft; نعم
-                            @else
-                                &blacktriangleleft; ﻻ
-                            @endif
+                            &blacktriangleleft; {{ $case->child->need_monthly_treatment }}
                         </p>
                         <p>
                             ‏‏هل تأخذ علاج على نفقة الدولة
-                            @if( $case->child->has_national_support == 'كل')
-                                &blacktriangleleft; نعم كل العلاج
-                            @elseif( $case->child->has_national_support == 'جزء')
-                                &blacktriangleleft; نعم  جزء من العلاج
-                            @else
-                                &blacktriangleleft; ﻻ
-                            @endif
+                            &blacktriangleleft; {{ $case->child->has_national_support }}
                         </p>
                         <p>
                             ‏تكلفة العلاج الشهري
-                            @if( $case->child->treatment_monthly_amount == '100')
-                                &blacktriangleleft; أقل من 100 جنية
-                            @elseif( $case->child->treatment_monthly_amount == '300')
-                                &blacktriangleleft; من 100 إلى أقل من 300
-                            @elseif( $case->child->treatment_monthly_amount == '600')
-                                &blacktriangleleft; من 300 إلى أقل من 600
-                            @else
-                                &blacktriangleleft; أكثر من 600
-                            @endif
+                            &blacktriangleleft; {{ $case->child->treatment_monthly_amount }}
                         </p>
                         <p>
                             ‏هل تقوم بشراء العلاج‏
-                            @if( $case->child->treatment_affordable == 'كل')
-                                &blacktriangleleft; نعم كل العلاج
-                            @elseif( $case->child->treatment_affordable == 'جزء')
-                                &blacktriangleleft; نعم  جزء من العلاج
-                            @else
-                                &blacktriangleleft; ﻻ
-                            @endif
+                            &blacktriangleleft; {{ $case->child->treatment_affordable }}
                         </p>
                         <p>
                             ‏هل تحتاج إلي عملية
-                            @if($case->child->need_operation == '1')
-                                &blacktriangleleft; نعم
-                            @else
-                                &blacktriangleleft; ﻻ
-                            @endif
+                            &blacktriangleleft; {{ $case->child->need_operation }}
                         </p>
                     @endif
                 @endforeach
@@ -454,11 +340,7 @@
                     </p>
                     <p>
                         النوع (ذكر-أنثى)
-                        @if($case->roommate->gender == '1')
-                            &blacktriangleleft; ذكر
-                        @else
-                            &blacktriangleleft; أنثى
-                        @endif
+                        &blacktriangleleft; {{ $case->roommate->gender }}
                     </p>
                     <p>
                         السن
@@ -482,27 +364,9 @@
                     </p>
                     <p>
                         صلة القرابة
-                        @if($case->roommate->relativity == 'الام_الاب ')
-                            &blacktriangleleft; الأم/الأب 
-                        @elseif($case->roommate->relativity == 'والد-الزوجة_والدة-الزوجة')
-                            &blacktriangleleft; والد الزوج/والد الزوجة
-                        @elseif($case->roommate->relativity == 'زوجة-الابن_زوج-الابنة')
-                            &blacktriangleleft; زوجة الإبن/زوج الإبنة
-                        @elseif($case->roommate->relativity == 'أخ_أخت')
-                            &blacktriangleleft; أخ/أخت
-                        @elseif($case->roommate->relativity == 'أخ-الزوجة_أخت-الزوجة')
-                            &blacktriangleleft; أخ الزوجة/أخت الزوجة
-                        @elseif($case->roommate->relativity == 'حفيد_حفيدة')
-                            &blacktriangleleft; حفيد/حفيدة
-                        @elseif($case->roommate->relativity == 'ابن الأخ/الأخت')
-                            &blacktriangleleft; ابن الأخ/الأخت
-                        @else
-                            &blacktriangleleft; أخرى 
-                        @endif
-
-
+                        &blacktriangleleft; {{ $case->roommate->relativity }}
                     </p>
-                    @if($case->roommate->is_ill == 1)
+                    @if(!is_null($case->roommate->is_ill))
                         <h5>
                             يعاني من مرض*
                         </h5>
@@ -522,61 +386,27 @@
                         </p>
                         <p>
                             ‏هل هذا المرض يعيق الحركة
-                            @if( $case->roommate->illness_prevent_movement == 'كلي')
-                                &blacktriangleleft; نعم بشكل كلي
-                            @elseif( $case->roommate->illness_prevent_movement == 'جزئي')
-                                &blacktriangleleft; نعم بشكل جزئي
-                            @else
-                                &blacktriangleleft; ﻻ
-                            @endif
+                            &blacktriangleleft; {{ $case->roommate->illness_prevent_movement }}
                         </p>
                         <p>
                             ‏هل تحتاج إلي علاج شهري
-                            @if( $case->roommate->need_monthly_treatment == 1)
-                                &blacktriangleleft; نعم
-                            @else
-                                &blacktriangleleft; ﻻ
-                            @endif
+                            &blacktriangleleft; {{ $case->roommate->need_monthly_treatment }}
                         </p>
                         <p>
                             ‏‏هل تأخذ علاج على نفقة الدولة
-                            @if( $case->roommate->has_national_support == 'كل')
-                                &blacktriangleleft; نعم كل العلاج
-                            @elseif( $case->roommate->has_national_support == 'جزء')
-                                &blacktriangleleft; نعم  جزء من العلاج
-                            @else
-                                &blacktriangleleft; ﻻ
-                            @endif
+                            &blacktriangleleft; {{ $case->roommate->has_national_support }}
                         </p>
                         <p>
                             ‏تكلفة العلاج الشهري
-                            @if( $case->roommate->treatment_monthly_amount == '100')
-                                &blacktriangleleft; أقل من 100 جنية
-                            @elseif( $case->roommate->treatment_monthly_amount == '300')
-                                &blacktriangleleft; من 100 إلى أقل من 300
-                            @elseif( $case->roommate->treatment_monthly_amount == '600')
-                                &blacktriangleleft; من 300 إلى أقل من 600
-                            @else
-                                &blacktriangleleft; أكثر من 600
-                            @endif
+                            &blacktriangleleft; {{ $case->roommate->treatment_monthly_amount }}
                         </p>
                         <p>
                             ‏هل تقوم بشراء العلاج‏
-                            @if( $case->roommate->treatment_affordable == 'كل')
-                                &blacktriangleleft; نعم كل العلاج
-                            @elseif( $case->roommate->treatment_affordable == 'جزء')
-                                &blacktriangleleft; نعم  جزء من العلاج
-                            @else
-                                &blacktriangleleft; ﻻ
-                            @endif
+                            &blacktriangleleft; {{ $case->roommate->treatment_affordable }}
                         </p>
                         <p>
                             ‏هل تحتاج إلي عملية
-                            @if($case->roommate->need_operation == '1')
-                                &blacktriangleleft; نعم
-                            @else
-                                &blacktriangleleft; ﻻ
-                            @endif
+                            &blacktriangleleft; {{ $case->roommate->need_operation }}
                         </p>
                     @endif
                 @endforeach
@@ -592,21 +422,7 @@
             </p>
             <p>
                 اجمالى دخل الأسرة (فئات)
-                @if( $case->income_amount_category == '300')
-                    &blacktriangleleft;  أقل من 300 جنية 
-                @elseif( $case->income_amount_category == '600')
-                    &blacktriangleleft;  من 300 إلى أقل من 600 
-                @elseif( $case->income_amount_category == '900')
-                    &blacktriangleleft;  من 600 إلى أقل من 900 
-                @elseif( $case->income_amount_category == '1200')
-                    &blacktriangleleft;  من 900 إلى أقل من 1200 
-                @elseif( $case->income_amount_category == '1500')
-                    &blacktriangleleft;  من 1200 إلى  1500 
-                @elseif( $case->income_amount_category == '1600')
-                    &blacktriangleleft;  أكثر من 1500 
-                @else
-                    &blacktriangleleft;  أخرى 
-                @endif
+                &blacktriangleleft; {{ $case->income_amount_category }}
             </p>
             <p>
                 عدد مصادر الدخل
@@ -618,33 +434,7 @@
                     <h5>دخل قسم فرعي</h5>
                     <p>
                         المصدر
-                        @if( $case->income->source_type == 'شغلك')
-                            &blacktriangleleft;  شغلك
-                        @elseif( $case->income->source_type == 'الزوجة')
-                            &blacktriangleleft; شغل الزوجة
-                        @elseif( $case->income->source_type == 'ابنك')
-                            &blacktriangleleft;  شغل ابنك
-                        @elseif( $case->income->source_type == 'مواشي')
-                            &blacktriangleleft;  تربية مواشي/طيور 
-                        @elseif( $case->income->source_type == 'محاصيل')
-                            &blacktriangleleft;  أرض زراعية (بيع محاصيل)
-                        @elseif( $case->income->source_type == 'مشروع')
-                            &blacktriangleleft;  مشروع صغير 
-                        @elseif( $case->income->source_type == 'معاش')
-                            &blacktriangleleft;  معاش 
-                        @elseif( $case->income->source_type == 'أقارب')
-                            &blacktriangleleft;  أقارب عايشين معاكوا في البيت 
-                        @elseif( $case->income->source_type == 'بيع')
-                            &blacktriangleleft;  بيع ممتلكات 
-                        @elseif( $case->income->source_type == 'مدخرات')
-                            &blacktriangleleft;  مدخرات
-                        @elseif( $case->income->source_type == 'جمعيات')
-                            &blacktriangleleft;  مساعدات مادية من جمعيات
-                        @elseif( $case->income->source_type == 'افراد')
-                            &blacktriangleleft;  مساعدات مادية من افراد
-                        @else
-                            &blacktriangleleft;  مصادر دخل أخرى 
-                        @endif
+                        &blacktriangleleft; {{ $case->income->source_type }}
                     </p>
                     <p>
                         معلومات اضافيه
@@ -656,13 +446,7 @@
                     </p>
                     <p>
                         نوع المصدر‏
-                        @if($case->income->source_flow == 'غير-مستقر')
-                            &blacktriangleleft; غير مستقر
-                        @elseif($case->income->source_flow == 'شبه-مستقر')
-                            &blacktriangleleft; شبه مستقر
-                        @else
-                            &blacktriangleleft; مستقر
-                        @endif
+                        &blacktriangleleft; {{ $case->income->source_flow }}
                     </p>
                 @endforeach
             @endif
@@ -708,24 +492,7 @@
             </p>
             <p>
                 اجمالى الديون (فئات)
-
-                @if($case->debts_total_range == 0 )
-                    &blacktriangleleft; لا يوجد
-                @elseif($case->debts_total_range == 1000 )
-                    &blacktriangleleft; أقل من ألف جنية
-                @elseif($case->debts_total_range == 5000 )
-                    &blacktriangleleft; من ألف إلى 5 ألاف
-                @elseif($case->debts_total_range == 10000 )
-                    &blacktriangleleft; من 10 ألاف إلى 20 ألف
-                @elseif($case->debts_total_range == 30000 )
-                    &blacktriangleleft;من 20 ألف إلى 30 ألف
-                @elseif($case->debts_total_range == 40000)
-                    &blacktriangleleft; من 30 ألف إلى 40 ألف
-                @elseif($case->debts_total_range == 50000 )
-                    &blacktriangleleft; من 40 ألف إلى 50 ألف
-                @else
-                    &blacktriangleleft; أكثر من 50 ألف
-                @endif
+                &blacktriangleleft; {{ $case->debts_total_range }}
             </p>
 
             @if(count($case->debts) > 0)
@@ -824,22 +591,7 @@
             </p>
             <p>
                 اجمالى نفقات الأسرة (فئات)
-
-                @if($case->expenses_total_category == 300)
-                    &blacktriangleleft; أقل من 300 جنية
-                @elseif($case->expenses_total_category == 600 )
-                    &blacktriangleleft; من 300 إلى أقل من 600
-                @elseif($case->expenses_total_category == 900 )
-                    &blacktriangleleft; من 600 إلى أقل من 900
-                @elseif($case->expenses_total_category == 1200 )
-                    &blacktriangleleft; من 900 إلى أقل من 1200
-                @elseif($case->expenses_total_category == 1500 )
-                    &blacktriangleleft; من 1200 إلى  1500
-                @elseif($case->expenses_total_category == 1600 )
-                    &blacktriangleleft; أكثر من 1500
-                @else
-                    &blacktriangleleft; أخرى
-                @endif
+                &blacktriangleleft; {{ $case->expenses_total_category }}
             </p>
             <p>
                 اجمالى نفقات الأسرة
@@ -852,13 +604,7 @@
 
             <p>
                 ساكن في
-                @if($case->assets_house_type == 'مستقل')
-                    &blacktriangleleft; منزل مستقل
-                @elseif($case->assets_house_type == 'شرك')
-                    &blacktriangleleft; منزل شرك مع أسرة أخرى
-                @else
-                    &blacktriangleleft; شقة
-                @endif
+                &blacktriangleleft; {{ $case->assets_house_type }}
             </p>
             <p>
                 المنزل
@@ -1147,7 +893,6 @@
     <script type="text/javascript">
         $(document).ready(function () {
             $('.btnPrint').printPage();
-
             $.ajax({
                 url: '/get-gov/{id}',
                 data: {'id': $("#gov").text() },
@@ -1155,7 +900,6 @@
                     $("#gov").text(data);
                 }
             });
-
             $.ajax({
                 url: '/get-city/{id}',
                 data: {'id': $("#city").text() },
@@ -1163,7 +907,6 @@
                     $("#city").text(data);
                 }
             });
-
             $.ajax({
                 url: '/get-district/{id}',
                 data: {'id': $("#district").text() },
@@ -1171,8 +914,6 @@
                     $("#district").text(data);
                 }
             });
-
-
             $.ajax({
                 url: '/get-following/{id}',
                 data: {'id': $("#following").text() },
