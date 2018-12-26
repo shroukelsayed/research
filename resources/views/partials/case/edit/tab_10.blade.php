@@ -144,17 +144,24 @@
 
 <script type="text/javascript">
     $(document).ready(function(){
+        // console.log($('#case_assets_water_meter').val() != 'لا' &&  $('#case_assets_water_meter').val() == '' );
+        // console.log($('#case_assets_electric_meter').val() != 'لا' && $('#case_assets_electric_meter').val() == '' );
+        // console.log();
+        // console.log();
+        // console.log();
+
+
         if($('#case_assets_house_status').val() == 'تمليك')
             $("#tamleek").show();
         else
             $("#tamleek").hide();
 
-        if($('#case_assets_electric_meter').val() != 'لا' && $('#case_assets_electric_meter').val() == '' )
+        if($('#case_assets_electric_meter').val() != 'لا' || $('#case_assets_electric_meter').val() == '' )
             $("#electric_other").hide();
         else
             $("#electric_other").show();
 
-        if($('#case_assets_water_meter').val() != 'لا' &&  $('#case_assets_water_meter').val() == '')
+        if($('#case_assets_water_meter').val() != 'لا' ||  $('#case_assets_water_meter').val() == '')
             $("#water_meter").hide();
         else
             $("#water_meter").show();
@@ -164,10 +171,10 @@
         else
             $("#farm_space").hide();
 
-        if($('#case_assets_pets').val() != 'لا يوجد' && $('#case_assets_pets').val() == '')
-            $("#pets_alternative").show();
-        else
+        if($('#case_assets_pets').val() != 'لا يوجد' || $('#case_assets_pets').val() == '')
             $("#pets_alternative").hide();
+        else
+            $("#pets_alternative").show();
 
         if($('#case_assets_vehicle').val() != 'لا يوجد' && $('#case_assets_vehicle').val() != '' )
             $("#vehicle_alternative").show();

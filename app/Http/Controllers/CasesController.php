@@ -206,6 +206,8 @@ class CasesController extends Controller
     private function storeCase (Request $request)
     {
          
+            // var_dump($request->case_assets_farm_space);die;
+
         if (!is_null($request->case_name) && !empty($request->case_name)){
             // $support_count = 0 ;
             // if(!is_null($request->support_source_category)){
@@ -239,6 +241,9 @@ class CasesController extends Controller
             }else
                 $case_national_id_back = null;
 
+            // var_dump($request->support_source_category);
+            // var_dump(!empty($request->support_source_category[0]));die;
+                
                 $case = Cases::create([
                     'typer_id' => (Auth::check())? Auth::id() : $request->case_typer_id,
                     'researcher_name' => $request->case_researcher_name,
@@ -270,7 +275,7 @@ class CasesController extends Controller
                     'income_amount' => $request->case_income_amount,
                     'income_amount_category' => $request->case_income_amount_category,
                     'income_source_count' => count($request->income_source_type),
-                    'support_count' => count($request->support_source_category),
+                    'support_count' => !empty($request->support_source_category[0]) ? count($request->support_source_category):0,
                     'debts_total' => $request->case_debts_total,
                     'debts_total_range' => $request->case_debts_total_range,
                     'expenses_house_rent' => $request->case_expenses_house_rent,
@@ -300,8 +305,8 @@ class CasesController extends Controller
                     'assets_water_meter' => $request->case_assets_water_meter,
                     'assets_water_alternative' => $request->case_assets_water_alternative,
                     'assets_farm' => $request->case_assets_farm,
-                    'assets_farm_space' => $request->case_assets_farm_space,
                     'assets_pets' => json_encode($request->case_assets_pets),
+                    'assets_farm_space' => $request->case_assets_farm_space,
                     'case_assets_pets_alternative' => $request->case_assets_pets_alternative,
                     'assets_vehicle' => $request->case_assets_vehicle,
                     'case_assets_vehicle_alternative' => $request->case_assets_vehicle_alternative,
@@ -693,7 +698,7 @@ class CasesController extends Controller
             //         $support_count ++;
             // }
             $case = Cases::find($id);
-
+            // var_dump($request->case_assets_farm_space);die;
             $case->update([
                // 'typer_id' => (Auth::check())? Auth::id() : $request->case_typer_id,
                 // 'status' => $request->case_status,
@@ -726,7 +731,7 @@ class CasesController extends Controller
                 'income_amount' => $request->case_income_amount,
                 'income_amount_category' => $request->case_income_amount_category,
                 'income_source_count' => count($request->income_source_type),
-                'support_count' => count($request->support_source_category),
+                'support_count' => !empty($request->support_source_category[0]) ? count($request->support_source_category):0,
                 'debts_total' => $request->case_debts_total,
                 'debts_total_range' => $request->case_debts_total_range,
                 'expenses_house_rent' => $request->expenses_house_rent,
