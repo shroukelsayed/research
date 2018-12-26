@@ -74,7 +74,7 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         {!! Form::label('roommate_relativity[]', 'صلة القرابة') !!}
-                        {!! Form::select('roommate_relativity[]', ['الام_الاب ' => 'الأم/الأب',
+                        {!! Form::select('roommate_relativity[]', ['الام_الاب' => 'الأم/الأب',
                          'والد-الزوجة_والدة-الزوجة' => 'والد الزوج/والد الزوجة',
                          'زوجة-الابن_زوج-الابنة' => 'زوجة الإبن/زوج الإبنة',
                          'أخ_أخت' => 'أخ/أخت',
@@ -82,7 +82,7 @@
                          'حفيد_حفيدة' => 'حفيد/حفيدة',
                          'ابن الأخ/الأخت'=>'ابن الأخ/الأخت',
                          'other' => 'أخرى'], 
-                        (in_array($case->roommate->relativity,['الام_الاب ' ,'والد-الزوجة_والدة-الزوجة' ,'زوجة-الابن_زوج-الابنة' ,'أخ_أخت' ,'أخ-الزوجة_أخت-الزوجة' ,'حفيد_حفيدة','ابن الأخ/الأخت','other']))? $case->roommate->relativity : "other" , array('placeholder' => 'لا شيء' , 'class' => 'form-control roommate_relativity', 'style' => 'width:100%','onchange' => 'if($(this).val()=="other"){$("#roommate_relativity_other").show();}else{$("#roommate_relativity_other").hide();}')) !!}
+                        (in_array($case->roommate->relativity,['الام_الاب' ,'والد-الزوجة_والدة-الزوجة' ,'زوجة-الابن_زوج-الابنة' ,'أخ_أخت' ,'أخ-الزوجة_أخت-الزوجة' ,'حفيد_حفيدة','ابن الأخ/الأخت','other']))? $case->roommate->relativity : "other" , array('placeholder' => 'لا شيء' , 'class' => 'form-control roommate_relativity', 'style' => 'width:100%','onchange' => 'if($(this).val()=="other"){$("#roommate_relativity_other").show();}else{$("#roommate_relativity_other").hide();}')) !!}
                     </div>
                 </div>
                 <div class="col-md-6" id="roommate_relativity_other" hidden>
@@ -265,7 +265,7 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         {!! Form::label('roommate_relativity[]', 'صلة القرابة') !!}
-                        {!! Form::select('roommate_relativity[]', ['الام_الاب ' => 'الأم/الأب',
+                        {!! Form::select('roommate_relativity[]', ['الام_الاب' => 'الأم/الأب',
                          'والد-الزوجة_والدة-الزوجة' => 'والد الزوج/والد الزوجة',
                          'زوجة-الابن_زوج-الابنة' => 'زوجة الإبن/زوج الإبنة',
                          'أخ_أخت' => 'أخ/أخت',
