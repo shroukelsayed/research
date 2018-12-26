@@ -148,7 +148,7 @@
         // console.log($('#case_assets_electric_meter').val() != 'لا' && $('#case_assets_electric_meter').val() == '' );
         // console.log();
         // console.log();
-        // console.log($('#case_assets_pets').val());
+        console.log($('#case_assets_pets').val());
 
 
         if($('#case_assets_house_status').val() == 'تمليك')
@@ -171,7 +171,9 @@
         else
             $("#farm_space").hide();
 
-        if($('#case_assets_pets').val() == ["لا يوجد"] || $('#case_assets_pets').val() == '')
+        if($('#case_assets_pets').val()== 'null')
+            $("#pets_alternative").hide();
+        else if($('#case_assets_pets').val()[0] == "لا يوجد")
             $("#pets_alternative").hide();
         else
             $("#pets_alternative").show();
