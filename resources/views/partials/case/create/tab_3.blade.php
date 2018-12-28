@@ -172,14 +172,14 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
-                        {!! Form::label('partner_illness_affordable[]', '‏هل تقوم بشراء العلاج ‏') !!}
-                        {!! Form::select('partner_illness_affordable[]', ['نعم كل العلاج' => 'نعم كل العلاج', 'نعم  جزء من العلاج' => 'نعم  جزء من العلاج', 'لا' => 'لا'], null, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
+                        {!! Form::label('partner_treatment_affordable[]', '‏هل تقوم بشراء العلاج ‏') !!}
+                        {!! Form::select('partner_treatment_affordable[]', ['نعم كل العلاج' => 'نعم كل العلاج', 'نعم  جزء من العلاج' => 'نعم  جزء من العلاج', 'لا' => 'لا'], null, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
-                        {!! Form::label('partner_illness_need_operation[]', '‏هل تحتاج إلي عملية') !!}<br>
-                        {!! Form::select('partner_illness_need_operation[]', ['نعم' => 'نعم', 'لا' => 'لا'], old('partner_illness_need_operation[]') or null, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
+                        {!! Form::label('partner_need_operation[]', '‏هل تحتاج إلي عملية') !!}<br>
+                        {!! Form::select('partner_need_operation[]', ['نعم' => 'نعم', 'لا' => 'لا'], old('partner_need_operation[]') or null, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
                     </div>
                 </div>
             </div>

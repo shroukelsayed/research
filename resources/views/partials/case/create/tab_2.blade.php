@@ -148,22 +148,22 @@
         </div>
         <div class="col-md-6">
             <div class="form-group">
-                {!! Form::label('case_need_monthly_treatment', '‏هل تحتاج إلي علاج شهري') !!}<br>
-                {!! Form::select('case_need_monthly_treatment', ['نعم' => 'نعم', 'لا' => 'لا'], old('case_need_monthly_treatment') or null, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
+                {!! Form::label('case_illness_need_monthly_treatment', '‏هل تحتاج إلي علاج شهري') !!}<br>
+                {!! Form::select('case_illness_need_monthly_treatment', ['نعم' => 'نعم', 'لا' => 'لا'], old('case_illness_need_monthly_treatment') or null, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
            </div>
         </div>
     </div>
     <div class="row">
         <div class="col-md-6">
             <div class="form-group">
-                {!! Form::label('case_has_national_support', '‏‏هل تأخذ علاج على نفقة الدولة') !!}
-                {!! Form::select('case_has_national_support',['نعم كل العلاج' => 'نعم كل العلاج', 'نعم  جزء من العلاج' => 'نعم  جزء من العلاج', 'لا' => 'لا'], old('case_has_national_support') or null, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
+                {!! Form::label('case_illness_is_national_support', '‏‏هل تأخذ علاج على نفقة الدولة') !!}
+                {!! Form::select('case_illness_is_national_support',['نعم كل العلاج' => 'نعم كل العلاج', 'نعم  جزء من العلاج' => 'نعم  جزء من العلاج', 'لا' => 'لا'], old('case_illness_is_national_support') or null, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
             </div>
         </div>
         <div class="col-md-6">
             <div class="form-group">
-                {!! Form::label('case_treatment_monthly_amount', '‏تكلفة العلاج الشهري') !!}
-                {!! Form::select('case_treatment_monthly_amount',['أقل من 100 جنية' => 'أقل من 100 جنية', 'من 100 إلى أقل من 300' => 'من 100 إلى أقل من 300', 'من 300 إلى أقل من 600' => 'من 300 إلى أقل من 600', 'أكثر من 600' => 'أكثر من 600'], old('case_treatment_monthly_amount') or null, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
+                {!! Form::label('case_illness_treatment_monthly_amount', '‏تكلفة العلاج الشهري') !!}
+                {!! Form::select('case_illness_treatment_monthly_amount',['أقل من 100 جنية' => 'أقل من 100 جنية', 'من 100 إلى أقل من 300' => 'من 100 إلى أقل من 300', 'من 300 إلى أقل من 600' => 'من 300 إلى أقل من 600', 'أكثر من 600' => 'أكثر من 600'], old('case_illness_treatment_monthly_amount') or null, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
             </div>
         </div>
     </div>

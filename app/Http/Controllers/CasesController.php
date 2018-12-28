@@ -267,9 +267,9 @@ class CasesController extends Controller
                     'illness_type' => json_encode($request->case_illness_type),
                     'illness_description' => $request->case_illness_description,
                     'illness_prevent_movement' => $request->case_illness_prevent_movement,
-                    'need_monthly_treatment' => $request->case_need_monthly_treatment,
-                    'has_national_support' => $request->case_has_national_support,
-                    'treatment_monthly_amount' => $request->case_treatment_monthly_amount,
+                    'need_monthly_treatment' => $request->case_illness_need_monthly_treatment,
+                    'has_national_support' => $request->case_illness_is_national_support,
+                    'treatment_monthly_amount' => $request->case_illness_treatment_monthly_amount,
                     'treatment_affordable' => $request->case_treatment_affordable,
                     'need_operation' => $request->case_need_operation,
                     'income_amount' => $request->case_income_amount,
@@ -441,8 +441,8 @@ class CasesController extends Controller
                         'need_monthly_treatment' => $request->partner_illness_need_monthly_treatment[$i],
                         'has_national_support' => $request->partner_illness_is_national_support[$i],
                         'treatment_monthly_amount' => $request->partner_illness_treatment_monthly_amount[$i],
-                        'treatment_affordable' => $request->partner_illness_affordable[$i],
-                        'need_operation' => $request->partner_illness_need_operation[$i],
+                        'treatment_affordable' => $request->partner_treatment_affordable[$i],
+                        'need_operation' => $request->partner_need_operation[$i],
                     ]);
                 }
             }
@@ -471,11 +471,11 @@ class CasesController extends Controller
                         'illness_type' => json_encode($request->child_illness_type[$i]),
                         'illness_description' => $request->child_illness_description[$i],
                         'illness_prevent_movement' => $request->child_illness_prevent_movement[$i],
-                        'need_monthly_treatment' => $request->child_illness_need_monthly_support[$i],
+                        'need_monthly_treatment' => $request->child_illness_need_monthly_treatment[$i],
                         'has_national_support' => $request->child_illness_is_national_support[$i],
                         'treatment_monthly_amount' => $request->child_illness_treatment_monthly_amount[$i],
-                        'treatment_affordable' => $request->child_illness_affordable[$i],
-                        'need_operation' => $request->child_illness_need_operation[$i],
+                        'treatment_affordable' => $request->child_treatment_affordable[$i],
+                        'need_operation' => $request->child_need_operation[$i],
                 ]);
                 }
             }
@@ -505,11 +505,11 @@ class CasesController extends Controller
                         'illness_type' => json_encode($request->roommate_illness_type[$i]),
                         'illness_description' => $request->roommate_illness_description[$i],
                         'illness_prevent_movement' => $request->roommate_illness_prevent_movement[$i],
-                        'need_monthly_treatment' => $request->roommate_illness_need_monthly_support[$i],
+                        'need_monthly_treatment' => $request->roommate_illness_need_monthly_treatment[$i],
                         'has_national_support' => $request->roommate_illness_is_national_support[$i],
-                        'treatment_monthly_amount' => $request->roommate_illness_monthly_amount[$i],
-                        'treatment_affordable' => $request->roommate_illness_affordable[$i],
-                        'need_operation' => $request->roommate_illness_need_operation[$i],
+                        'treatment_monthly_amount' => $request->roommate_illness_treatment_monthly_amount[$i],
+                        'treatment_affordable' => $request->roommate_treatment_affordable[$i],
+                        'need_operation' => $request->roommate_need_operation[$i],
                     ]);
                 }
             }

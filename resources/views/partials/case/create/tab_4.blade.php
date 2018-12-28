@@ -111,8 +111,8 @@
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
-                        {!! Form::label('child_illness_need_monthly_support[]', '‏هل تحتاج إلي علاج شهري') !!}<br>
-                        {!! Form::select('child_illness_need_monthly_support[]', ['نعم' => 'نعم', 'لا' => 'لا'], old('child_illness_need_monthly_support[]') or null, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
+                        {!! Form::label('child_illness_need_monthly_treatment[]', '‏هل تحتاج إلي علاج شهري') !!}<br>
+                        {!! Form::select('child_illness_need_monthly_treatment[]', ['نعم' => 'نعم', 'لا' => 'لا'], old('child_illness_need_monthly_treatment[]') or null, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
                     </div>
                 </div>
             </div>
@@ -133,14 +133,14 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
-                        {!! Form::label('child_illness_affordable[]', '‏هل تقوم بشراء العلاج ‏') !!}
-                        {!! Form::select('child_illness_affordable[]', ['نعم كل العلاج' => 'نعم كل العلاج', 'نعم  جزء من العلاج' => 'نعم  جزء من العلاج', 'لا' => 'لا'], old('child_illness_affordable[]') or null, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
+                        {!! Form::label('child_treatment_affordable[]', '‏هل تقوم بشراء العلاج ‏') !!}
+                        {!! Form::select('child_treatment_affordable[]', ['نعم كل العلاج' => 'نعم كل العلاج', 'نعم  جزء من العلاج' => 'نعم  جزء من العلاج', 'لا' => 'لا'], old('child_treatment_affordable[]') or null, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
-                        {!! Form::label('child_illness_need_operation[]', '‏هل تحتاج إلي عملية') !!}<br>
-                        {!! Form::select('child_illness_need_operation[]', ['نعم' => 'نعم', 'لا' => 'لا'], old('child_illness_need_operation[]') or null, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
+                        {!! Form::label('child_need_operation[]', '‏هل تحتاج إلي عملية') !!}<br>
+                        {!! Form::select('child_need_operation[]', ['نعم' => 'نعم', 'لا' => 'لا'], old('child_need_operation[]') or null, array('placeholder' => 'لا شيء' , 'class' => 'form-control ', 'style' => 'width:100%')) !!}
                     </div>
                 </div>
             </div>
