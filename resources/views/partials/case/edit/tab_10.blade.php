@@ -144,13 +144,7 @@
 
 <script type="text/javascript">
     $(document).ready(function(){
-        // console.log($('#case_assets_water_meter').val() != 'لا' &&  $('#case_assets_water_meter').val() == '' );
-        // console.log($('#case_assets_electric_meter').val() != 'لا' && $('#case_assets_electric_meter').val() == '' );
-        // console.log();
-        // console.log();
-        console.log($('#case_assets_pets').val());
-
-
+        
         if($('#case_assets_house_status').val() == 'تمليك')
             $("#tamleek").show();
         else
@@ -171,7 +165,7 @@
         else
             $("#farm_space").hide();
 
-        if($('#case_assets_pets').val()== 'null')
+        if($('#case_assets_pets').val()== null)
             $("#pets_alternative").hide();
         else if($('#case_assets_pets').val()[0] == "لا يوجد")
             $("#pets_alternative").hide();
