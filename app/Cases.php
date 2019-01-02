@@ -113,6 +113,7 @@ class Cases extends Model
         'case_assets_vehicle_alternative',
         'case_need_project',
         'case_need_project_desc',
+        'assets_farm_space',
     ];
 
     public function caseStatus()
@@ -258,6 +259,12 @@ class Cases extends Model
             'need_education' => $this->need_education,
             'need_food' => $this->need_food,
             'additional_notes' => $this->additional_notes,
+            'case_assets_electric_meter_other' => $this->case_assets_electric_meter_other,
+            'case_assets_pets_alternative' => $this->case_assets_pets_alternative,
+            'case_assets_vehicle_alternative' => $this->case_assets_vehicle_alternative,
+            'case_need_project' => $this->case_need_project,
+            'case_need_project_desc' => $this->case_need_project_desc,
+            'assets_farm_space' => $this->assets_farm_space,
             'partners' => ($this->partners != null)? $this->partners : '',
             'children' => ($this->children != null)? $this->children : '',
             'roommates' => ($this->roommates != null)? $this->roommates : '',
