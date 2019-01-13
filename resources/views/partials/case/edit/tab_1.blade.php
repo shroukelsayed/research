@@ -1,3 +1,6 @@
+<?php  
+//echo "<pre>";
+//var_dump($cities); //die; ?>
 <div id="tab_1" class="tab-pane active">
     <h4>بيانات خاصة بالمحافظة</h4>
     <div class="row">
@@ -69,13 +72,14 @@
             <div class="form-group">
                 {!! Form::label('case_governorate', 'المحافظة') !!}
                 {!! Form::select('case_governorate',$govs,
-                  $case->governorate, array('placeholder' => 'لا شيء' , 'class' => 'form-control select2')) !!}
+                  $case->governorate, array('placeholder' => 'لا شيء' , 'class' => 'form-control select2','onchange' => 'getCities($(this).val())')) !!}
             </div>
         </div>
         <div class="col-md-6">
-            <div class="form-group">
+            <div id="div_city" class="form-group">
                 {!! Form::label('case_city', 'المركز') !!}
-                {!! Form::select('case_city', $cities, $case->city, array('placeholder' => 'لا شيء' , 'class' => 'form-control select2')) !!}
+               
+                {!! Form::select('case_city', $cities, $case->city, array('placeholder' => 'لا شيء' , 'class' => 'form-control','onchange' => 'getDistricts($(this).val())')) !!}
             </div>
         </div>
     </div>
@@ -83,7 +87,7 @@
         <div class="col-md-6">
             <div class="form-group">
                 {!! Form::label('case_district', 'القرية') !!}
-                {!! Form::select('case_district',$districts , $case->district, array('placeholder' => 'لا شيء' , 'class' => 'form-control select2')) !!}
+                {!! Form::select('case_district',$districts , $case->district, array('placeholder' => 'لا شيء' , 'class' => 'form-control' ,'onchange' => 'getFollowings($(this).val())')) !!}
             </div>
         </div>
         <div class="col-md-6">
@@ -202,7 +206,59 @@
     $('.oldDates').on('click', '.remove-child-date-input', function() {
         $(this).parents('.col-md-6').remove();
     });  
-  
-  
+    
 });
+
+function getCities(gov_id) {        
+  $.ajax({
+      url: '/get-cities',
+      type: "GET",
+      data: {'governorate_id': gov_id},
+      success:function(data) {  
+          $('#case_city').html('');
+          $('#case_district').html('');
+          $('#case_following').html('');
+          
+          var html = "<option value=''></option>";
+          $.each(data, function (index, element) {
+              html += "<option value='" + element.code + "'>" + element.name + "</option>";
+          });
+          $('#case_city').append(html);
+      }
+  });
+}
+
+function getDistricts(city_id) {  
+  $.ajax({
+      url: '/get-districts',
+      type: "GET",
+      data: {'city_id': city_id},
+      success:function(data) {  
+          // $('#div_district').show();
+          $('#case_district').html('');
+          var html = "<option value=''></option>";
+          $.each(data, function (index, element) {
+              html += "<option value='" + element.code + "'>" + element.name + "</option>";
+          });
+          $('#case_district').append(html);
+      }
+  });
+}
+
+function getFollowings(district_id) {        
+  $.ajax({
+      url: '/get-followings',
+      type: "GET",
+      data: {'district_id': district_id},
+      success:function(data) {  
+          // $('#div_follow').show();
+          $('#case_following').html('');
+          var html = "<option value=''></option>";
+          $.each(data, function (index, element) {
+              html += "<option value='" + element.code + "'>" + element.name + "</option>";
+          });
+          $('#case_following').append(html);
+      }
+  });
+}
 </script>

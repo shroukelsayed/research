@@ -45,7 +45,7 @@
                     'تم تنفيذ مشروع نفسي اتعلم' => 'تم تنفيذ مشروع نفسي اتعلم',
                     'تم تنفيذ مشروع لا للجوع' => 'تم تنفيذ مشروع لا للجوع',
                     'بناء جدران (جزء من البيت)' => 'بناء جدران (جزء من البيت)'
-                ], old('case_status[]') or null, [ 'class' => 'form-control select2' ,'multiple'=>'multiple','name'=>'case_status[]','placeholder'=>'لا شئ']) !!}
+                ], old('case_status[]') or null, [ 'class' => 'form-control select2' ,'multiple'=>'multiple','name'=>'case_status[]']) !!}
             </div>
         </div>
       </div>
@@ -60,6 +60,14 @@
                 {!! Form::text('case_researcher_name', old('case_researcher_name') or null, array('class' => 'form-control')) !!}
             </div>
         </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                {!! Form::label('case_real_date', 'التاريخ') !!}
+                {!! Form::date('case_real_date', old('case_real_date') or null, array('class' => 'form-control')) !!}
+            </div>
+        </div>
+    </div>
+    <div class="row">
          <div class="col-md-6">
             <div class="form-group">
                 {!! Form::label('case_governorate', 'المحافظة') !!}
@@ -67,43 +75,33 @@
                   old('case_governorate') or null, array('placeholder' => 'لا شيء' , 'class' => 'form-control select2' ,'onchange' => 'getCities($(this).val())' )) !!}
             </div>
         </div>
-    </div>
-    <div class="row">
-       
         <div class="col-md-6">
-            <div class="form-group">
+            <div id="div_city" class="form-group" style="display:none;">
                 {!! Form::label('case_city', 'المركز') !!}
-                {!! Form::select('case_city',$cities, old('case_city') or null, array('placeholder' => 'لا شيء' , 'class' => 'form-control select2' ,'onchange' => 'getDistricts($(this).val())')) !!}
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div class="form-group">
-                {!! Form::label('case_district', 'القرية') !!}
-                {!! Form::select('case_district', $districts, old('case_district') or null, array('placeholder' => 'لا شيء' , 'class' => 'form-control select2' ,'onchange' => 'getFollowings($(this).val())')) !!}
+                <select id="case_city" name="case_city" class = 'form-control' onchange = 'getDistricts($(this).val())'></select>
             </div>
         </div>
     </div>
     <div class="row">
-        
         <div class="col-md-6">
-            <div class="form-group">
+            <div id="div_district" class="form-group" style="display:none;">
+                {!! Form::label('case_district', 'القرية') !!}
+                 <select id="case_district" name="case_district" class = 'form-control' onchange = 'getFollowings($(this).val())'></select>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div id="div_follow" class="form-group" style="display:none;" >
                 {!! Form::label('case_following', 'التابع') !!}
-                {!! Form::select('case_following',$followings, old('case_following') or null, array('placeholder' => 'لا شيء' ,'class' => 'form-control select2')) !!}
-
+                <select id="case_follow" name="case_following" class = 'form-control'></select>
             </div>
         </div>
-          <div class="col-md-6">
-            <div class="form-group">
-                {!! Form::label('case_real_date', 'التاريخ') !!}
-                {!! Form::date('case_real_date', old('case_real_date') or null, array('class' => 'form-control')) !!}
-            </div>
-        </div>
+          
     </div>
 </div>
 
 <script>
     $(document).ready(function(){  
-        var i = 1;      
+        var i = 0;      
 
         $("#case_status").on("select2:unselect", function (evt) {
 
@@ -123,30 +121,6 @@
 
             // when deselect an option delete refrence div
             var unselected = [];
-            // var $sel = $(this),
-            // val = $(this).val(),
-            // $opts = $sel.children(),
-            // prevUnselected = $sel.data('unselected');
-            // // create array of currently unselected 
-            // var currUnselected = $opts.not(':selected').map(function() {
-            //   return this.value
-            // }).get();
-            // // see if previous data stored
-            // if (prevUnselected) {
-            //   var unselected = currUnselected.reduce(function(a, curr) {
-            //     if ($.inArray(curr, prevUnselected) == -1) {
-            //       a.push(curr)
-            //     }
-            //     return a
-            //   }, []);
-            //   // "unselected" is an array if it has length some were removed
-            //   if (unselected.length) {
-            //       $("label:contains("+unselected+")").parents(".col-md-12").remove();
-            //   }
-            // }
-            // $sel.data('unselected', currUnselected)
-            // console.log( unselected );
-
             if ($(this).val() != null && $(this).val().length > 0 && unselected.length === 0) {
                 // get selectedValue name
                 var selectedValue = $("option:selected:last",this).val();
@@ -206,33 +180,32 @@
             type: "GET",
             data: {'governorate_id': gov_id},
             success:function(data) {  
-                  $('#case_city').find('option').remove();
-//                $("#case_city").remove();
-//                $('#case_city').find('option').remove();
-//                console.log(model);
-                console.log(data);
+                $('#div_city').show();
+                $('#case_city').html('');
+                var html = "<option value=''></option>";
 
-//                model.remove();
                 $.each(data, function (index, element) {
-                    $('#case_city').append("<option value='" + element.code + "'>" + element.name + "</option>");
+                    html += "<option value='" + element.code + "'>" + element.name + "</option>";
                 });
+
+                $('#case_city').append(html);
             }
         });
     }
 
     function getDistricts(city_id) {  
-        
         $.ajax({
             url: '/get-districts',
             type: "GET",
             data: {'city_id': city_id},
             success:function(data) {  
-//                var model = $('#case_district');
-//                model.remove();
-                $('#case_district').find('option').remove();
+                $('#div_district').show();
+                $('#case_district').html('');
+                var html = "<option value=''></option>";
                 $.each(data, function (index, element) {
-                    $("#case_district").append("<option selected='selected' value='" + element.code + "'>" + element.name + "</option>");
+                    html += "<option value='" + element.code + "'>" + element.name + "</option>";
                 });
+                $('#case_district').append(html);
             }
         });
     }
@@ -243,11 +216,13 @@
             type: "GET",
             data: {'district_id': district_id},
             success:function(data) {  
-                var model = $('#case_following');
-//                model.empty();
+                $('#div_follow').show();
+                $('#case_follow').html('');
+                var html = "<option value=''></option>";
                 $.each(data, function (index, element) {
-                    model.append("<option value='" + element.code + "'>" + element.name + "</option>");
+                    html += "<option value='" + element.code + "'>" + element.name + "</option>";
                 });
+                $('#case_follow').append(html);
             }
         });
     }

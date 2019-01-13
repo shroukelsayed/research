@@ -14,6 +14,6 @@ class District extends Model
 
     public function followings()
     {
-        return $this->hasMany('App\Following' , 'following_id' ,  'id');
+        return $this->hasMany('App\Following' , 'following_id' ,  'code');
     }
 }

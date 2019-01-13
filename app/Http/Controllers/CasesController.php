@@ -37,11 +37,12 @@ class CasesController extends Controller
     {
         $case = Cases::find($id);
      
-        // $illness_type = json_decode($case->illness_type) ;
-        // $assets_pets =json_decode( $case->assets_pets);
-        // dd( $assets_pets);
-      
-        return view('partials.case.show', compact('case'));
+        $governorate = !empty($case->governorate) ? DB::table('governorates')->where('code' , '=', $case->governorate)->first()->name:'';
+        $city = !empty($case->city) ? DB::table('cities')->where('code' , '=', $case->city)->first()->name:'';
+        $district = !empty($case->district) ? DB::table('districts')->where('code' , '=', $case->district)->first()->name:'';
+        $following = !empty($case->following) ? DB::table('followings')->where('code' , '=', $case->following)->first()->name:'';
+
+        return view('partials.case.show', compact('case','governorate','city','district','following'));
     }
 
     public function printView($id){
@@ -72,11 +73,10 @@ class CasesController extends Controller
         }
 
         $govs = Governorate::pluck('name','code');
-        $cities = City::pluck('name','code');
-        $districts = District::pluck('name','code');
-        $followings = Following::pluck('name','code');
+        $cities = City::where('governorate_id', $case->governorate)->pluck('name','code');
+        $districts = District::where('city_id', $case->city)->pluck('name','code');
+        $followings = Following::where('district_id', $case->district)->pluck('name','code');
 
-        // var_dump($case_status_date);die;
         return view('partials.case.edit', compact('case','case_status','case_status_date','govs','cities','districts','followings'));
     }
 
@@ -274,7 +274,7 @@ class CasesController extends Controller
                     'need_operation' => $request->case_need_operation,
                     'income_amount' => $request->case_income_amount,
                     'income_amount_category' => $request->case_income_amount_category,
-                    'income_source_count' => count($request->income_source_type),
+                    'income_source_count' => !empty($request->income_source_type)? count($request->income_source_type):0,
                     'support_count' => !empty($request->support_source_category[0]) ? count($request->support_source_category):0,
                     'debts_total' => $request->case_debts_total,
                     'debts_total_range' => $request->case_debts_total_range,
@@ -315,7 +315,7 @@ class CasesController extends Controller
                     'assets_house_alternative_leave' => $request->case_assets_house_alternative_leave,
                     'assets_house_construction' => $request->case_assets_house_construction,
                     'assets_house_floors_count' => $request->case_assets_house_floors_count,
-                    'assets_house_rooms_count' => count($request->room_type),
+                    'assets_house_rooms_count' => !empty($request->room_type) ? count($request->room_type):0,
                     'has_bathroom' => $request->case_has_bathroom,
                     'bathroom_has_door' => $request->case_bathroom_has_door,
                     'bathroom_has_basin' => $request->case_bathroom_has_basin,
@@ -377,7 +377,11 @@ class CasesController extends Controller
                 }
             }
         }
-       
+        // echo "<pre>";
+        // var_dump($request->case_status);
+        // var_dump($request->status_date);
+        // var_dump($statusDates);
+        // die();
         foreach ($statusDates as $key => $value) {
             $status = CaseStatuses::create([
                                 'case_id' => $caseId ,
@@ -456,6 +460,9 @@ class CasesController extends Controller
     private function storeChildrenData (Request $request , $caseId)
     {
         if(is_array($request->child_name) && !empty($request->child_name)){
+               // echo "<pre>";
+                // var_dump($request->child_illness_type);
+                // die;
             for ($i = 0; $i < count($request->child_name); $i++) {
                 if ($request->child_name[$i]!==null && !empty($request->child_name)){
                     $child = Children::create([
@@ -468,7 +475,7 @@ class CasesController extends Controller
                         'work_status' => $request->child_work_status[$i],
                         'profession' => $request->child_profession[$i],
                         'is_ill' => $request->child_is_ill[$i],
-                        'illness_type' => json_encode($request->child_illness_type[$i]),
+                        'illness_type' => !empty($request->child_illness_type[$i]) ?  json_encode($request->child_illness_type[$i]) : null ,
                         'illness_description' => $request->child_illness_description[$i],
                         'illness_prevent_movement' => $request->child_illness_prevent_movement[$i],
                         'need_monthly_treatment' => $request->child_illness_need_monthly_treatment[$i],
@@ -479,6 +486,7 @@ class CasesController extends Controller
                 ]);
                 }
             }
+            // die;
         }
       return 'done children';
     }
@@ -730,7 +738,7 @@ class CasesController extends Controller
                 'need_operation' => $request->case_need_operation,
                 'income_amount' => $request->case_income_amount,
                 'income_amount_category' => $request->case_income_amount_category,
-                'income_source_count' => count($request->income_source_type),
+                'income_source_count' => !empty($request->income_source_type) ? count($request->income_source_type):0,
                 'support_count' => !empty($request->support_source_category[0]) ? count($request->support_source_category):0,
                 'debts_total' => $request->case_debts_total,
                 'debts_total_range' => $request->case_debts_total_range,
@@ -768,7 +776,7 @@ class CasesController extends Controller
                 'assets_house_alternative_leave' => $request->case_assets_house_alternative_leave,
                 'assets_house_construction' => $request->case_assets_house_construction,
                 'assets_house_floors_count' => $request->case_assets_house_floors_count,
-                'assets_house_rooms_count' => count($request->room_type),
+                'assets_house_rooms_count' => !empty($request->room_type) ? count($request->room_type): 0,
                 'has_bathroom' => $request->case_has_bathroom,
                 'bathroom_has_door' => $request->case_bathroom_has_door,
                 'bathroom_has_basin' => $request->case_bathroom_has_basin,
@@ -1004,7 +1012,7 @@ class CasesController extends Controller
                         'work_status' => $request->child_work_status[$i],
                         'profession' => $request->child_profession[$i],
                         'is_ill' => $request->child_is_ill[$i],
-                        'illness_type' => json_encode($request->child_illness_type[$i]),
+                        'illness_type' => !empty($request->child_illness_type[$i]) ?  json_encode($request->child_illness_type[$i]) : null ,
                         'illness_description' => $request->child_illness_description[$i],
                         'illness_prevent_movement' => $request->child_illness_prevent_movement[$i],
                         'need_monthly_treatment' => $request->child_illness_need_monthly_support[$i],
@@ -1026,7 +1034,7 @@ class CasesController extends Controller
                         'work_status' => $request->child_work_status[$i],
                         'profession' => $request->child_profession[$i],
                         'is_ill' => $request->child_is_ill[$i],
-                        'illness_type' => json_encode($request->child_illness_type[$i]),
+                        'illness_type' => !empty($request->child_illness_type[$i]) ?  json_encode($request->child_illness_type[$i]) : null ,
                         'illness_description' => $request->child_illness_description[$i],
                         'illness_prevent_movement' => $request->child_illness_prevent_movement[$i],
                         'need_monthly_treatment' => $request->child_illness_need_monthly_support[$i],
@@ -1059,7 +1067,7 @@ class CasesController extends Controller
                     'work_status' => $request->child_work_status[$i],
                     'profession' => $request->child_profession[$i],
                     'is_ill' => $request->child_is_ill[$i],
-                    'illness_type' => json_encode($request->child_illness_type[$i]),
+                    'illness_type' => !empty($request->child_illness_type[$i]) ?  json_encode($request->child_illness_type[$i]) : null ,
                     'illness_description' => $request->child_illness_description[$i],
                     'illness_prevent_movement' => $request->child_illness_prevent_movement[$i],
                     'need_monthly_treatment' => $request->child_illness_need_monthly_support[$i],

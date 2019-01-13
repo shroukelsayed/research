@@ -35,21 +35,21 @@
             </p>
             <p>
                 المحافظة
-                &blacktriangleleft;<span id="gov"> {{ $case->governorate }}  </span>
+                &blacktriangleleft;<span id="gov"> {{ $governorate }}  </span>
             </p>
             <p>
                 المركز
-                &blacktriangleleft;<span id="city"> {{ $case->city }} </span>
+                &blacktriangleleft;<span id="city"> {{ $city }} </span>
                 <!-- <input type="text" name="city" id="city" value="{{$case->city}}"> -->
                 
             </p>
             <p>
                 القرية
-                &blacktriangleleft; <span id="district"> {{ $case->district }} </span>
+                &blacktriangleleft; <span id="district"> {{ $district }} </span>
             </p>
             <p>
                 التابع
-                &blacktriangleleft; <span id="following"> {{ $case->following }} </span>
+                &blacktriangleleft; <span id="following"> {{ $following }} </span>
             </p>
             <p>
                 التاريخ
@@ -893,34 +893,34 @@
     <script type="text/javascript">
         $(document).ready(function () {
             $('.btnPrint').printPage();
-            $.ajax({
-                url: '/get-gov/{id}',
-                data: {'id': $("#gov").text() },
-                success:function(data) {                 
-                    $("#gov").text(data);
-                }
-            });
-            $.ajax({
-                url: '/get-city/{id}',
-                data: {'id': $("#city").text() },
-                success:function(data) {                 
-                    $("#city").text(data);
-                }
-            });
-            $.ajax({
-                url: '/get-district/{id}',
-                data: {'id': $("#district").text() },
-                success:function(data) {                 
-                    $("#district").text(data);
-                }
-            });
-            $.ajax({
-                url: '/get-following/{id}',
-                data: {'id': $("#following").text() },
-                success:function(data) {                 
-                    $("#following").text(data);
-                }
-            });
+            // $.ajax({
+            //     url: '/get-gov/{id}',
+            //     data: {'id': $("#gov").text() },
+            //     success:function(data) {                 
+            //         $("#gov").text(data);
+            //     }
+            // });
+            // $.ajax({
+            //     url: '/get-city/{id}',
+            //     data: {'id': $("#city").text() },
+            //     success:function(data) {                 
+            //         $("#city").text(data);
+            //     }
+            // });
+            // $.ajax({
+            //     url: '/get-district/{id}',
+            //     data: {'id': $("#district").text() },
+            //     success:function(data) {                 
+            //         $("#district").text(data);
+            //     }
+            // });
+            // $.ajax({
+            //     url: '/get-following/{id}',
+            //     data: {'id': $("#following").text() },
+            //     success:function(data) {                 
+            //         $("#following").text(data);
+            //     }
+            // });
         })
     </script>
 @endsection
