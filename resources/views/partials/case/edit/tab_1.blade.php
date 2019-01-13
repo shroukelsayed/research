@@ -66,6 +66,12 @@
                 {!! Form::text('case_researcher_name', $case->researcher_name, array('class' => 'form-control')) !!}
             </div>
         </div>
+         <div class="col-md-6">
+            <div class="form-group">
+                {!! Form::label('case_real_date', 'التاريخ') !!}
+                {!! Form::date('case_real_date', $case->real_date, array('class' => 'form-control')) !!}
+            </div>
+        </div>
     </div>
     <div class="row">
         <div class="col-md-6">
@@ -94,14 +100,6 @@
             <div class="form-group">
                 {!! Form::label('case_following', 'التابع') !!}
                 {!! Form::select('case_following',$followings, $case->following, array('placeholder' => 'لا شيء' ,'class' => 'form-control')) !!}
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-6">
-            <div class="form-group">
-                {!! Form::label('case_real_date', 'التاريخ') !!}
-                {!! Form::date('case_real_date', $case->real_date, array('class' => 'form-control')) !!}
             </div>
         </div>
     </div>
