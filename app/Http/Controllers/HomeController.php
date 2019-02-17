@@ -73,12 +73,12 @@ class HomeController extends Controller
         $city = new City();
 
         $cities = City::all();
-        $last_city = City::orderby('id', 'desc')->first();
+        $last_city = City::whereRaw('code = (SELECT max(CAST(code AS UNSIGNED)) from cities)')->get()->toArray();
 
         $new_city_code = 0 ;
 
         if( !is_null($last_city)){
-            $new_city_code = $last_city->code + 1;
+            $new_city_code = $last_city[0]['code'] + 1;
         }else{
             $new_city_code = 1;
         }
@@ -104,12 +104,12 @@ class HomeController extends Controller
         $district = new District();
 
         $districts = District::all();
-        $last_district = District::orderby('id', 'desc')->first();
+        $last_district = District::whereRaw('code = (SELECT max(CAST(code AS UNSIGNED)) from districts)')->get()->toArray();
 
         $new_district_code = 0 ;
 
         if( !is_null($last_district)){
-            $new_district_code = $last_district->code + 1;
+            $new_district_code = $last_district[0]['code'] + 1;
         }else{
             $new_district_code = 1;
         }
@@ -136,12 +136,12 @@ class HomeController extends Controller
         $following = new Following();
         
         $followings = Following::all();
-        $last_following = District::orderby('id', 'desc')->first();
-
+        // $last_following = Following::orderby('id', 'desc')->first();
+        $last_following = Following::whereRaw('code = (SELECT max(CAST(code AS UNSIGNED)) from followings)')->get()->toArray();
         $new_following_code = 0 ;
 
         if( !is_null($last_following)){
-            $new_following_code = $last_following->code + 1;
+            $new_following_code = $last_following[0]['code'] + 1;
         }else{
             $new_following_code = 1;
         }
