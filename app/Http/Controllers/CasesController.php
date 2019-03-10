@@ -29,7 +29,7 @@ class CasesController extends Controller
 
     public function index()
     {
-        $cases = Cases::latest()->paginate(10);
+        $cases = Cases::orderBy('id', 'desc')->paginate(10);
         return view('partials.case.index', compact('cases'));
     }
 

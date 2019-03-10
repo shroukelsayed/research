@@ -3,7 +3,7 @@
 		<head>
 				<meta charset="utf-8" />
 				<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-				<title>Omaar AlArd</title>
+				<title>Ommar AlArd</title>
 				<meta name="description" content="Survey Management System" />
 				<meta name="Omaar-AlArd" content="" />
 
