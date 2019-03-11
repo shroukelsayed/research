@@ -69,10 +69,10 @@
                 </a>
 
                 <!-- delete the nerd (uses the destroy method DESTROY /clients/{id} -->
-                {{ Form::open(array('url' => url('cases/'.$case->id.''))) }}
+              <!--   {{ Form::open(array('url' => url('cases/'.$case->id.''))) }}
                 {{ Form::hidden('_method', 'DELETE') }}
                 {{ Form::submit('Delete', array('class' => 'btn btn-danger')) }}
-                {{ Form::close() }}
+                {{ Form::close() }} -->
 
             </td>
         </tr>
