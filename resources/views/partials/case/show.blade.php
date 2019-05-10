@@ -647,7 +647,11 @@
             <p>
                 عندكوا مواشي/ طيور؟
                 @if(!is_array(json_decode($case->assets_pets)))
-                    &blacktriangleleft; {{json_decode($case->assets_pets) }}  &nbsp&nbsp&nbsp&nbsp&nbsp
+                    @if(is_null($case->assets_pets) || $case->assets_pets == 'null')
+                        &blacktriangleleft; لا يوجد  &nbsp&nbsp&nbsp&nbsp&nbsp
+                    @else
+                        &blacktriangleleft; {{json_decode($case->assets_pets) }}  &nbsp&nbsp&nbsp&nbsp&nbsp
+                    @endif
                 @else
                     &blacktriangleleft; @foreach(json_decode($case->assets_pets) as $assets_pet) {{$assets_pet }} @endforeach
                 @endif

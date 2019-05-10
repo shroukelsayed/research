@@ -36,7 +36,8 @@ class CasesController extends Controller
     public function view($id)
     {
         $case = Cases::find($id);
-     
+        // var_dump($case->assets_pets);
+        // die();
         $governorate = !empty($case->governorate) ? DB::table('governorates')->where('code' , '=', $case->governorate)->first()->name:'';
         $city = !empty($case->city) ? DB::table('cities')->where('code' , '=', $case->city)->first()->name:'';
         $district = !empty($case->district) ? DB::table('districts')->where('code' , '=', $case->district)->first()->name:'';
