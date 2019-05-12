@@ -94,8 +94,8 @@ class CasesController extends Controller
     public function store(Request $request)
     {
         // var_dump(count($request->case_status));
-        // var_dump($request->status_date);
-        // die;
+        var_dump(json_encode($request->case_assets_pets));
+        die;
        if(isset($request->debts_stay)){
          $sum_of_debts_stay = array_sum($request->debts_stay);
         }

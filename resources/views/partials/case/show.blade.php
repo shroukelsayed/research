@@ -655,7 +655,7 @@
                         &blacktriangleleft; {{json_decode($case->assets_pets) }}  &nbsp&nbsp&nbsp&nbsp&nbsp
                     @endif
                 @else
-                    &blacktriangleleft; @foreach(json_decode($case->assets_pets) as $assets_pet) {{$assets_pet }} @endforeach
+                    &blacktriangleleft; @foreach(json_decode($case->assets_pets) as $assets_pet)<p> {{$assets_pet }} </p> @endforeach
                 @endif
             </p>
             @if(!is_null($case->case_assets_pets_alternative))
