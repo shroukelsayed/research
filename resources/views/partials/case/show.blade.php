@@ -649,6 +649,8 @@
                 @if(!is_array(json_decode($case->assets_pets)))
                     @if(is_null($case->assets_pets) || $case->assets_pets == 'null')
                         &blacktriangleleft; لا يوجد  &nbsp&nbsp&nbsp&nbsp&nbsp
+                    @elseif(json_decode($case->assets_pets) == "")
+                        &blacktriangleleft; {{$case->assets_pets}}  &nbsp&nbsp&nbsp&nbsp&nbsp
                     @else
                         &blacktriangleleft; {{json_decode($case->assets_pets) }}  &nbsp&nbsp&nbsp&nbsp&nbsp
                     @endif
