@@ -45,7 +45,7 @@
                     'تم تنفيذ مشروع نفسي اتعلم' => 'تم تنفيذ مشروع نفسي اتعلم',
                     'تم تنفيذ مشروع لا للجوع' => 'تم تنفيذ مشروع لا للجوع',
                     'بناء جدران (جزء من البيت)' => 'بناء جدران (جزء من البيت)'
-                ], old('case_status[]') or null, [ 'class' => 'form-control select2' ,'multiple'=>'multiple','name'=>'case_status[]']) !!}
+                ], old('case_status[]') or null, [ 'class' => 'form-control select2 case_status' ,'multiple'=>'multiple','name'=>'case_status[]','id'=> 'case_status']) !!}
             </div>
         </div>
       </div>
@@ -100,8 +100,15 @@
 </div>
 
 <script>
-    $(document).ready(function(){  
+    $(document).ready(function(){ 
+
+        // $("case_status").on('blur',(function(){
+        //     console.log("khkjhj");
+        // })); 
+
         var i = 0;      
+
+        // console.log(conceptName)
 
         $("#case_status").on("select2:unselect", function (evt) {
 
@@ -228,4 +235,6 @@
     }
 
 
+
+    
 </script>

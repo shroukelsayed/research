@@ -6,6 +6,7 @@
             <div class="form-group">
                 {!! Form::label('case_name', 'الاسم') !!}
                 {!! Form::text('case_name', old('case_name') or null, array('class' => 'form-control')) !!}
+                 <span id='error3' style ="display:none;color: red;">يجب ادخال اسم الحالة </span>
             </div>
         </div>
         <div class="col-md-6">
@@ -30,6 +31,7 @@
             <div class="form-group">
                 {!! Form::label('case_national_id', 'رقم البطاقة') !!}
                 {!! Form::text('case_national_id', old('case_national_id') or null, array('class' => 'form-control','maxlength' =>"14")) !!}
+                 <span id='error' style ="display:none;color: red;">رقم البطاقة يجب ان يكون 14 رقم </span>
             </div>
         </div>
     </div>
@@ -97,6 +99,7 @@
             <div class="form-group">
                 {!! Form::label('case_phone', 'رقم الموبايل') !!}
                 {!! Form::text('case_phone', old('case_phone') or null, array('class' => 'form-control','maxlength' =>"11")) !!}
+                 <span id='error2' style ="display:none;color: red;">رقم الموبايل يجب ان يكون 11 رقم</span>
             </div>
         </div>
         <div class="col-md-6">
@@ -182,3 +185,60 @@
         </div>
     </div>
 </div>
+
+
+<script type="text/javascript">
+    
+
+
+    $("#case_national_id").on("keypress keyup blur",function (event) {    
+       $(this).val($(this).val().replace(/[^\d].+/, ""));
+        if ((event.which < 48 || event.which > 57)) {
+            event.preventDefault();
+        }
+    });
+
+    $("#case_phone").on("keypress keyup blur",function (event) {    
+       $(this).val($(this).val().replace(/[^\d].+/, ""));
+        if ((event.which < 48 || event.which > 57)) {
+            event.preventDefault();
+        }
+    });
+
+    $("#case_national_id").on('blur',(function(){
+        var el = $('#case_national_id').val();
+        if ( el.length ==0 || el.length ==14 ) {
+            $('#error').hide();
+        }else{
+            $('#error').show();
+            setTimeout(function() {
+                $('#case_national_id').focus();
+            }, 0);
+        }
+    })); 
+
+    $("#case_phone").on('blur',(function(){
+        var el = $('#case_phone').val();
+        if ( el.length ==0 || el.length ==11 ) {
+            $('#error2').hide();
+        }else{
+            $('#error2').show();
+            setTimeout(function() {
+                $('#case_phone').focus();
+            }, 0);
+        }
+    })); 
+
+    $("#case_name").on('blur',(function(){
+        var el = $('#case_name').val();
+        if ( el.length !=0  ) {
+            $('#error3').hide();
+        }else{
+            $('#error3').show();
+            setTimeout(function() {
+                $('#case_name').focus();
+            }, 0);
+        }
+    })); 
+
+</script>

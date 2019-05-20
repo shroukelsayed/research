@@ -10,6 +10,7 @@
 
 <div id="content" class="padding-20">
 
+
   <!-- will be used to show any messages -->
   @if (count($errors->all()) > 0)
     <div class="alert alert-danger">
@@ -61,7 +62,7 @@
               </a>
             </li>
             <li>
-              <a href="#tab_2" data-toggle="tab">
+              <a href="#tab_2" data-toggle="tab" id="tab2">
                 <span class="badge badge-warning pull-right">*</span>
                 بيانات خاصة برب الأسرة
               </a>
@@ -215,4 +216,20 @@
  </div> --}}
 
 </div>
+
+
+<script type="text/javascript">
+  
+  // $('#tab2').click(function() {
+  //  if ($('#case_status').val()==null) {
+  //        alert('يجب اختيار حاله الاستماره اولا ');
+  //       // $("#tab2").attr("href", "tab_1");
+  //  }
+  // })
+
+
+</script>
+
+
 @endsection
+
